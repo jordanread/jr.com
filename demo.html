@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Splash preview</title>
+
+<script>document.documentElement.classList.add('js');</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@100..900&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="assets/css/splash.css">
+
+<style>
+  /* Just enough page-behind-the-splash styling to make the reveal
+     legible in this preview. None of this is part of the splash
+     component itself — your real layout's CSS replaces it. */
+  body {
+    margin: 0;
+    font-family: 'Archivo', sans-serif;
+    background: #f6f3ec;
+    color: #0c0b09;
+  }
+  .mock-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+    padding: 2rem;
+  }
+  .mock-page h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    margin: 0;
+  }
+  .mock-page p {
+    font-size: 1.1rem;
+    opacity: 0.7;
+    margin: 0;
+    max-width: 32rem;
+  }
+  .replay {
+    margin-top: 1.5rem;
+    font-family: inherit;
+    font-size: 0.9rem;
+    padding: 0.6rem 1.4rem;
+    border-radius: 999px;
+    border: 1px solid #0c0b09;
+    background: transparent;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+
+<div class="splash" id="splash" role="region" aria-label="Loading intro">
+  <p class="splash__phrase" id="splashPhrase" aria-hidden="true"></p>
+  <button type="button" class="splash__skip" id="splashSkip">Skip</button>
+</div>
+
+<!--
+  In Jekyll this comes from _data/taglines.yml via the jsonify filter.
+  Here in the standalone preview there's no Liquid, so splash.js falls
+  back to window.SPLASH_TAGLINES below — same array, just defined a
+  different way. Edit it here to test phrase changes in isolation.
+-->
+<script>
+  window.SPLASH_TAGLINES = [
+    'Software Engineer',
+    'Entrepreneur',
+    'AI Agent Consultant / Fixer',
+    'Maker',
+    'Writer'
+  ];
+</script>
+<script src="assets/js/splash.js"></script>
+
+<div class="mock-page">
+  <h1>This is the page underneath.</h1>
+  <p>
+    Stand-in content so you can see the splash hand off to the real
+    page. Your actual landing page goes here once it exists.
+  </p>
+  <button class="replay" onclick="window.location.reload()">Replay splash</button>
+</div>
+
+</body>
+</html>
