@@ -1,0 +1,44 @@
+// -----------------------------------------------------------------------------
+// Responsive
+// -----------------------------------------------------------------------------
+
+@media (max-width: $breakpoint-tablet) {
+  header.site-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hero {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .hero-meta {
+    order: -1;
+  }
+
+  .contact-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Print
+// -----------------------------------------------------------------------------
+
+@media print {
+  body {
+    background: #ffffff;
+  }
+
+  .page {
+    padding: 0.5in;
+  }
+
+  header.site-header,
+  nav a,
+  .btn {
+    color: #000 !important;
+    background: none !important;
+    box-shadow: none !important;
+  }
+}

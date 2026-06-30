@@ -1,0 +1,11 @@
+<header class="site-header">
+  <div class="brand">
+    <span class="brand-name">{{ site.author.name }}</span>
+    <span class="brand-tagline">{{ site.author.job_title }}</span>
+  </div>
+  <nav aria-label="Primary navigation">
+    {% for item in site.nav %}
+    <a href="{{ item.anchor }}">{{ item.title }}</a>
+    {% endfor %}
+  </nav>
+</header>

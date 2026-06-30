@@ -1,0 +1,32 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "{{ site.author.name }}",
+  {% if site.author.email %}"email": "mailto:{{ site.author.email }}",{% endif %}
+  {% if site.author.phone %}"telephone": "{{ site.author.phone }}",{% endif %}
+  "url": "{{ site.url }}",
+  "jobTitle": "{{ site.author.job_title }}",
+  "sameAs": [
+    {% if site.author.github != "" %}"{{ site.author.github }}",{% endif %}
+    "{{ site.author.linkedin }}"
+  ],
+  "knowsAbout": [
+    ".NET",
+    "C#",
+    "Angular",
+    "TypeScript",
+    "SQL Server",
+    "REST APIs",
+    "Azure App Service",
+    "Test Driven Development",
+    "Continuous Integration",
+    "Continuous Deployment"
+  ],
+  "hasOccupation": {
+    "@type": "Occupation",
+    "name": "Software Engineer",
+    "occupationLocation": { "@type": "Country", "name": "United States" }
+  }
+}
+</script>

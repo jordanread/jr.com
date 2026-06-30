@@ -1,0 +1,34 @@
+- group: "Backend & APIs"
+  items:
+    - "C# / .NET Framework 4.8 / .NET Core"
+    - "ASP.NET MVC & Web API"
+    - "Windows services, console apps"
+    - "REST / SOAP / WCF · SOA"
+
+- group: "Frontend"
+  items:
+    - "Angular (multiple versions)"
+    - "TypeScript / JavaScript"
+    - "Razor Pages, ASP.NET Web Forms"
+    - "HTML5 / CSS / Bootstrap"
+
+- group: "Data & Integration"
+  items:
+    - "Microsoft SQL Server / T-SQL"
+    - "Data modeling & performance"
+    - "ActiveMQ, protobuf, WCF"
+    - "System integration & interop"
+
+- group: "Cloud & DevOps"
+  items:
+    - "Azure App Service"
+    - "CI/CD pipelines · Azure DevOps"
+    - "Jenkins (AWS-hosted build servers)"
+    - "Automated builds & deployments"
+
+- group: "Practices"
+  items:
+    - "Test Driven Development (TDD)"
+    - "Agile / iterative delivery"
+    - "System & solution architecture"
+    - "Security & compliance-conscious design"

@@ -1,0 +1,57 @@
+<section id="contact" aria-label="Contact">
+  <h2><span>Contact</span> &amp; Links</h2>
+  <div class="section-card">
+    <div>
+      <p>
+        If you'd like to talk about a role, a project, or how I approach
+        system design and delivery, email is usually the best way to reach
+        me. I'm open to remote-first roles that make good use of my
+        experience with .NET, Angular, and Azure-backed systems. The best way
+        to reach out is via
+        <a href="{{ site.author.linkedin }}" target="_blank" rel="noopener">LinkedIn</a>
+        for now.
+      </p>
+    </div>
+
+    {% if site.author.email or site.author.phone %}
+    <div class="contact-grid">
+      {% if site.author.email %}
+      <div class="contact-item">
+        <div class="contact-label">Email</div>
+        <div class="contact-value">
+          <a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a>
+        </div>
+      </div>
+      {% endif %}
+      {% if site.author.phone %}
+      <div class="contact-item" style="margin-top: 0.5rem;">
+        <div class="contact-label">Phone</div>
+        <div class="contact-value">
+          <a href="tel:{{ site.author.phone }}">{{ site.author.phone }}</a>
+        </div>
+      </div>
+      {% endif %}
+      <div class="contact-item" style="margin-top: 0.5rem;">
+        <div class="contact-label">Website</div>
+        <div class="contact-value">
+          <a href="{{ site.url }}">{{ site.url }}</a>
+        </div>
+      </div>
+      {% if site.author.github != "" %}
+      <div class="contact-item" style="margin-top: 0.5rem;">
+        <div class="contact-label">GitHub</div>
+        <div class="contact-value">
+          <a href="{{ site.author.github }}">{{ site.author.github }}</a>
+        </div>
+      </div>
+      {% endif %}
+      <div class="contact-item" style="margin-top: 0.5rem;">
+        <div class="contact-label">LinkedIn</div>
+        <div class="contact-value">
+          <a href="{{ site.author.linkedin }}">{{ site.author.linkedin }}</a>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+  </div>
+</section>

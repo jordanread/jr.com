@@ -1,0 +1,105 @@
+- company: "National Seating & Mobility"
+  dates: "2022 - 2025"
+  role: "Software Engineer / Solution Architect"
+  location: "Remote · United States"
+  highlights:
+    - "Worked within a non-documented Dynamics 365 system of record and Azure App Service-hosted n-tier architecture."
+    - "Applied TDD and CI/CD experience to stabilize and extend a .NET Core Web API and Angular stack on SQL Server."
+    - "Implemented versioning for a RESTful .NET Core API and contributed to a geographic exclusivity system for protected products."
+    - "Advised on DevOps pipelines and security/architecture requirements around deployments and future product replacements."
+
+- company: "Ektello (Allegion)"
+  dates: "2021"
+  role: "Full Stack Software Engineer"
+  location: "Remote · United States"
+  highlights:
+    - "Developed on a SQL Server / .NET Core Web API / Angular product slated for replacement."
+    - "Identified data storage inconsistencies affecting the upcoming replacement and refined architecture requirements."
+    - "Implemented RESTful API versioning and contributed to a geographic exclusivity system for protected products."
+    - "Consulted on CI/CD pipelines and security and architecture concerns around deployments."
+
+- company: "Talento (Spirit Airlines)"
+  dates: "2019 - 2020"
+  role: "Full Stack Software Engineer"
+  location: "Florida · United States"
+  highlights:
+    - "Joined as an individual contributor and quickly expanded into architecture and design of new applications."
+    - "Built new applications and handled interoperability and deployment across multiple load-balanced environments."
+    - "Delivered in a strict Agile environment with 3-week sprints for new development and mission-critical changes."
+    - "Supported legacy ASP.NET MVC / NAML applications and planned microservices-style architecture, upgrading to .NET Framework 4.8, .NET Core 3.1, Angular, Node.js, Razor Pages, and .NET Core MVC."
+    - "Supported identity management systems at scale (~30,000+ employees)."
+
+- company: "Synergy UpLink"
+  dates: "2006 - 2019"
+  role: "Software Architect / Engineer"
+  location: "Colorado · United States"
+  highlights:
+    - "Founded and operated a B2B consulting firm delivering software solutions as both on-premises and SaaS offerings."
+    - "Led technology selection and implementation to meet client goals, managing remote contractors where needed."
+    - "Built solutions using SQL Server, Web API, and SOA infrastructure (REST, SOAP, WCF)."
+    - "Delivered web applications and services with Angular, ASP.NET Core MVC, Node.js, Express, IIS, nginx, and Apache."
+
+- company: "Cypress Inland (Yardview)"
+  dates: "2017"
+  role: "Software Engineer"
+  location: "Colorado · United States"
+  highlights:
+    - "Architected the next major revision of the software stack focusing on performance, offline functionality, and efficient data usage."
+    - "Automated the build process using Jenkins hosted in AWS."
+    - "Built client-side data visualization and management tools for the current application version."
+    - "Worked across Windows Forms (C#, VB.NET), ASP.NET Forms, jQuery, Bootstrap, and supporting JavaScript frameworks backed by SQL Server."
+
+- company: "Cypress Inland (Yardview)"
+  dates: "2016"
+  role: "Software Engineer"
+  location: "Colorado · United States"
+  highlights:
+    - "Designed and implemented a flexible, intuitive data visualization dashboard."
+    - "Delivered a universal, low-dependency solution using core web technologies (HTML, CSS, JavaScript without frameworks)."
+
+- company: "TSYS"
+  dates: "2016"
+  role: "Sr. Software Engineer"
+  location: "Colorado · United States"
+  highlights:
+    - "Built a high-performance, stateless API framework and implemented it in a custom administration web tool."
+    - "Owned design, development, documentation, unit testing, and round-trip performance testing."
+    - "Met stringent performance benchmarks based on the 1000ms round-trip target at 3G speeds."
+    - "Delivered solutions using .NET (MVC, Windows Forms, console apps), C#, T-SQL, JavaScript, and XML."
+
+- company: "Veteran Engineering & Technology"
+  dates: "2015"
+  role: "Sr. Software Engineer"
+  location: "Colorado · United States"
+  highlights:
+    - "Supported an existing training application for the US military as part of a sustainment contract."
+    - "Identified, duplicated, documented, and resolved issues with the existing framework and plugin-based architecture."
+    - "Worked within an ASP.NET Web Forms application using a custom plugin architecture for compiled libraries."
+
+- company: "I3 Verticals (Data Business Systems)"
+  dates: "2015"
+  role: "Software Architect"
+  location: "Colorado · United States"
+  highlights:
+    - "Implemented new functionality and features in an existing point-of-sale (POS) software solution."
+    - "Worked primarily in WPF desktop applications using C#."
+
+- company: "Recondo Technology"
+  dates: "2013 - 2015"
+  role: "Sr. Software Engineer"
+  location: "Colorado · United States"
+  highlights:
+    - "Designed a SaaS offering that extended functionality of a newly acquired codebase into an existing Java-based architecture."
+    - "Built ASP.NET Web Forms applications in C#, integrating with SOA services."
+    - "Developed Windows services that interoperated with Apache ActiveMQ using protobuf encoding and WCF endpoints."
+
+- company: "WideOpenWest"
+  dates: "2007 - 2013"
+  role: "Application Developer"
+  location: "Colorado · United States"
+  highlights:
+    - "Supported and later redesigned the company intranet and related internal tools."
+    - "Introduced new technologies and applications to better support internal customers."
+    - "Designed an application that increased customers reached by 40% on day one, stabilizing at ~60% within a week."
+    - "Delivered advanced real-time executive reporting to provide rapid feedback on new guidelines."
+    - "Worked with classic ASP, VB.NET, VBScript, ASP.NET Web Forms, AD-integrated security, workflow tools, and Windows services (WCF) and APIs using Telerik controls for consistent UI."

@@ -1,0 +1,15 @@
+<section id="industries" aria-label="Industries and focus areas">
+  <h2><span>Industries</span> &amp; Focus Areas</h2>
+  <div class="section-card">
+    <p>
+      I've applied the same core skill set across a range of domains, often
+      stepping into existing systems and moving them toward more testable,
+      observable, and maintainable architectures.
+    </p>
+    <div class="pill-row">
+      {% for industry in site.data.industries %}
+      <span class="pill">{{ industry }}</span>
+      {% endfor %}
+    </div>
+  </div>
+</section>

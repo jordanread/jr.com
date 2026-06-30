@@ -1,0 +1,50 @@
+<section class="hero" aria-label="Introduction">
+  <div class="hero-main">
+    <h1>Hi, I'm <span>{{ site.author.name | split: ' ' | first }}</span>.</h1>
+    <div class="hero-title">{{ site.author.job_title }}</div>
+    <p class="hero-summary">
+      I design and build production systems across the full software
+      development lifecycle, from <strong>.NET and C# backends</strong> to
+      <strong>Angular frontends</strong> and <strong>Azure-hosted services</strong>.
+      For almost 20 years I've worked in healthcare, travel, logistics,
+      telecom, and payments, with a consistent focus on good code,
+      maintainable architecture, and deployments that don't wake people up at
+      3am.
+    </p>
+    <div class="hero-actions">
+      {% if site.author.resume_pdf %}
+      <a class="btn btn-primary" href="{{ site.author.resume_pdf | relative_url }}">
+        View Resume (PDF)
+      </a>
+      {% endif %}
+      <a class="btn btn-ghost" href="{{ site.author.linkedin }}" target="_blank" rel="noopener">
+        Get in Touch
+      </a>
+    </div>
+  </div>
+
+  <aside class="hero-meta" aria-label="At-a-glance details">
+    <div class="hero-meta-row">
+      <div class="hero-meta-label">Experience</div>
+      <div class="hero-meta-value">From {{ site.author.experience_since }}</div>
+    </div>
+    <div class="hero-meta-row">
+      <div class="hero-meta-label">Current Focus</div>
+      <div class="hero-meta-value">{{ site.author.current_focus }}</div>
+    </div>
+    <div class="hero-meta-row">
+      <div class="hero-meta-label">Recent Roles</div>
+      <div class="hero-meta-value">{{ site.author.recent_roles }}</div>
+    </div>
+    <div class="hero-contact">
+      {% if site.author.email %}
+      <a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a>
+      {% endif %}
+      {% if site.author.phone %}
+      <a href="tel:{{ site.author.phone }}">{{ site.author.phone }}</a>
+      {% endif %}
+      <a href="{{ site.url }}">{{ site.url | remove_first: 'https://' }}</a>
+      <a href="{{ site.author.linkedin }}" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </aside>
+</section>

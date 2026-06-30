@@ -1,0 +1,51 @@
+// -----------------------------------------------------------------------------
+// Site header / nav
+// -----------------------------------------------------------------------------
+
+header.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.5rem 0 1.25rem;
+  border-bottom: 1px solid $border;
+  margin-bottom: 1.5rem;
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-name {
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.95rem;
+}
+
+.brand-tagline {
+  font-size: 0.8rem;
+  color: $muted;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  font-size: 0.85rem;
+
+  a {
+    padding: 0.25rem 0.5rem;
+    border-radius: $radius-pill;
+    border: 1px solid transparent;
+    color: $muted;
+
+    &:hover,
+    &:focus {
+      border-color: $accent;
+      color: $text;
+      background: rgba(43, 76, 126, 0.15);
+    }
+  }
+}

@@ -1,0 +1,49 @@
+title: "Jordan Read - Software Engineer & Solution Architect"
+description: >-
+  Jordan Read is a software engineer and solution architect with 17+ years of
+  experience building .NET, Angular, and Azure-backed systems in healthcare,
+  travel, logistics, telecom, and payments.
+url: "https://jordanread.com"
+lang: "en"
+
+author:
+  name: "Jordan Read"
+  job_title: "Software Engineer & Solution Architect"
+  experience_since: 2005
+  current_focus: ".NET · Angular · Azure · SQL"
+  recent_roles: "Sr. Solution Architect · Mgr. Software Engineering"
+  # Uncomment and fill in when ready to publish these publicly
+  # email: "jordanread@gmail.com"
+  # phone: "+1-719-357-5465"
+  # resume_pdf: "/assets/files/Jordan-Read-Resume-2025.pdf"
+  linkedin: "https://www.linkedin.com/in/jordanread/"
+  github: "" # e.g. "https://github.com/YOUR_GITHUB_USERNAME"
+
+nav:
+  - title: "About"
+    anchor: "#about"
+  - title: "Skills"
+    anchor: "#skills"
+  - title: "Experience"
+    anchor: "#experience"
+  - title: "Industries"
+    anchor: "#industries"
+  - title: "Contact"
+    anchor: "#contact"
+
+# Build settings
+markdown: kramdown
+sass:
+  style: compressed
+  sass_dir: _sass
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - node_modules
+  - vendor

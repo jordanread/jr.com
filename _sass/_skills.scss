@@ -1,0 +1,43 @@
+// -----------------------------------------------------------------------------
+// Skills
+// -----------------------------------------------------------------------------
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 1rem 1.5rem;
+  margin-top: 0.25rem;
+}
+
+.skill-group {
+  h3 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: $text-soft;
+    margin: 0 0 0.25rem;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 0.88rem;
+    color: $muted;
+  }
+
+  li {
+    margin: 0.1rem 0;
+    position: relative;
+    padding-left: 0.85rem;
+
+    &::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: $accent;
+      font-size: 0.7rem;
+      top: 0.18rem;
+    }
+  }
+}
