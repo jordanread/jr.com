@@ -1,18 +1,4 @@
-<!--
-  Splash: body snippet
-  Include this immediately after the opening <body> tag so it's
-  the first thing in the DOM and sits on top of everything else,
-  e.g.:
 
-    <body>
-      {% include splash.html %}
-      ...rest of your layout...
-
-  The phrase list comes from _data/taglines.yml, rendered server-
-  side into a JSON script tag below — no extra HTTP request needed,
-  and editing the yml file + refreshing the browser is all it takes
-  to see changes (Jekyll's dev server auto-rebuilds on save).
--->
 <div class="splash" id="splash" role="region" aria-label="Loading intro">
   <p class="splash__phrase" id="splashPhrase" aria-hidden="true"></p>
   <button type="button" class="splash__skip" id="splashSkip">Skip</button>
