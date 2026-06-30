@@ -22,7 +22,7 @@
     }
   },
 
-"postStartCommand": "bundle check || bundle install && bundle exec jekyll serve --host 0.0.0.0 --livereload --force_polling",
+"postStartCommand": "bundle check || bundle install && bundle exec jekyll serve --host 0.0.0.0 --livereload --force_polling --trace",
   "customizations": {
     "vscode": {
       "extensions": [

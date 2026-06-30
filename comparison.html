@@ -1,3 +1,6 @@
+---
+layout: null
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -247,13 +250,7 @@
 (function () {
   'use strict';
 
-  var PHRASES = [
-    'Software Engineer',
-    'Entrepreneur',
-    'AI Agent Consultant / Fixer',
-    'Maker',
-    'Writer'
-  ];
+  var PHRASES = {{ site.data.taglines | jsonify }};
 
   function cycle(stageEl, opts) {
     var phraseEl = stageEl.querySelector('.stage__phrase');
