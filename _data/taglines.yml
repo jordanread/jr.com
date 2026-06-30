@@ -1,0 +1,16 @@
+# Phrases shown one at a time on the splash overlay before the
+# main page reveals itself.
+#
+# Edit this list freely — Jekyll's dev server picks up _data changes
+# automatically (no need to restart `jekyll serve`), just refresh
+# the browser. Order here is the order they cycle in.
+#
+# Keep phrases short (1-4 words) so they read well at large display
+# size on mobile. See assets/css/splash.css if you need to retune
+# the font-size clamp() for longer phrases.
+
+- Software Engineer
+- Entrepreneur
+- AI Agent Consultant / Fixer
+- Maker
+- Writer

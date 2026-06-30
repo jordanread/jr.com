@@ -1,0 +1,126 @@
+/* ==========================================================================
+   Splash overlay
+   ==========================================================================
+   Customization points are flagged with NOTE: comments. The two you'll
+   probably touch first are the color tokens at the top and the
+   font-size clamp() on .splash__phrase.
+   ========================================================================== */
+
+:root {
+  /* NOTE: swap these to match your site's palette once you settle on one. */
+  --splash-bg: #0c0b09;
+  --splash-fg: #f6f3ec;
+  --splash-accent: #c9a14a;
+  --splash-font: 'Archivo', 'Archivo Variable', sans-serif;
+}
+
+/* Hidden by default — progressive enhancement. If JS never adds the
+   "js" class to <html> (disabled/blocked/failed), this block never
+   shows and the page underneath is visible immediately. */
+.splash {
+  display: none;
+}
+
+.js .splash {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--splash-bg);
+  opacity: 1;
+  transition: opacity 500ms ease;
+}
+
+.splash.splash--leaving {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Prevents background scroll while the splash is up. Toggled on
+   <body> by splash.js. */
+body.splash-lock {
+  overflow: hidden;
+}
+
+.splash__phrase {
+  margin: 0;
+  padding: 0 1.25rem;
+  max-width: 90vw;
+  text-align: center;
+  font-family: var(--splash-font);
+  color: var(--splash-fg);
+
+  /* NOTE: tune this if you add longer phrases to taglines.yml. */
+  font-size: clamp(2.5rem, 8vw, 6rem);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+
+  /* font-weight is a static fallback for browsers/fonts without
+     variation support; font-variation-settings drives the real
+     morph on everything modern. */
+  font-weight: 900;
+  font-variation-settings: 'wght' 100;
+
+  opacity: 0;
+  transform: translateY(14px);
+
+  transition:
+    font-variation-settings 450ms cubic-bezier(0.2, 0.7, 0.2, 1),
+    opacity 450ms ease,
+    transform 450ms ease;
+}
+
+.splash__phrase.is-active {
+  font-variation-settings: 'wght' 900;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.splash__phrase.is-exiting {
+  transition-duration: 350ms;
+  font-variation-settings: 'wght' 300;
+  opacity: 0;
+  transform: translateY(-14px);
+}
+
+.splash__skip {
+  position: absolute;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  font-family: var(--splash-font);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--splash-fg);
+  opacity: 0.55;
+  background: transparent;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  padding: 0.5rem 1.1rem;
+  cursor: pointer;
+  transition: opacity 200ms ease, color 200ms ease, border-color 200ms ease;
+}
+
+.splash__skip:hover,
+.splash__skip:focus-visible {
+  opacity: 1;
+  color: var(--splash-accent);
+  border-color: var(--splash-accent);
+}
+
+.splash__skip:focus-visible {
+  outline: 2px solid var(--splash-accent);
+  outline-offset: 3px;
+}
+
+/* Respect reduced-motion: splash.js also shortcuts the JS timeline,
+   this is a CSS-level backstop so anything still mid-transition
+   resolves near-instantly rather than animating at full duration. */
+@media (prefers-reduced-motion: reduce) {
+  .js .splash,
+  .splash__phrase {
+    transition-duration: 1ms !important;
+  }
+}
