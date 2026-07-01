@@ -11,15 +11,15 @@
 (function () {
   'use strict';
 
-  var ENTER_MS = 450;   // matches the CSS transition-duration on .is-active
-  var HOLD_MS = 900;    // fully-visible pause before exiting
-  var EXIT_MS = 350;    // matches the CSS transition-duration on .is-exiting
+  var ENTER_MS = 400;   // matches the CSS transition-duration on .is-active
+  var HOLD_MS = 800;    // fully-visible pause before exiting
+  var EXIT_MS = 300;    // matches the CSS transition-duration on .is-exiting
   var OVERLAY_EXIT_MS = 500; // matches the CSS transition on .splash--leaving
 
   // Used only if neither the server-rendered #splash-data tag nor
   // window.SPLASH_TAGLINES is present (e.g. include wasn't wired up
   // correctly) — keeps the splash from breaking outright.
-  var FALLBACK_PHRASES = ['Hello.'];
+  var FALLBACK_PHRASES = ['Placeholder 😉'];
 
   function getPhrases() {
     var dataEl = document.getElementById('splash-data');
