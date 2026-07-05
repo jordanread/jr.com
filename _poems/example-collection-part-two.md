@@ -3,7 +3,6 @@ title: "Example Collection — Part Two"
 date: 2026-07-05
 series: example-collection
 series_part: 2
-#published: false
 ---
 
 With two poems sharing the same `series`, each one's layout renders

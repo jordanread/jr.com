@@ -52,6 +52,12 @@ nav:
 # photo_albums: thematic photo grids at /photography/album/<slug>/.
 #   Bespoke scrollytelling pieces aren't a collection — they're just
 #   standalone pages, listed alongside albums via _data/photo_features.yml.
+#   Front matter shape (see _layouts/photo-album.html):
+#     title, description, cover: <path>
+#     images:
+#       - src: <path>
+#         alt: <string, required for accessibility>
+#         caption: <string, optional>
 collections:
   poems:
     output: true

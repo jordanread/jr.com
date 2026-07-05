@@ -3,7 +3,6 @@ title: "Example Collection — Part One"
 date: 2026-07-05
 series: example-collection
 series_part: 1
-#published: false
 ---
 
 `series` here matches the filename slug of
