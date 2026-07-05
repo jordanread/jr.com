@@ -1,30 +1,3 @@
-{% comment %}
-  Splash: body snippet
-  Include this immediately after the opening <body> tag, e.g.:
-
-    <body>
-      {% include splash.html %}
-      ...rest of your layout...
-
-  Tagline priority:
-    1. page.splash.taglines  — front matter list on a specific page
-    2. site.data.splash      — the global _data/splash.yml fallback
-
-  Timing keys are all optional in front matter — omit any to fall
-  back to the site-wide defaults baked into splash.js. All values
-  are milliseconds.
-
-  Example page front matter for a one-off splash:
-
-    splash:
-      taglines:
-        - "Something specific"
-        - "Just for this page"
-      enter: 300
-      hold: 600
-      exit: 200
-      overlay_exit: 400
-{% endcomment %}
 {% assign _taglines     = page.splash.taglines | default: site.data.splash %}
 {% assign _enter        = page.splash.enter        | default: 450 %}
 {% assign _hold         = page.splash.hold         | default: 900 %}

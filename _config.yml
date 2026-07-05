@@ -1,43 +1,33 @@
-title: "Jordan Read - Software Engineer & Solution Architect"
-description: >-
-  Jordan Read is a software engineer and solution architect with 17+ years of
-  experience building .NET, Angular, and Azure-backed systems in healthcare,
-  travel, logistics, telecom, and payments.
+# Jekyll site configuration
+#
+# NOTE: unlike _data, _includes, and pages, Jekyll only reads this
+# file once at server start — editing it while `jekyll serve` is
+# running won't take effect until you stop and restart.
+
+title: "Jordan Read"
+description: "Software engineer, entrepreneur, and maker."
 url: "https://jordanread.com"
-lang: "en"
+baseurl: ""
 
-author:
-  name: "Jordan Read"
-  job_title: "Software Engineer & Solution Architect"
-  experience_since: 2005
-  current_focus: ".NET · Angular · Azure · SQL"
-  recent_roles: "Sr. Solution Architect · Mgr. Software Engineering"
-  # Uncomment and fill in when ready to publish these publicly
-  # email: "jordanread@gmail.com"
-  # phone: "+1-719-357-5465"
-  # resume_pdf: "/assets/files/Jordan-Read-Resume-2025.pdf"
-  linkedin: "https://www.linkedin.com/in/jordanread/"
-  github: "" # e.g. "https://github.com/YOUR_GITHUB_USERNAME"
-
-nav:
-  - title: "About"
-    anchor: "#about"
-  - title: "Skills"
-    anchor: "#skills"
-  - title: "Experience"
-    anchor: "#experience"
-  - title: "Industries"
-    anchor: "#industries"
-  - title: "Contact"
-    anchor: "#contact"
-
-# Build settings
 markdown: kramdown
-sass:
-  style: compressed
-  sass_dir: _sass
+permalink: pretty
 
+# Applies _layouts/default.html to every page/post that doesn't set
+# its own `layout` in front matter, so you don't have to repeat it
+# everywhere. Pages that should NOT get a layout (like comparison.html,
+# which is already a full standalone HTML document) override this
+# with `layout: null` in their own front matter.
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
+
+# GitHub Pages builds with a restricted plugin allowlist — these three
+# are all on it and safe to ship as-is. Only add more here if you're
+# building/deploying outside GitHub Pages' own build process.
 plugins:
+  - jekyll-feed
   - jekyll-seo-tag
   - jekyll-sitemap
 

@@ -1,25 +1,49 @@
 /* ==========================================================================
    Splash overlay logic
    ==========================================================================
-   Timeline per phrase: enter (ENTER_MS) -> hold (HOLD_MS) -> exit (EXIT_MS)
-   -> next phrase, or overlay fade-out (OVERLAY_EXIT_MS) after the last one.
+   Timeline per phrase: enter -> hold -> exit -> next phrase, or overlay
+   fade-out after the last one.
 
-   Tune the four constants below to change pacing. Nothing else in this
-   file should need touching for day-to-day use — phrase content lives
-   in _data/taglines.yml, not here.
+   Timing comes from #splash-config (emitted by the Liquid include),
+   which in turn comes from page front matter if set, otherwise from
+   the defaults below. These constants are the final fallback — they're
+   used if the #splash-config element is absent or unparseable, which
+   shouldn't happen in normal use but keeps things from breaking
+   if the include is wired up incorrectly.
+
+   To change site-wide default pacing, edit the defaults in
+   _includes/splash.html rather than here.
    ========================================================================== */
 (function () {
   'use strict';
 
-  var ENTER_MS = 400;   // matches the CSS transition-duration on .is-active
-  var HOLD_MS = 800;    // fully-visible pause before exiting
-  var EXIT_MS = 300;    // matches the CSS transition-duration on .is-exiting
-  var OVERLAY_EXIT_MS = 500; // matches the CSS transition on .splash--leaving
+  var DEFAULTS = {
+    enter:       450,  // matches .splash__phrase.is-active transition-duration
+    hold:        900,  // fully-visible pause before exiting
+    exit:        350,  // matches .splash__phrase.is-exiting transition-duration
+    overlayExit: 500   // matches .splash--leaving transition-duration
+  };
 
   // Used only if neither the server-rendered #splash-data tag nor
   // window.SPLASH_TAGLINES is present (e.g. include wasn't wired up
   // correctly) — keeps the splash from breaking outright.
-  var FALLBACK_PHRASES = ['Placeholder 😉'];
+  var FALLBACK_PHRASES = ['Hello.'];
+
+  function getConfig() {
+    var el = document.getElementById('splash-config');
+    if (el && el.textContent.trim()) {
+      try {
+        var parsed = JSON.parse(el.textContent);
+        return {
+          enter:       parsed.enter       || DEFAULTS.enter,
+          hold:        parsed.hold        || DEFAULTS.hold,
+          exit:        parsed.exit        || DEFAULTS.exit,
+          overlayExit: parsed.overlayExit || DEFAULTS.overlayExit
+        };
+      } catch (err) { /* fall through */ }
+    }
+    return DEFAULTS;
+  }
 
   function getPhrases() {
     var dataEl = document.getElementById('splash-data');
@@ -42,8 +66,9 @@
     if (!overlay) return;
 
     var phraseEl = document.getElementById('splashPhrase');
-    var skipBtn = document.getElementById('splashSkip');
-    var phrases = getPhrases();
+    var skipBtn  = document.getElementById('splashSkip');
+    var phrases  = getPhrases();
+    var cfg      = getConfig();
     var reduceMotion = window.matchMedia(
       '(prefers-reduced-motion: reduce)'
     ).matches;
@@ -61,7 +86,7 @@
       window.setTimeout(function () {
         if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
         document.body.classList.remove('splash-lock');
-      }, OVERLAY_EXIT_MS);
+      }, cfg.overlayExit);
     }
 
     function onKeydown(event) {
@@ -111,8 +136,8 @@
           } else {
             cleanup();
           }
-        }, EXIT_MS);
-      }, ENTER_MS + HOLD_MS);
+        }, cfg.exit);
+      }, cfg.enter + cfg.hold);
     }
 
     showNext();
