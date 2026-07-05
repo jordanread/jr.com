@@ -1,11 +1,16 @@
 <header class="site-header">
   <div class="brand">
-    <span class="brand-name">{{ site.author.name }}</span>
-    <span class="brand-tagline">{{ site.author.job_title }}</span>
+    <a class="brand-link" href="{{ '/' | relative_url }}">
+      <span class="brand-name">{{ site.author.name }}</span>
+      <span class="brand-tagline">{{ site.author.job_title }}</span>
+    </a>
   </div>
   <nav aria-label="Primary navigation">
     {% for item in site.nav %}
-    <a href="{{ item.anchor }}">{{ item.title }}</a>
+    {% assign is_current = false %}
+    {% if page.url == item.anchor %}{% assign is_current = true %}{% endif %}
+    <a href="{{ item.anchor | relative_url }}" {% if is_current %}aria-current="page"{% endif %}>{{ item.title }}</a>
     {% endfor %}
+    {% include theme-toggle.html %}
   </nav>
 </header>

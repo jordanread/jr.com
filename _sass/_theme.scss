@@ -5,8 +5,11 @@
 // Warm paper/charcoal neutrals with a burnt-orange accent, instead of the
 // resume's navy. Light mode is the default; dark mode applies when either
 // the OS is set to dark (prefers-color-scheme) or <html data-theme="dark">
-// is set explicitly (handy later if a toggle switch gets added — just flip
-// that attribute from JS, no other changes needed).
+// is set explicitly. The header's theme-toggle button
+// (_includes/theme-toggle.html + assets/js/theme-toggle.js) sets that
+// attribute and persists the choice to localStorage; the inline snippet
+// in head.html re-applies it before the stylesheet loads so there's no
+// flash of the wrong theme on repeat visits.
 //
 // Keep new colors elsewhere in the codebase pointed at these custom
 // properties rather than hardcoded hex, so both modes stay in sync.
