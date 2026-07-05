@@ -1,5 +1,15 @@
 
-<script>document.documentElement.classList.add('js');</script>
+<script>
+  (function () {
+    var html = document.documentElement;
+    html.classList.add('js');
+    try {
+      if (localStorage.getItem('splashSeen') === '1') {
+        html.classList.add('splash-seen');
+      }
+    } catch (err) { /* localStorage unavailable — splash just plays every time */ }
+  })();
+</script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

@@ -1,8 +1,19 @@
 /* ==========================================================================
    Splash overlay logic
    ==========================================================================
-   Timeline per phrase: enter -> hold -> exit -> next phrase, or overlay
-   fade-out after the last one.
+   Plays once per browser (localStorage flag set on completion, however
+   it completes — full run, Skip button, Escape, or a click on the
+   overlay). Repeat visits skip straight past it with no animation at
+   all: the inline script in splash-head.html already adds a
+   `splash-seen` class to <html> before anything paints (see the CSS
+   override in splash.css), and this script's own check below is the
+   belt-and-suspenders version for anything that runs before that CSS
+   would otherwise apply.
+
+   The footer's "Replay intro" button (rendered only on splash-layout
+   pages) calls play() again regardless of the stored flag, without a
+   page reload — the overlay markup and its data script tags stay in
+   the DOM the whole time, just hidden after the first run.
 
    Timing comes from #splash-config (emitted by the Liquid include),
    which in turn comes from page front matter if set, otherwise from
@@ -17,6 +28,8 @@
 (function () {
   'use strict';
 
+  var STORAGE_KEY = 'splashSeen';
+
   var DEFAULTS = {
     enter:       450,  // matches .splash__phrase.is-active transition-duration
     hold:        900,  // fully-visible pause before exiting
@@ -28,6 +41,20 @@
   // window.SPLASH_TAGLINES is present (e.g. include wasn't wired up
   // correctly) — keeps the splash from breaking outright.
   var FALLBACK_PHRASES = ['Hello.'];
+
+  function hasSeenSplash() {
+    try {
+      return localStorage.getItem(STORAGE_KEY) === '1';
+    } catch (err) {
+      return false;
+    }
+  }
+
+  function markSplashSeen() {
+    try {
+      localStorage.setItem(STORAGE_KEY, '1');
+    } catch (err) { /* localStorage unavailable — splash just plays every time */ }
+  }
 
   function getConfig() {
     var el = document.getElementById('splash-config');
@@ -65,53 +92,37 @@
     var overlay = document.getElementById('splash');
     if (!overlay) return;
 
-    var phraseEl = document.getElementById('splashPhrase');
-    var skipBtn  = document.getElementById('splashSkip');
-    var phrases  = getPhrases();
-    var cfg      = getConfig();
+    var phraseEl   = document.getElementById('splashPhrase');
+    var skipBtn    = document.getElementById('splashSkip');
+    var replayBtn  = document.getElementById('splashReplay');
+    var phrases    = getPhrases();
+    var cfg        = getConfig();
     var reduceMotion = window.matchMedia(
       '(prefers-reduced-motion: reduce)'
     ).matches;
 
-    document.body.classList.add('splash-lock');
-
-    var finished = false;
+    var active = false;
     var i = 0;
-
-    function cleanup() {
-      if (finished) return;
-      finished = true;
-      document.removeEventListener('keydown', onKeydown);
-      overlay.classList.add('splash--leaving');
-      window.setTimeout(function () {
-        if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
-        document.body.classList.remove('splash-lock');
-      }, cfg.overlayExit);
-    }
 
     function onKeydown(event) {
       if (event.key === 'Escape') cleanup();
     }
 
-    overlay.addEventListener('click', cleanup);
-    skipBtn.addEventListener('click', function (event) {
-      event.stopPropagation();
-      cleanup();
-    });
-    document.addEventListener('keydown', onKeydown);
-
-    // Reduced motion: skip the cycling animation entirely and reveal
-    // the page right away rather than running a shortened version of
-    // the same motion.
-    if (reduceMotion) {
-      cleanup();
-      return;
+    function cleanup() {
+      if (!active) return;
+      active = false;
+      document.removeEventListener('keydown', onKeydown);
+      overlay.classList.add('splash--leaving');
+      window.setTimeout(function () {
+        overlay.hidden = true;
+        overlay.classList.remove('splash--leaving');
+        document.body.classList.remove('splash-lock');
+      }, cfg.overlayExit);
+      markSplashSeen();
     }
 
-    skipBtn.focus();
-
     function showNext() {
-      if (finished) return;
+      if (!active) return;
 
       phraseEl.classList.remove('is-active', 'is-exiting');
       phraseEl.textContent = phrases[i];
@@ -124,12 +135,12 @@
       phraseEl.classList.add('is-active');
 
       window.setTimeout(function () {
-        if (finished) return;
+        if (!active) return;
         phraseEl.classList.remove('is-active');
         phraseEl.classList.add('is-exiting');
 
         window.setTimeout(function () {
-          if (finished) return;
+          if (!active) return;
           i += 1;
           if (i < phrases.length) {
             showNext();
@@ -140,7 +151,46 @@
       }, cfg.enter + cfg.hold);
     }
 
-    showNext();
+    function play() {
+      // Explicit replay (button click) always plays, even if the
+      // seen-flag is set — remove the pre-paint CSS override so the
+      // overlay can actually show.
+      document.documentElement.classList.remove('splash-seen');
+
+      active = true;
+      i = 0;
+      overlay.hidden = false;
+      overlay.classList.remove('splash--leaving');
+      document.body.classList.add('splash-lock');
+      document.addEventListener('keydown', onKeydown);
+      skipBtn.focus();
+
+      // Reduced motion: skip the cycling animation entirely and
+      // reveal the page right away rather than running a shortened
+      // version of the same motion.
+      if (reduceMotion) {
+        cleanup();
+        return;
+      }
+
+      showNext();
+    }
+
+    overlay.addEventListener('click', cleanup);
+    skipBtn.addEventListener('click', function (event) {
+      event.stopPropagation();
+      cleanup();
+    });
+    if (replayBtn) {
+      replayBtn.addEventListener('click', play);
+    }
+
+    if (hasSeenSplash()) {
+      overlay.hidden = true;
+      return;
+    }
+
+    play();
   }
 
   if (document.readyState === 'loading') {
@@ -149,3 +199,4 @@
     init();
   }
 })();
+

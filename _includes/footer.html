@@ -1,3 +1,6 @@
 <footer>
   <span>&copy; {{ site.time | date: '%Y' }} {{ site.author.name }}</span>
+  {% if page.layout == "splash" %}
+  <button type="button" class="splash-replay" id="splashReplay">&#8635; Replay intro</button>
+  {% endif %}
 </footer>

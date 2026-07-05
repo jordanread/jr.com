@@ -35,9 +35,23 @@
   transition: opacity 500ms ease;
 }
 
+.splash[hidden] {
+  display: none !important;
+}
+
 .splash.splash--leaving {
   opacity: 0;
   pointer-events: none;
+}
+
+/* Set on <html> by the inline script in splash-head.html, before
+   anything paints, when localStorage says the splash already ran.
+   splash.js also checks the same flag and skips straight to hiding
+   the overlay without animating — this is just the belt-and-suspenders
+   version that works even before JS finishes loading. Replaying
+   (splash.js) removes this class first. */
+.splash-seen .splash {
+  display: none !important;
 }
 
 /* Prevents background scroll while the splash is up. Toggled on
@@ -115,6 +129,30 @@ body.splash-lock {
 .splash__skip:focus-visible {
   outline: 2px solid var(--splash-accent);
   outline-offset: 3px;
+}
+
+/* Lives in the site footer, not inside .splash — always present so a
+   returning visitor who wants to see the intro again can trigger it
+   without clearing localStorage themselves. */
+.splash-replay {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: transparent;
+  border: none;
+  color: inherit;
+  opacity: 0.6;
+  font: inherit;
+  font-size: 0.78rem;
+  cursor: pointer;
+  padding: 0;
+  transition: opacity 150ms ease, color 150ms ease;
+}
+
+.splash-replay:hover,
+.splash-replay:focus-visible {
+  opacity: 1;
+  color: var(--accent);
 }
 
 /* Respect reduced-motion: splash.js also shortcuts the JS timeline,
