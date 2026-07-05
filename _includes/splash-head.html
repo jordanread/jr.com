@@ -1,4 +1,16 @@
+<!--
+  Splash: <head> snippet
+  Include this near the very top of <head>, ideally before any
+  other <link rel="stylesheet">, e.g.:
 
+    {% include splash-head.html %}
+
+  Why the inline script comes first: it adds a "js" class to <html>
+  the instant the browser starts parsing, before anything paints.
+  The overlay's CSS only shows it when that class is present, so if
+  JS is ever disabled or fails, the overlay simply never appears and
+  visitors see the page immediately — it can't get stuck on screen.
+-->
 <script>document.documentElement.classList.add('js');</script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
