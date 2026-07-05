@@ -1,0 +1,53 @@
+---
+layout: splash
+title: "Photography"
+description: "Photo albums and long-form visual pieces."
+splash:
+  taglines:
+    - "Light"
+    - "Frame by frame"
+  hold: 1200
+---
+
+<section aria-label="Photo albums and features">
+  <h2><span>Photography</span></h2>
+
+  {% assign albums = site.photo_albums | sort: "date" | reverse %}
+  {% if albums.size > 0 or site.data.photo_features.size > 0 %}
+  <div class="project-grid">
+    {% for album in albums %}
+    <a class="project-card photo-index-card" href="{{ album.url | relative_url }}">
+      {% if album.cover %}
+      <img class="photo-index-cover" src="{{ album.cover | relative_url }}" alt="" loading="lazy">
+      {% endif %}
+      <div class="project-card-header">
+        <h3 class="project-card-title">{{ album.title }}</h3>
+        <span class="pill">Album</span>
+      </div>
+      {% if album.description %}
+      <p class="project-card-description">{{ album.description }}</p>
+      {% endif %}
+    </a>
+    {% endfor %}
+
+    {% for feature in site.data.photo_features %}
+    <a class="project-card photo-index-card" href="{{ feature.url | relative_url }}">
+      {% if feature.cover %}
+      <img class="photo-index-cover" src="{{ feature.cover | relative_url }}" alt="" loading="lazy">
+      {% endif %}
+      <div class="project-card-header">
+        <h3 class="project-card-title">{{ feature.title }}</h3>
+        <span class="pill">Scrollytelling</span>
+      </div>
+      {% if feature.description %}
+      <p class="project-card-description">{{ feature.description }}</p>
+      {% endif %}
+    </a>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="section-card post-empty">
+    <p>Nothing published yet.</p>
+  </div>
+  {% endif %}
+</section>

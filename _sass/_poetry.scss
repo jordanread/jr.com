@@ -1,0 +1,78 @@
+// -----------------------------------------------------------------------------
+// Poetry
+// -----------------------------------------------------------------------------
+
+.poem-title {
+  font-size: clamp(1.7rem, 3vw, 2.3rem);
+  margin: 0.5rem 0 0.4rem;
+}
+
+.poem-series-breadcrumb {
+  font-family: $font-mono;
+  font-size: 0.78rem;
+  color: $muted;
+
+  a {
+    color: $accent;
+  }
+}
+
+.poem-body {
+  font-size: 1.05rem;
+  line-height: 1.9;
+  max-width: 34rem;
+  color: $text;
+
+  p {
+    margin: 0 0 1.4rem;
+    color: inherit;
+    font-size: inherit;
+  }
+}
+
+.poem-series-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.poetry-collection-list {
+  list-style: none;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.5rem;
+  max-width: 28rem;
+
+  li a {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    padding: 0.6rem 0.9rem;
+    border: 1px solid $border;
+    border-radius: $radius-lg;
+    color: inherit;
+    text-decoration: none;
+    background: $bg-card;
+
+    &:hover,
+    &:focus {
+      border-color: $accent;
+      text-decoration: none;
+    }
+  }
+}
+
+.poetry-collection-list-number {
+  font-family: $font-mono;
+  font-size: 0.78rem;
+  color: $muted;
+  min-width: 1.5rem;
+}
+
+.poetry-collection-list-title {
+  font-size: 0.95rem;
+}

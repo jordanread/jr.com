@@ -1,0 +1,40 @@
+---
+layout: default
+---
+<article class="poetry-collection">
+  <header class="post-header">
+    <div class="post-meta">Collection</div>
+    <h1 class="post-title">{{ page.title }}</h1>
+    {% if page.description %}
+    <p class="post-description">{{ page.description }}</p>
+    {% endif %}
+  </header>
+
+  {% if content and content != "" %}
+  <div class="post-content">
+    {{ content }}
+  </div>
+  {% endif %}
+
+  {% assign series_poems = site.poems | where: "series", page.slug | sort: "series_part" %}
+  {% if series_poems.size > 0 %}
+  <ol class="poetry-collection-list">
+    {% for poem in series_poems %}
+    <li>
+      <a href="{{ poem.url | relative_url }}">
+        <span class="poetry-collection-list-number">{{ poem.series_part | default: forloop.index }}</span>
+        <span class="poetry-collection-list-title">{{ poem.title }}</span>
+      </a>
+    </li>
+    {% endfor %}
+  </ol>
+  {% else %}
+  <div class="section-card post-empty">
+    <p>No poems published in this collection yet.</p>
+  </div>
+  {% endif %}
+
+  <footer class="post-footer">
+    <a class="btn btn-ghost" href="{{ '/poetry/' | relative_url }}">&larr; Back to all poetry</a>
+  </footer>
+</article>

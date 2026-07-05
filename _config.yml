@@ -34,15 +34,41 @@ nav:
     anchor: "/"
   - title: "Blog"
     anchor: "/blog/"
+  - title: "Poetry"
+    anchor: "/poetry/"
+  - title: "Photography"
+    anchor: "/photography/"
   - title: "Resume"
     anchor: "/resume/"
+
+# poems: every poem lives at /poetry/poem/<slug>/, whether it's a
+#   standalone one-off or part of a series — the `series:` front matter
+#   field (matching a poetry_collections item's filename/slug) is what
+#   groups them, not the URL.
+# poetry_collections: the curated landing pages for a series, one per
+#   collection, at /poetry/<slug>/. A file named
+#   _poetry_collections/lighthouse-keeper.md pairs with any poem that
+#   sets `series: lighthouse-keeper`.
+# photo_albums: thematic photo grids at /photography/album/<slug>/.
+#   Bespoke scrollytelling pieces aren't a collection — they're just
+#   standalone pages, listed alongside albums via _data/photo_features.yml.
+collections:
+  poems:
+    output: true
+    permalink: /poetry/poem/:slug/
+  poetry_collections:
+    output: true
+    permalink: /poetry/:slug/
+  photo_albums:
+    output: true
+    permalink: /photography/album/:slug/
 
 # Applies _layouts/default.html to every page/post that doesn't set
 # its own `layout` in front matter, so you don't have to repeat it
 # everywhere. Pages that should NOT get a layout (like comparison.html,
 # which is already a full standalone HTML document) override this
-# with `layout: null` in their own front matter. Posts get the `post`
-# layout instead (byline/date treatment, no splash intro).
+# with `layout: null` in their own front matter. Posts, poems, and
+# collections get their own layouts instead (see below).
 defaults:
   - scope:
       path: ""
@@ -53,6 +79,21 @@ defaults:
       type: "posts"
     values:
       layout: post
+  - scope:
+      path: ""
+      type: "poems"
+    values:
+      layout: poem
+  - scope:
+      path: ""
+      type: "poetry_collections"
+    values:
+      layout: poetry-collection
+  - scope:
+      path: ""
+      type: "photo_albums"
+    values:
+      layout: photo-album
 
 # GitHub Pages builds with a restricted plugin allowlist — these three
 # are all on it and safe to ship as-is. Only add more here if you're
