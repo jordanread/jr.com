@@ -1,0 +1,19 @@
+# Shown in the Projects section on the homepage (_includes/projects.html).
+# `stack` is just a few short tags, not an exhaustive list.
+- name: "TW-Skrypt"
+  status: "Early development"
+  description: >-
+    A writing plugin built on TiddlyWiki, borrowing structural ideas from
+    tools like Scrivener and Manuskript for a more freeform, hackable take
+    on long-form writing and worldbuilding.
+  stack: ["TiddlyWiki", "Node.js"]
+  url: "https://github.com/jordanread/TW-Skrypt"
+
+- name: "fog-bank"
+  status: "Work in progress"
+  description: >-
+    A self-hosted homelab stack for turning a spare Linux box into an
+    offline-first local cloud, born out of rebuilding one from scratch
+    after a power outage took the last one down.
+  stack: ["Docker", "Linux", "Self-hosted"]
+  url: "https://github.com/jordanread/fog-bank"

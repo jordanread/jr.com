@@ -1,0 +1,22 @@
+<section id="projects" aria-label="Projects">
+  <h2><span>Projects</span></h2>
+
+  <div class="project-grid">
+    {% for project in site.data.projects %}
+    <a class="project-card" href="{{ project.url }}" target="_blank" rel="noopener">
+      <div class="project-card-header">
+        <h3 class="project-card-title">{{ project.name }}</h3>
+        {% if project.status %}
+        <span class="pill project-card-status">{{ project.status }}</span>
+        {% endif %}
+      </div>
+      <p class="project-card-description">{{ project.description }}</p>
+      {% if project.stack.size > 0 %}
+      <div class="pill-row">
+        {% for tech in project.stack %}<span class="pill">{{ tech }}</span>{% endfor %}
+      </div>
+      {% endif %}
+    </a>
+    {% endfor %}
+  </div>
+</section>

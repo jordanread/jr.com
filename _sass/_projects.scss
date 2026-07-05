@@ -1,0 +1,58 @@
+// -----------------------------------------------------------------------------
+// Projects
+// -----------------------------------------------------------------------------
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+  margin-top: 0.25rem;
+}
+
+.project-card {
+  display: block;
+  background: $bg-card;
+  border: 1px solid $border;
+  border-radius: $radius-lg;
+  padding: 1.1rem 1.25rem;
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 0.15s ease, transform 0.05s ease;
+
+  &:hover,
+  &:focus {
+    border-color: $accent;
+    text-decoration: none;
+    transform: translateY(-1px);
+  }
+}
+
+.project-card-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.project-card-title {
+  font-size: 1.05rem;
+  margin: 0;
+  color: $text-bright;
+}
+
+.project-card-status {
+  color: $accent;
+  border-color: $accent-soft;
+  background: $accent-soft;
+}
+
+.project-card-description {
+  font-size: 0.88rem;
+  color: $muted;
+  margin: 0.5rem 0 0;
+}
+
+.project-card .pill-row {
+  margin-top: 0.75rem;
+}
