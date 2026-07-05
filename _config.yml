@@ -11,17 +11,48 @@ baseurl: ""
 
 markdown: kramdown
 permalink: pretty
+excerpt_separator: <!--more-->
+
+# TODO(jordan): email/phone/linkedin/github are placeholders — fill in
+# before this goes live. Templates that reference them (header, hero,
+# contact) already guard the optional ones with {% if %}, so leaving
+# any of these blank just hides that element rather than breaking.
+author:
+  name: "Jordan Read"
+  job_title: "Software Engineer & Solution Architect"
+  email: ""
+  phone: ""
+  linkedin: ""
+  github: ""
+  resume_pdf: ""
+  experience_since: "2006"
+  current_focus: ".NET, Angular & Azure-backed systems"
+  recent_roles: "National Seating & Mobility · Ektello (Allegion)"
+
+nav:
+  - title: "Home"
+    anchor: "/"
+  - title: "Blog"
+    anchor: "/blog/"
+  - title: "Resume"
+    anchor: "/resume/"
 
 # Applies _layouts/default.html to every page/post that doesn't set
 # its own `layout` in front matter, so you don't have to repeat it
 # everywhere. Pages that should NOT get a layout (like comparison.html,
 # which is already a full standalone HTML document) override this
-# with `layout: null` in their own front matter.
+# with `layout: null` in their own front matter. Posts get the `post`
+# layout instead (byline/date treatment, no splash intro).
 defaults:
   - scope:
       path: ""
     values:
       layout: default
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: post
 
 # GitHub Pages builds with a restricted plugin allowlist — these three
 # are all on it and safe to ship as-is. Only add more here if you're

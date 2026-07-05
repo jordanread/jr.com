@@ -21,7 +21,7 @@
     height: 10px;
     border-radius: $radius-pill;
     background: $accent;
-    box-shadow: 0 0 0 4px rgba(43, 76, 126, 0.35);
+    box-shadow: 0 0 0 4px $accent-soft;
   }
 }
 

@@ -7,10 +7,12 @@
    ========================================================================== */
 
 :root {
-  /* NOTE: swap these to match your site's palette once you settle on one. */
-  --splash-bg: #0c0b09;
-  --splash-fg: #f6f3ec;
-  --splash-accent: #c9a14a;
+  /* Matches the "Ember & Fog" theme tokens in _sass/_theme.scss (dark
+     variant) — the splash always runs dark for contrast/drama regardless
+     of which mode the rest of the site is in. */
+  --splash-bg: #171512;
+  --splash-fg: #f5f1e8;
+  --splash-accent: #ff7a47;
   --splash-font: 'Archivo', 'Archivo Variable', sans-serif;
 }
 

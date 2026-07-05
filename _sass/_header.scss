@@ -45,7 +45,7 @@ nav {
     &:focus {
       border-color: $accent;
       color: $text;
-      background: rgba(43, 76, 126, 0.15);
+      background: $accent-soft;
     }
   }
 }

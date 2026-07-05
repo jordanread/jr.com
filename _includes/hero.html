@@ -12,9 +12,14 @@
       3am.
     </p>
     <div class="hero-actions">
+      {% unless page.url == '/resume/' %}
+      <a class="btn btn-primary" href="{{ '/resume/' | relative_url }}">
+        Read My Resume
+      </a>
+      {% endunless %}
       {% if site.author.resume_pdf %}
-      <a class="btn btn-primary" href="{{ site.author.resume_pdf | relative_url }}">
-        View Resume (PDF)
+      <a class="btn {% if page.url == '/resume/' %}btn-primary{% else %}btn-ghost{% endif %}" href="{{ site.author.resume_pdf | relative_url }}">
+        Download PDF
       </a>
       {% endif %}
       <a class="btn btn-ghost" href="{{ site.author.linkedin }}" target="_blank" rel="noopener">
