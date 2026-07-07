@@ -1,0 +1,38 @@
+# Shown in the "Elsewhere" section on the homepage
+# (_includes/elsewhere.html). This is placeholder copy meant to show
+# the shape of the section — swap it for your own specifics and voice.
+# Keep `body` short; this is a teaser grid, not the full story. Link
+# out to a blog post, the Now page, or elsewhere on the site if a card
+# deserves more room than that.
+
+- title: "Full-Time on the Road"
+  tag: "Travel"
+  body: >-
+    Home is wherever the current pet-sit is. We travel full-time,
+    moving between countries by looking after other people's animals
+    instead of renting an apartment we'd rarely be in.
+  link:
+    text: "See where"
+    url: "/now/"
+
+- title: "Four Years Off the Grid"
+  tag: "Self-Sufficiency"
+  body: >-
+    Lived aboard a sailboat with no shore power for four years. Solar,
+    rainwater, and knowing how to fix things yourself stop being
+    hobbies pretty quickly when they're how the week actually runs.
+
+- title: "[STUB] Two Wheels, One Less Car"
+  tag: "Transportation"
+  body: >-
+    Placeholder — swap in a real story about biking and public transit
+    over driving. Even a specific city and a specific commute would
+    beat this sentence.
+
+- title: "[STUB] Building Toward Something Bigger"
+  tag: "Community"
+  body: >-
+    Placeholder — the travel and self-sufficiency stuff isn't just a
+    lifestyle, it's practice for a longer-term idea about building
+    communities that work better for the people in them. Replace once
+    it's less abstract and more concrete.

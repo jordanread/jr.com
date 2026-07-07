@@ -28,6 +28,9 @@ author:
   experience_since: "2006"
   current_focus: ".NET, Angular & Azure-backed systems"
   recent_roles: "National Seating & Mobility · Ektello (Allegion)"
+  # Shown in the hero's at-a-glance panel. Deliberately not a city —
+  # replace with wherever's true when you're editing this for real.
+  home_base: "Wherever the current pet-sit is"
 
 nav:
   - title: "Home"

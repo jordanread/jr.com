@@ -48,6 +48,17 @@ p {
   padding: 1.25rem 1.5rem;
 }
 
+// One-line teaser shown above a section's card grid (Projects,
+// Elsewhere) — just a .section-card with tighter bottom margin so the
+// grid below sits close to it.
+.section-intro {
+  margin-bottom: 1rem;
+
+  p {
+    margin: 0;
+  }
+}
+
 section {
   margin-top: 2.25rem;
 
