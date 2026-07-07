@@ -3,13 +3,7 @@
     <h1>Hi, I'm <span>{{ site.author.name | split: ' ' | first }}</span>.</h1>
     <div class="hero-title">{{ site.author.job_title }}</div>
     <p class="hero-summary">
-      I design and build production systems across the full software
-      development lifecycle, from <strong>.NET and C# backends</strong> to
-      <strong>Angular frontends</strong> and <strong>Azure-hosted services</strong>.
-      For almost 20 years I've worked in healthcare, travel, logistics,
-      telecom, and payments, with a consistent focus on good code,
-      maintainable architecture, and deployments that don't wake people up at
-      3am.
+      This is my little corner of the internet. I never got the idea of social media, so I never did it. Recent years, the evolution of the internet, the devolution of discourse and relationships all have conspired to prove me right. Sometimes people want more personal information, and sometimes I get the desire to shout into the void. This is the megaphone for that. Plus it was a good excercise playing around with Jekyll and Ruby.
     </p>
     <div class="hero-actions">
       {% unless page.url == '/resume/' %}
@@ -17,11 +11,11 @@
         Read My Resume
       </a>
       {% endunless %}
-      {% if site.author.resume_pdf %}
+      <!-- {% if site.author.resume_pdf %}
       <a class="btn {% if page.url == '/resume/' %}btn-primary{% else %}btn-ghost{% endif %}" href="{{ site.author.resume_pdf | relative_url }}">
         Download PDF
       </a>
-      {% endif %}
+      {% endif %} -->
       <a class="btn btn-ghost" href="{{ site.author.linkedin }}" target="_blank" rel="noopener">
         Get in Touch
       </a>
@@ -30,17 +24,18 @@
 
   <aside class="hero-meta" aria-label="At-a-glance details">
     <div class="hero-meta-row">
-      <div class="hero-meta-label">Experience</div>
-      <div class="hero-meta-value">From {{ site.author.experience_since }}</div>
+      <div class="hero-meta-label">Age</div>
+      <div class="hero-meta-value">None of your business</div>
     </div>
     <div class="hero-meta-row">
       <div class="hero-meta-label">Current Focus</div>
       <div class="hero-meta-value">{{ site.author.current_focus }}</div>
     </div>
-    <div class="hero-meta-row">
+    <!-- <div class="hero-meta-row">
       <div class="hero-meta-label">Recent Roles</div>
       <div class="hero-meta-value">{{ site.author.recent_roles }}</div>
-    </div>
+    </div> -->
+    Okay, maybe it wasn't <i>only</i> an ability to see where social media would lead society. Maybe had I tried, I'd realize that I'm bad at it.
     <div class="hero-contact">
       {% if site.author.email %}
       <a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a>
