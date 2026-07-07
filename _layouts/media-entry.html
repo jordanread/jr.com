@@ -1,0 +1,47 @@
+---
+layout: default
+---
+<article class="media-entry">
+  <header class="post-header">
+    <div class="post-meta">
+      <span class="pill">{{ page.type | capitalize }}</span>
+      {% if page.status and page.status != "finished" %}
+      <span class="pill media-status">{{ page.status | capitalize | replace: "-", " " }}</span>
+      {% endif %}
+      <time datetime="{{ page.date | date_to_xmlschema }}">
+        {{ page.date | date: "%B %-d, %Y" }}
+      </time>
+    </div>
+    <h1 class="post-title">{{ page.title }}</h1>
+    {% if page.rating %}
+    <span class="media-rating" aria-label="Rated {{ page.rating }} out of 5">
+      {% for i in (1..5) %}{% if i <= page.rating %}&#9733;{% else %}&#9734;{% endif %}{% endfor %}
+    </span>
+    {% endif %}
+    {% if page.description %}
+    <p class="post-description">{{ page.description }}</p>
+    {% endif %}
+  </header>
+
+  {% if page.cover %}
+  <img class="media-entry-cover" src="{{ page.cover | relative_url }}" alt="" loading="lazy">
+  {% endif %}
+
+  {% if content and content != "" %}
+  <div class="post-content">
+    {{ content }}
+  </div>
+  {% endif %}
+
+  {% if page.external_url %}
+  <p>
+    <a class="btn btn-ghost" href="{{ page.external_url }}" target="_blank" rel="noopener">
+      More info &#8599;
+    </a>
+  </p>
+  {% endif %}
+
+  <footer class="post-footer">
+    <a class="btn btn-ghost" href="{{ '/media/' | relative_url }}">&larr; Back to media</a>
+  </footer>
+</article>

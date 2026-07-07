@@ -1,0 +1,56 @@
+---
+layout: splash
+title: "Media"
+description: "Movies, TV, books, and games, logged as I go."
+splash:
+  taglines:
+    - "Consumed"
+    - "As I go"
+  hold: 1200
+---
+
+<section aria-label="Media log">
+  <h2><span>Media</span></h2>
+
+  {% assign entries = site.media | sort: "date" | reverse %}
+  {% if entries.size > 0 %}
+  {% assign types = entries | map: "type" | uniq | sort %}
+  <div class="media-filters" role="group" aria-label="Filter by type">
+    <button type="button" class="pill media-filter is-active" data-filter="all">All</button>
+    {% for t in types %}
+    <button type="button" class="pill media-filter" data-filter="{{ t | slugify }}">{{ t | capitalize }}</button>
+    {% endfor %}
+  </div>
+
+  <div class="post-list media-list">
+    {% for entry in entries %}
+    <a class="post-card media-card" href="{{ entry.url | relative_url }}" data-type="{{ entry.type | slugify }}">
+      <div class="post-card-meta">
+        <span class="pill">{{ entry.type | capitalize }}</span>
+        {% if entry.status and entry.status != "finished" %}
+        <span class="pill media-status">{{ entry.status | capitalize | replace: "-", " " }}</span>
+        {% endif %}
+        <time datetime="{{ entry.date | date_to_xmlschema }}">
+          {{ entry.date | date: "%B %-d, %Y" }}
+        </time>
+      </div>
+      <h3 class="post-card-title">{{ entry.title }}</h3>
+      {% if entry.rating %}
+      <span class="media-rating" aria-label="Rated {{ entry.rating }} out of 5">
+        {% for i in (1..5) %}{% if i <= entry.rating %}&#9733;{% else %}&#9734;{% endif %}{% endfor %}
+      </span>
+      {% endif %}
+      {% if entry.description %}
+      <p class="post-card-excerpt">{{ entry.description }}</p>
+      {% endif %}
+    </a>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="section-card post-empty">
+    <p>Nothing logged yet.</p>
+  </div>
+  {% endif %}
+</section>
+
+<script src="{{ '/assets/js/media-filter.js' | relative_url }}" defer></script>

@@ -38,6 +38,10 @@ nav:
     anchor: "/poetry/"
   - title: "Photography"
     anchor: "/photography/"
+  - title: "Media"
+    anchor: "/media/"
+  - title: "Now"
+    anchor: "/now/"
   - title: "Resume"
     anchor: "/resume/"
 
@@ -58,6 +62,15 @@ nav:
 #       - src: <path>
 #         alt: <string, required for accessibility>
 #         caption: <string, optional>
+# media: a log of movies/TV/books/games at /media/entry/<slug>/.
+#   `type` (movie/tv/book/game/...) drives the filter pills on /media/.
+#   `status` is optional and defaults, in effect, to "finished" — set
+#   it to in-progress/dropped/on-hold to show a badge, and
+#   in-progress specifically is what makes an entry show up on /now/
+#   automatically. `date` doubles as "date finished" for finished
+#   entries and "date started" for in-progress ones — it's just what
+#   the feed sorts by, not a claim about which milestone it marks.
+#   `rating` is 1-5, `cover` and `external_url` are both optional.
 collections:
   poems:
     output: true
@@ -68,6 +81,9 @@ collections:
   photo_albums:
     output: true
     permalink: /photography/album/:slug/
+  media:
+    output: true
+    permalink: /media/entry/:slug/
 
 # Applies _layouts/default.html to every page/post that doesn't set
 # its own `layout` in front matter, so you don't have to repeat it
@@ -100,6 +116,11 @@ defaults:
       type: "photo_albums"
     values:
       layout: photo-album
+  - scope:
+      path: ""
+      type: "media"
+    values:
+      layout: media-entry
 
 # GitHub Pages builds with a restricted plugin allowlist — these three
 # are all on it and safe to ship as-is. Only add more here if you're
