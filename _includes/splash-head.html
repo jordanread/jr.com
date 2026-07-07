@@ -4,10 +4,14 @@
     var html = document.documentElement;
     html.classList.add('js');
     try {
-      if (localStorage.getItem('splashSeen') === '1') {
+      // Seen-state is tracked per page path (see assets/js/splash.js),
+      // not as a single site-wide flag — skipping the splash on one
+      // page shouldn't silently skip it on every other page too.
+      var seen = JSON.parse(localStorage.getItem('splashSeenPages') || '{}');
+      if (seen[window.location.pathname]) {
         html.classList.add('splash-seen');
       }
-    } catch (err) { /* localStorage unavailable — splash just plays every time */ }
+    } catch (err) { /* localStorage unavailable, or stored value unparseable — splash just plays every time */ }
   })();
 </script>
 

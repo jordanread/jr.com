@@ -1,11 +1,15 @@
 /* ==========================================================================
    Splash overlay logic
    ==========================================================================
-   Plays once per browser (localStorage flag set on completion, however
-   it completes — full run, Skip button, Escape, or a click on the
-   overlay). Repeat visits skip straight past it with no animation at
-   all: the inline script in splash-head.html already adds a
-   `splash-seen` class to <html> before anything paints (see the CSS
+   Plays once per page, per browser — seen-state is tracked per page
+   path (localStorage holds a small { "/path/": 1, ... } map), set on
+   completion however that page's splash completes (full run, Skip
+   button, Escape, or a click on the overlay). Skipping or finishing
+   the splash on one page has no effect on any other page; each page
+   plays its own splash the first time it's visited and skips straight
+   past it on repeat visits from then on. The inline script in
+   splash-head.html already adds a `splash-seen` class to <html>
+   before anything paints for pages already marked seen (see the CSS
    override in splash.css), and this script's own check below is the
    belt-and-suspenders version for anything that runs before that CSS
    would otherwise apply.
@@ -28,7 +32,7 @@
 (function () {
   'use strict';
 
-  var STORAGE_KEY = 'splashSeen';
+  var STORAGE_KEY = 'splashSeenPages';
 
   var DEFAULTS = {
     enter:       450,  // matches .splash__phrase.is-active transition-duration
@@ -44,7 +48,8 @@
 
   function hasSeenSplash() {
     try {
-      return localStorage.getItem(STORAGE_KEY) === '1';
+      var seen = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+      return !!seen[window.location.pathname];
     } catch (err) {
       return false;
     }
@@ -52,7 +57,9 @@
 
   function markSplashSeen() {
     try {
-      localStorage.setItem(STORAGE_KEY, '1');
+      var seen = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+      seen[window.location.pathname] = 1;
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(seen));
     } catch (err) { /* localStorage unavailable — splash just plays every time */ }
   }
 
