@@ -22,11 +22,11 @@ author:
   job_title: "Software Engineer & Solution Architect"
   email: ""
   phone: ""
-  linkedin: ""
-  github: ""
+  linkedin: "https://www.linkedin.com/in/jordanread/"
+  github: "https://github.com/jordanread/"
   # Shown in the home hero panel. Deliberately not a city — replace
   # with wherever's true when you're editing this for real.
-  home_base: "Wherever the current pet-sit is"
+  home_base: "France"
 
 # Resume-only fields. Kept separate from `author` on purpose: this is
 # the stuff that reads like it's written for a recruiter, and it
