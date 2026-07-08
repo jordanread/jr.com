@@ -24,13 +24,25 @@ author:
   phone: ""
   linkedin: ""
   github: ""
+  # Shown in the home hero panel. Deliberately not a city — replace
+  # with wherever's true when you're editing this for real.
+  home_base: "Wherever the current pet-sit is"
+
+# Resume-only fields. Kept separate from `author` on purpose: this is
+# the stuff that reads like it's written for a recruiter, and it
+# should only ever be pulled into resume-hero.html and the other
+# resume-page includes (about/skills/experience/industries/contact) —
+# never into home-hero.html or anything else the homepage uses. If a
+# new template wants one of these, that's a sign it belongs on
+# /resume/, not that it should reach into this block.
+resume:
   resume_pdf: ""
-  experience_since: "2006"
   current_focus: ".NET, Angular & Azure-backed systems"
   recent_roles: "National Seating & Mobility · Ektello (Allegion)"
-  # Shown in the hero's at-a-glance panel. Deliberately not a city —
-  # replace with wherever's true when you're editing this for real.
-  home_base: "Wherever the current pet-sit is"
+  # Not read anywhere yet — here for whenever a computed "X years"
+  # line gets added instead of the static "17+ years" in resume.html's
+  # description and resume-hero.html's summary.
+  experience_since: "2006"
 
 nav:
   - title: "Home"

@@ -1,0 +1,33 @@
+<section class="hero" aria-label="Introduction">
+  <div class="hero-main">
+    <h1>Hi, I'm <span>{{ site.author.name | split: ' ' | first }}</span>.</h1>
+    <div class="hero-title">{{ site.author.job_title }}</div>
+    <p class="hero-summary">
+      I build software for a living — mostly backend systems, with a
+      standing excuse to try something new whenever the project allows
+      it. Most of what ends up here is everything else: travel, the
+      projects I take apart for fun, and writing that would otherwise
+      just sit in a notebook.
+    </p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="{{ '/resume/' | relative_url }}">
+        Read My Resume
+      </a>
+      <a class="btn btn-ghost" href="{{ site.author.linkedin }}" target="_blank" rel="noopener">
+        Get in Touch
+      </a>
+    </div>
+  </div>
+
+  <aside class="hero-meta" aria-label="At-a-glance details">
+    <div class="hero-meta-row">
+      <div class="hero-meta-label">Age</div>
+      <div class="hero-meta-value">None of your business</div>
+    </div>
+    <div class="hero-meta-row">
+      <div class="hero-meta-label">Home Base</div>
+      <div class="hero-meta-value">{{ site.author.home_base }}</div>
+    </div>
+    Ask about the boat. There's always a story.
+  </aside>
+</section>
