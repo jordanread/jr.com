@@ -5,34 +5,52 @@
 # Now page, or elsewhere on the site if a card deserves more room
 # than that.
 
-- title: "Full-Time on the Road"
+- title: "Roamer, Wanderer, Nomad, Vagabond"
   tag: "Travel"
   body: >-
-    Home is wherever the current pet-sit is. We travel full-time,
-    moving between countries by looking after other people's animals
-    instead of renting an apartment we'd rarely be in.
+    Call me what you will (bonus points for the melody playing in your head). 
+    I never liked the idea of being tied to a place, so I'm not. 
+    The world is a big place, and every part of it has it's own quirks. 
+    I have intentionally crafted my life so that I get to experience those quirks every day.
   link:
     text: "See where"
     url: "/now/"
 
-- title: "Four Years Off the Grid"
-  tag: "Self-Sufficiency"
+- title: "The Marrow of Life"
+  tag: "Lifestyle"
   body: >-
-    Lived aboard a sailboat with no shore power for four years. Solar,
-    rainwater, and knowing how to fix things yourself stop being
-    hobbies pretty quickly when they're how the week actually runs.
+    I heard some variation of what most of us hear: "Grow up", "Settle down", "Build a life". 
+    As far as advice goes, I've received worse (there was this thing about kiwi skins - so many wasted years). 
+    It was the unspoken addendum that didn't sit right with me: "And then die". 
+    There had to be more than that, and with the unwavering confidence of youth, I knew it was there and I knew I would find it.
+  # link:
+  #   text: "See where"
+  #   url: "/now/"
 
-- title: "[STUB] Two Wheels, One Less Car"
-  tag: "Transportation"
+- title: "Comfort? Nah. Risk!"
+  tag: "Philosophy"
   body: >-
-    Placeholder — swap in a real story about biking and public transit
-    over driving. Even a specific city and a specific commute would
-    beat this sentence.
+    At one point, someone must have told me about the "comfort zone". 
+    And then I had to have heard an anecdote about getting out of it to grow and progress.
+    No clue when or where, but it got internalized. So much so that I have been told that my comfort zone is being out of my comfort zone.
+    If it seems scary or weird, that's a reason to do it, not a reason to avoid it.
 
-- title: "[STUB] Building Toward Something Bigger"
-  tag: "Community"
-  body: >-
-    Placeholder — the travel and self-sufficiency stuff isn't just a
-    lifestyle, it's practice for a longer-term idea about building
-    communities that work better for the people in them. Replace once
-    it's less abstract and more concrete.
+# - title: "The best medicine"
+#   tag: "Personality"
+#   body: >-
+#     I'm a witty fucker. If I can't make you laugh, that's your personality flaw.
+
+# - title: "[STUB] Two Wheels, One Less Car"
+#   tag: "Transportation"
+#   body: >-
+#     Placeholder — swap in a real story about biking and public transit
+#     over driving. Even a specific city and a specific commute would
+#     beat this sentence.
+
+# - title: "[STUB] Building Toward Something Bigger"
+#   tag: "Community"
+#   body: >-
+#     Placeholder — the travel and self-sufficiency stuff isn't just a
+#     lifestyle, it's practice for a longer-term idea about building
+#     communities that work better for the people in them. Replace once
+#     it's less abstract and more concrete.
