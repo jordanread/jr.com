@@ -1,13 +1,13 @@
-<section id="elsewhere" aria-label="Elsewhere">
-  <h2><span>Elsewhere</span></h2>
+<section id="asides" aria-label="Asides">
+  <h2><span>Asides</span></h2>
   <div class="section-card section-intro">
     <p>
       Not everything worth knowing about me fits under "Software Engineer."
     </p>
   </div>
   <div class="project-grid">
-    {% for item in site.data.elsewhere %}
-    <div class="project-card elsewhere-card">
+    {% for item in site.data.asides %}
+    <div class="project-card aside-card">
       <div class="project-card-header">
         <h3 class="project-card-title">{{ item.title }}</h3>
         {% if item.tag %}
@@ -16,7 +16,7 @@
       </div>
       <p class="project-card-description">{{ item.body }}</p>
       {% if item.link %}
-      <a class="btn btn-ghost elsewhere-link" href="{{ item.link.url | relative_url }}">
+      <a class="btn btn-ghost aside-link" href="{{ item.link.url | relative_url }}">
         {{ item.link.text }} &rarr;
       </a>
       {% endif %}

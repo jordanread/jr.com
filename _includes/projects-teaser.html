@@ -1,0 +1,30 @@
+<section aria-label="Currently building">
+  <h2><span>Currently</span> Building</h2>
+
+  {% assign latest_projects = site.code_projects | sort: "date" | reverse %}
+  {% if latest_projects.size > 0 %}
+  <div class="project-grid">
+    {% for project in latest_projects limit: 2 %}
+    <a class="project-card" href="{{ project.url | relative_url }}">
+      <div class="project-card-header">
+        <h3 class="project-card-title">{{ project.title }}</h3>
+        {% if project.status %}
+        <span class="pill project-card-status">{{ project.status }}</span>
+        {% endif %}
+      </div>
+      {% if project.description %}
+      <p class="project-card-description">{{ project.description }}</p>
+      {% endif %}
+    </a>
+    {% endfor %}
+  </div>
+  <a class="btn btn-ghost" href="{{ '/projects/' | relative_url }}">See all projects &rarr;</a>
+  {% else %}
+  <div class="section-card post-empty">
+    <p>
+      Nothing published yet, but <a href="{{ '/projects/' | relative_url }}">Projects</a>
+      is live and waiting.
+    </p>
+  </div>
+  {% endif %}
+</section>

@@ -1,0 +1,42 @@
+---
+layout: splash
+title: "Code"
+description: "Open-source projects and things I'm building — or just thinking about building."
+splash:
+  taglines:
+    - "Code"
+    - "Building things"
+  hold: 1200
+---
+
+<section aria-label="Code projects">
+  <h2><span>Code</span></h2>
+
+  {% assign code_projects = site.code_projects | sort: "date" | reverse %}
+  {% if code_projects.size > 0 %}
+  <div class="project-grid">
+    {% for project in code_projects %}
+    <a class="project-card" href="{{ project.url | relative_url }}">
+      <div class="project-card-header">
+        <h3 class="project-card-title">{{ project.title }}</h3>
+        {% if project.status %}
+        <span class="pill project-card-status">{{ project.status }}</span>
+        {% endif %}
+      </div>
+      {% if project.description %}
+      <p class="project-card-description">{{ project.description }}</p>
+      {% endif %}
+      {% if project.stack.size > 0 %}
+      <div class="pill-row">
+        {% for tech in project.stack %}<span class="pill">{{ tech }}</span>{% endfor %}
+      </div>
+      {% endif %}
+    </a>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="section-card post-empty">
+    <p>Nothing published yet.</p>
+  </div>
+  {% endif %}
+</section>

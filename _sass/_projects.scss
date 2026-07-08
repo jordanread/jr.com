@@ -56,3 +56,13 @@
 .project-card .pill-row {
   margin-top: 0.75rem;
 }
+
+// For card headers that need more than one pill (e.g. a status pill
+// alongside a fixed type pill like "Album") — keeps them clustered
+// together rather than spread out by .project-card-header's
+// space-between.
+.card-pill-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}

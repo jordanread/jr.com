@@ -1,6 +1,6 @@
 # Bespoke scrollytelling photo pieces — each one is a fully custom
 # standalone page (own HTML/CSS/JS), not a templated collection like
-# _photo_albums. Listed here just so /photography/ can show them
+# _photo_albums. Listed here just so /projects/photography/ can show them
 # alongside albums.
 #
 # Shape, once there's a first one:
@@ -8,5 +8,5 @@
 # - title: "Barbican People"
 #   description: "A street-photography scrollytelling piece."
 #   cover: /assets/images/photo-features/barbican/cover.jpg
-#   url: /photography/barbican-people/
+#   url: /projects/photography/barbican-people/
 []

@@ -1,0 +1,29 @@
+---
+layout: splash
+title: "Projects"
+description: "Poetry, photography, and whatever else I'm making."
+splash:
+  taglines:
+    - "Projects"
+    - "Making things"
+  hold: 1200
+---
+
+<section aria-label="Project categories">
+  <h2><span>Projects</span></h2>
+  <div class="project-grid">
+    {% for category in site.data.project_categories %}
+    <a class="project-card" href="{{ category.url | relative_url }}">
+      <div class="project-card-header">
+        <h3 class="project-card-title">{{ category.title }}</h3>
+        {% if category.tag %}
+        <span class="pill">{{ category.tag }}</span>
+        {% endif %}
+      </div>
+      {% if category.description %}
+      <p class="project-card-description">{{ category.description }}</p>
+      {% endif %}
+    </a>
+    {% endfor %}
+  </div>
+</section>

@@ -16,7 +16,12 @@ splash:
   <div class="post-list post-list--compact">
     {% for c in collections %}
     <a class="post-card" href="{{ c.url | relative_url }}">
-      <h3 class="post-card-title">{{ c.title }}</h3>
+      <div class="project-card-header">
+        <h3 class="post-card-title">{{ c.title }}</h3>
+        {% if c.status %}
+        <span class="pill project-card-status">{{ c.status }}</span>
+        {% endif %}
+      </div>
       {% if c.description %}
       <p class="post-card-excerpt">{{ c.description }}</p>
       {% endif %}

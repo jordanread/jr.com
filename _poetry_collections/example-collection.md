@@ -2,8 +2,14 @@
 title: "Example Collection — delete or repurpose me"
 date: 2026-07-05
 description: >-
-  Optional intro blurb shown on both the /poetry/ index card and at
+  Optional intro blurb shown on both the /projects/poetry/ index card and at
   the top of this landing page.
+# Optional. Free text, not a fixed set of choices — "Idea", "In
+# progress", "Complete", whatever fits. Shown as a pill next to the
+# title on /projects/poetry/. Left unset here since this example
+# collection already has poems in it; it's most useful on a
+# collection you're starting before writing anything.
+# status: "Idea"
 ---
 
 Everything above the poem list below is free-form Markdown — an

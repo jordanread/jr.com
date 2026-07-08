@@ -1,9 +1,9 @@
-# Shown in the "Elsewhere" section on the homepage
-# (_includes/elsewhere.html). This is placeholder copy meant to show
-# the shape of the section — swap it for your own specifics and voice.
-# Keep `body` short; this is a teaser grid, not the full story. Link
-# out to a blog post, the Now page, or elsewhere on the site if a card
-# deserves more room than that.
+# Shown in the "Asides" section on the homepage (_includes/asides.html).
+# This is placeholder copy meant to show the shape of the section —
+# swap it for your own specifics and voice. Keep `body` short; this
+# is a teaser grid, not the full story. Link out to a blog post, the
+# Now page, or elsewhere on the site if a card deserves more room
+# than that.
 
 - title: "Full-Time on the Road"
   tag: "Travel"

@@ -1,0 +1,34 @@
+---
+layout: default
+---
+<article class="code-project">
+  <header class="post-header">
+    <div class="post-meta">Project</div>
+    <h1 class="post-title">{{ page.title }}</h1>
+    {% if page.status %}
+    <span class="pill project-card-status">{{ page.status }}</span>
+    {% endif %}
+    {% if page.description %}
+    <p class="post-description">{{ page.description }}</p>
+    {% endif %}
+  </header>
+
+  {% if page.stack.size > 0 %}
+  <div class="pill-row">
+    {% for tech in page.stack %}<span class="pill">{{ tech }}</span>{% endfor %}
+  </div>
+  {% endif %}
+
+  {% if content and content != "" %}
+  <div class="post-content">
+    {{ content }}
+  </div>
+  {% endif %}
+
+  <footer class="post-footer">
+    {% if page.repo_url %}
+    <a class="btn btn-ghost" href="{{ page.repo_url }}" target="_blank" rel="noopener">View repo &rarr;</a>
+    {% endif %}
+    <a class="btn btn-ghost" href="{{ '/projects/code/' | relative_url }}">&larr; Back to code</a>
+  </footer>
+</article>

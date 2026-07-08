@@ -1,5 +1,5 @@
 // -----------------------------------------------------------------------------
-// Elsewhere (homepage "life outside the resume" section)
+// Asides (homepage "life outside the resume" section)
 // -----------------------------------------------------------------------------
 //
 // Reuses .project-card / .project-grid / .pill from _projects.scss —
@@ -7,7 +7,7 @@
 // .section-intro (the one-line teaser above a section's grid) lives in
 // _base.scss since it's shared with the Projects section too.
 
-.elsewhere-card {
+.aside-card {
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
@@ -20,7 +20,7 @@
   }
 }
 
-.elsewhere-link {
+.aside-link {
   align-self: flex-start;
   margin-top: 0.25rem;
   padding: 0.4rem 0.9rem;

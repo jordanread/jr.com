@@ -22,7 +22,12 @@ splash:
       {% endif %}
       <div class="project-card-header">
         <h3 class="project-card-title">{{ album.title }}</h3>
-        <span class="pill">Album</span>
+        <div class="card-pill-group">
+          {% if album.status %}
+          <span class="pill project-card-status">{{ album.status }}</span>
+          {% endif %}
+          <span class="pill">Album</span>
+        </div>
       </div>
       {% if album.description %}
       <p class="project-card-description">{{ album.description }}</p>
@@ -37,7 +42,12 @@ splash:
       {% endif %}
       <div class="project-card-header">
         <h3 class="project-card-title">{{ feature.title }}</h3>
-        <span class="pill">Scrollytelling</span>
+        <div class="card-pill-group">
+          {% if feature.status %}
+          <span class="pill project-card-status">{{ feature.status }}</span>
+          {% endif %}
+          <span class="pill">Scrollytelling</span>
+        </div>
       </div>
       {% if feature.description %}
       <p class="project-card-description">{{ feature.description }}</p>
