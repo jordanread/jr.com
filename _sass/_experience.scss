@@ -1,0 +1,75 @@
+// -----------------------------------------------------------------------------
+// Experience timeline
+// -----------------------------------------------------------------------------
+
+.timeline {
+  border-left: 2px solid $border;
+  margin-left: 0.45rem;
+  padding-left: 1rem;
+}
+
+.job {
+  position: relative;
+  padding: 0.6rem 0 0.75rem;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: -1.13rem;
+    top: 0.85rem;
+    width: 10px;
+    height: 10px;
+    border-radius: $radius-pill;
+    background: $accent;
+    box-shadow: 0 0 0 4px $accent-soft;
+  }
+}
+
+.job-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.25rem 1rem;
+  align-items: baseline;
+}
+
+.job-company {
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: $text-job;
+}
+
+.job-dates {
+  font-size: 0.8rem;
+  font-family: $font-mono;
+  color: $muted;
+}
+
+.job-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  margin-top: 0.1rem;
+  font-size: 0.8rem;
+  color: $muted;
+}
+
+.job-role {
+  font-weight: 500;
+  color: $text-soft;
+}
+
+.job-location {
+  opacity: 0.85;
+}
+
+.job-highlights {
+  margin: 0.4rem 0 0;
+  padding-left: 1.1rem;
+  font-size: 0.86rem;
+  color: $muted;
+
+  li {
+    margin: 0.15rem 0;
+  }
+}

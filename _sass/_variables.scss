@@ -1,0 +1,46 @@
+// -----------------------------------------------------------------------------
+// Variables
+// -----------------------------------------------------------------------------
+//
+// Color tokens are CSS custom properties (defined in _theme.scss) so the
+// site can switch between light and dark without a separate stylesheet.
+// The $sass-variables below are just short aliases to those tokens so the
+// rest of the partials don't need to change — swap the token values in
+// _theme.scss, not here.
+//
+// Token set (matches the convention used across jordanread.com's sibling
+// sites): bg / bg-alt / surface / surface-alt / border / border-subtle /
+// text / text-muted / text-on-accent / accent / accent-subtle / accent-muted
+
+// Colors
+$accent: var(--accent);
+$accent-soft: var(--accent-subtle);
+$accent-strong: var(--accent-muted);
+
+$bg: var(--bg);
+$bg-card: var(--surface);
+$bg-alt: var(--surface-alt);
+
+$text: var(--text);
+$text-on-accent: var(--text-on-accent);
+$muted: var(--text-muted);
+$border: var(--border);
+$border-subtle: var(--border-subtle);
+
+$text-bright: var(--text);
+$text-soft: var(--text-muted);
+$text-softer: var(--text-muted);
+$text-job: var(--text);
+
+// Typography
+$font-body: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+$font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+  "Liberation Mono", "Courier New", monospace;
+
+// Layout
+$page-max-width: 1040px;
+$radius-lg: 18px;
+$radius-pill: 999px;
+
+// Breakpoints
+$breakpoint-tablet: 768px;

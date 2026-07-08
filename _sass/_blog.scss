@@ -1,0 +1,144 @@
+// -----------------------------------------------------------------------------
+// Blog: post listing + single post article
+// -----------------------------------------------------------------------------
+
+.post-list {
+  display: grid;
+  gap: 1rem;
+  margin: 0.25rem 0 1.25rem;
+}
+
+.post-list--compact {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.post-card {
+  display: block;
+  background: $bg-card;
+  border: 1px solid $border;
+  border-radius: $radius-lg;
+  padding: 1.1rem 1.25rem;
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 0.15s ease, transform 0.05s ease;
+
+  &:hover,
+  &:focus {
+    border-color: $accent;
+    text-decoration: none;
+    transform: translateY(-1px);
+  }
+}
+
+.post-card-meta,
+.post-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: $font-mono;
+  font-size: 0.78rem;
+  color: $muted;
+}
+
+.post-meta-sep {
+  opacity: 0.6;
+}
+
+.post-card-title {
+  font-size: 1.08rem;
+  margin: 0.35rem 0 0.3rem;
+  color: $text-bright;
+}
+
+.post-card-excerpt {
+  font-size: 0.88rem;
+  color: $muted;
+  margin: 0;
+}
+
+.post-empty p {
+  margin: 0;
+}
+
+// Single post
+
+.post-header {
+  margin-bottom: 1.5rem;
+}
+
+.post-title {
+  font-size: clamp(1.7rem, 3vw, 2.3rem);
+  margin: 0.5rem 0 0.4rem;
+}
+
+.post-description {
+  font-size: 1rem;
+  color: $muted;
+  max-width: 38rem;
+}
+
+.post-tags {
+  display: inline-flex;
+  gap: 0.35rem;
+}
+
+.post-content {
+  font-size: 0.98rem;
+  line-height: 1.65;
+  max-width: 42rem;
+
+  p {
+    color: $text;
+    font-size: inherit;
+  }
+
+  h2,
+  h3 {
+    color: $text-bright;
+    margin-top: 2rem;
+  }
+
+  a {
+    color: $accent;
+  }
+
+  code {
+    font-family: $font-mono;
+    font-size: 0.85em;
+    background: $bg-alt;
+    border: 1px solid $border;
+    border-radius: 4px;
+    padding: 0.1em 0.35em;
+  }
+
+  pre {
+    background: $bg-alt;
+    border: 1px solid $border;
+    border-radius: $radius-lg;
+    padding: 1rem 1.1rem;
+    overflow-x: auto;
+
+    code {
+      border: none;
+      padding: 0;
+      background: none;
+    }
+  }
+
+  blockquote {
+    margin: 1.25rem 0;
+    padding: 0.25rem 1.1rem;
+    border-left: 3px solid $accent;
+    color: $muted;
+  }
+
+  img {
+    max-width: 100%;
+    border-radius: $radius-lg;
+  }
+}
+
+.post-footer {
+  margin-top: 2.5rem;
+}

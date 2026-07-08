@@ -1,0 +1,64 @@
+---
+layout: splash
+title: "Poetry"
+description: "Poems, one-off and in collections."
+splash:
+  taglines:
+    - "Verse"
+    - "Line by line"
+  hold: 1200
+---
+
+<section aria-label="Poetry collections">
+  <h2><span>Collections</span></h2>
+  <p>This is for poetry that is greater than the sum of its poems. </p>
+  {% assign collections = site.poetry_collections | sort: "date" | reverse %}
+  {% if collections.size > 0 %}
+  <div class="post-list post-list--compact">
+    {% for c in collections %}
+    <a class="post-card" href="{{ c.url | relative_url }}">
+      <div class="project-card-header">
+        <h3 class="post-card-title">{{ c.title }}</h3>
+        {% if c.status %}
+        <span class="pill project-card-status">{{ c.status }}</span>
+        {% endif %}
+      </div>
+      {% if c.description %}
+      <p class="post-card-excerpt">{{ c.description }}</p>
+      {% endif %}
+    </a>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="section-card post-empty">
+    <p>No collections published yet.</p>
+  </div>
+  {% endif %}
+</section>
+
+<section aria-label="Standalone poems">
+  <h2><span>Poems</span></h2>
+  <p>I didn't even know it, but it turns out I like writing poetry. From basking in the structure and limitations of a haiku, to observations in stanzas.</p>
+  {% assign standalone = site.poems | where_exp: "p", "p.series == nil" | sort: "date" | reverse %}
+  {% if standalone.size > 0 %}
+  <div class="post-list">
+    {% for poem in standalone %}
+    <a class="post-card" href="{{ poem.url | relative_url }}">
+      <div class="post-card-meta">
+        <time datetime="{{ poem.date | date_to_xmlschema }}">
+          {{ poem.date | date: "%B %-d, %Y" }}
+        </time>
+      </div>
+      <h3 class="post-card-title">{{ poem.title }}</h3>
+      {% if poem.description %}
+      <p class="post-card-excerpt">{{ poem.description }}</p>
+      {% endif %}
+    </a>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="section-card post-empty">
+    <p>Nothing published yet.</p>
+  </div>
+  {% endif %}
+</section>

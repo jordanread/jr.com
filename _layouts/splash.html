@@ -1,0 +1,27 @@
+---
+layout: null
+---
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: 'en' }}">
+
+<head>
+  {% include splash-head.html %}
+
+  {% include head.html %}
+</head>
+
+<body>
+  {% include splash.html %}
+  
+  <div class="page">
+    {% include header.html %}
+
+    <main>
+      {{ content }}
+    </main>
+
+    {% include footer.html %}
+  </div>
+</body>
+
+</html>

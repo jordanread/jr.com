@@ -1,0 +1,35 @@
+---
+layout: default
+---
+<article class="photo-album">
+  <header class="post-header">
+    <h1 class="post-title">{{ page.title }}</h1>
+    {% if page.description %}
+    <p class="post-description">{{ page.description }}</p>
+    {% endif %}
+  </header>
+
+  {% if content and content != "" %}
+  <div class="post-content">
+    {{ content }}
+  </div>
+  {% endif %}
+
+  <div class="photo-grid">
+    {% for image in page.images %}
+    <button
+      type="button"
+      class="photo-thumb"
+      data-full="{{ image.src | relative_url }}"
+      data-alt="{{ image.alt | default: page.title | escape }}"
+      data-caption="{{ image.caption | escape }}"
+    >
+      <img src="{{ image.src | relative_url }}" alt="{{ image.alt | default: page.title }}" loading="lazy">
+    </button>
+    {% endfor %}
+  </div>
+
+  <footer class="post-footer">
+    <a class="btn btn-ghost" href="{{ '/projects/photography/' | relative_url }}">&larr; Back to photography</a>
+  </footer>
+</article>

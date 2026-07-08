@@ -1,0 +1,129 @@
+// -----------------------------------------------------------------------------
+// Base
+// -----------------------------------------------------------------------------
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: $font-body;
+  background: radial-gradient(circle at top, $bg-alt 0, $bg 55%, $bg 100%);
+  color: $text;
+}
+
+body {
+  min-height: 100vh;
+}
+
+a {
+  color: $accent;
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+  }
+}
+
+p {
+  font-size: 0.92rem;
+  color: $muted;
+  margin: 0 0 0.6rem;
+}
+
+.page {
+  max-width: $page-max-width;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 3rem;
+}
+
+.section-card {
+  background: $bg-card;
+  border-radius: $radius-lg;
+  border: 1px solid $border;
+  padding: 1.25rem 1.5rem;
+}
+
+// One-line teaser shown above a section's card grid — currently just
+// Asides (_includes/asides.html) — just a .section-card with a
+// tighter bottom margin so the grid below sits close to it.
+.section-intro {
+  margin-bottom: 1rem;
+
+  p {
+    margin: 0;
+  }
+}
+
+section {
+  margin-top: 2.25rem;
+
+  h2 {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: $muted;
+    margin: 0 0 0.75rem;
+
+    span {
+      color: $accent;
+    }
+  }
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border-radius: $radius-pill;
+  padding: 0.55rem 1.2rem;
+  font-size: 0.9rem;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, transform 0.05s ease;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, $accent, $accent-strong);
+  color: #f8f9ff;
+  border-color: transparent;
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  }
+}
+
+.btn-ghost {
+  background: transparent;
+  border-color: $border;
+  color: $muted;
+
+  &:hover {
+    border-color: $accent;
+    color: $text;
+    background: $accent-soft;
+  }
+}
+
+.pill-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 0.5rem;
+}
+
+.pill {
+  font-size: 0.8rem;
+  border-radius: $radius-pill;
+  padding: 0.25rem 0.7rem;
+  border: 1px solid $border;
+  background: $bg-alt;
+  color: $text-softer;
+}

@@ -1,0 +1,24 @@
+<section id="experience" aria-label="Experience">
+  <h2><span>Professional</span> Experience</h2>
+  <div class="section-card">
+    <div class="timeline">
+      {% for job in site.data.experience %}
+      <article class="job" data-company="{{ job.company }}">
+        <div class="job-header">
+          <div class="job-company">{{ job.company }}</div>
+          <div class="job-dates">{{ job.dates }}</div>
+        </div>
+        <div class="job-meta">
+          <span class="job-role">{{ job.role }}</span>
+          <span class="job-location">{{ job.location }}</span>
+        </div>
+        <ul class="job-highlights">
+          {% for highlight in job.highlights %}
+          <li>{{ highlight }}</li>
+          {% endfor %}
+        </ul>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>

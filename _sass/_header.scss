@@ -1,0 +1,218 @@
+// -----------------------------------------------------------------------------
+// Site header / nav
+// -----------------------------------------------------------------------------
+
+header.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.5rem 0 1.25rem;
+  border-bottom: 1px solid $border;
+  margin-bottom: 1.5rem;
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-link {
+  display: flex;
+  flex-direction: column;
+  color: inherit;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+
+    .brand-name {
+      color: $accent;
+    }
+  }
+}
+
+.brand-name {
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.95rem;
+  transition: color 0.15s ease;
+}
+
+.brand-tagline {
+  font-size: 0.8rem;
+  color: $muted;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.85rem;
+
+  a {
+    padding: 0.25rem 0.5rem;
+    border-radius: $radius-pill;
+    border: 1px solid transparent;
+    color: $muted;
+
+    &:hover,
+    &:focus {
+      border-color: $accent;
+      color: $text;
+      background: $accent-soft;
+    }
+
+    &[aria-current="page"] {
+      border-color: $border;
+      color: $text;
+      background: $bg-alt;
+    }
+  }
+}
+
+// Projects nav item, with a Poetry/Photography/etc. flyout. Desktop
+// hover/focus is handled entirely here via :hover / :focus-within —
+// nav-dropdown.js only adds click-to-toggle for touch devices (no
+// hover to rely on) plus Escape/outside-click to close.
+.nav-dropdown {
+  position: relative;
+}
+
+.nav-dropdown-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font: inherit;
+  padding: 0.25rem 0.5rem;
+  border-radius: $radius-pill;
+  border: 1px solid transparent;
+  background: transparent;
+  color: $muted;
+  cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+
+  &:hover,
+  &:focus-visible {
+    border-color: $accent;
+    color: $text;
+    background: $accent-soft;
+  }
+}
+
+.nav-dropdown.is-active-section > .nav-dropdown-toggle {
+  border-color: $border;
+  color: $text;
+  background: $bg-alt;
+}
+
+.nav-dropdown-caret {
+  width: 0.6rem;
+  height: 0.6rem;
+  transition: transform 0.15s ease;
+}
+
+.nav-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 0.4rem);
+  left: 0;
+  z-index: 20;
+  display: none;
+  flex-direction: column;
+  min-width: 10rem;
+  padding: 0.4rem;
+  background: $bg-card;
+  border: 1px solid $border;
+  border-radius: $radius-lg;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+
+  a {
+    padding: 0.4rem 0.6rem;
+    border-radius: $radius-pill;
+
+    &[aria-current="page"] {
+      border-color: $border;
+      color: $text;
+      background: $bg-alt;
+    }
+  }
+}
+
+.nav-dropdown:hover > .nav-dropdown-menu,
+.nav-dropdown:focus-within > .nav-dropdown-menu,
+.nav-dropdown.is-open > .nav-dropdown-menu {
+  display: flex;
+}
+
+.nav-dropdown.is-open > .nav-dropdown-toggle .nav-dropdown-caret {
+  transform: rotate(180deg);
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  margin-left: 0.25rem;
+  border-radius: $radius-pill;
+  border: 1px solid $border;
+  background: $bg-alt;
+  color: $muted;
+  cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+
+  &:hover,
+  &:focus-visible {
+    border-color: $accent;
+    color: $accent;
+  }
+}
+
+.theme-toggle-icon {
+  width: 1.05rem;
+  height: 1.05rem;
+}
+
+.theme-toggle-icon--sun {
+  display: none;
+}
+
+.theme-toggle-icon--moon {
+  display: block;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    .theme-toggle-icon--sun {
+      display: block;
+    }
+
+    .theme-toggle-icon--moon {
+      display: none;
+    }
+  }
+}
+
+:root[data-theme="dark"] {
+  .theme-toggle-icon--sun {
+    display: block;
+  }
+
+  .theme-toggle-icon--moon {
+    display: none;
+  }
+}
+
+:root[data-theme="light"] {
+  .theme-toggle-icon--sun {
+    display: none;
+  }
+
+  .theme-toggle-icon--moon {
+    display: block;
+  }
+}

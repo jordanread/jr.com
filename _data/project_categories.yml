@@ -1,0 +1,22 @@
+# Category cards on /projects/. Each entry should correspond to one
+# of the Projects nav children in _config.yml — if you add or rename
+# a category there, update this (and vice versa).
+
+- title: "Poetry"
+  tag: "Words"
+  description: >-
+    Collections and one-off poems.
+  url: "/projects/poetry/"
+
+- title: "Photography"
+  tag: "Images"
+  description: >-
+    Albums and long-form visual pieces.
+  url: "/projects/photography/"
+
+- title: "Code"
+  tag: "Software"
+  description: >-
+    Open-source projects and things I'm building — or just thinking
+    about building.
+  url: "/projects/code/"

@@ -1,0 +1,14 @@
+{% assign _taglines     = page.splash.taglines | default: site.data.splash %}
+{% assign _enter        = page.splash.enter        | default: 450 %}
+{% assign _hold         = page.splash.hold         | default: 900 %}
+{% assign _exit         = page.splash.exit         | default: 350 %}
+{% assign _overlay_exit = page.splash.overlay_exit | default: 500 %}
+
+<div class="splash" id="splash" role="region" aria-label="Loading intro">
+  <p class="splash__phrase" id="splashPhrase" aria-hidden="true"></p>
+  <button type="button" class="splash__skip" id="splashSkip">Skip</button>
+</div>
+
+<script type="application/json" id="splash-data">{{ _taglines | jsonify }}</script>
+<script type="application/json" id="splash-config">{"enter":{{ _enter }},"hold":{{ _hold }},"exit":{{ _exit }},"overlayExit":{{ _overlay_exit }}}</script>
+<script src="{{ '/assets/js/splash.js' | relative_url }}" defer></script>

@@ -1,0 +1,74 @@
+// -----------------------------------------------------------------------------
+// Theme tokens — "Ember & Fog"
+// -----------------------------------------------------------------------------
+//
+// Warm paper/charcoal neutrals with a burnt-orange accent, instead of the
+// resume's navy. Light mode is the default; dark mode applies when either
+// the OS is set to dark (prefers-color-scheme) or <html data-theme="dark">
+// is set explicitly. The header's theme-toggle button
+// (_includes/theme-toggle.html + assets/js/theme-toggle.js) sets that
+// attribute and persists the choice to localStorage; the inline snippet
+// in head.html re-applies it before the stylesheet loads so there's no
+// flash of the wrong theme on repeat visits.
+//
+// Keep new colors elsewhere in the codebase pointed at these custom
+// properties rather than hardcoded hex, so both modes stay in sync.
+
+:root {
+  --bg: #faf8f4;
+  --bg-alt: #f1ede6;
+  --surface: #ffffff;
+  --surface-alt: #f5f1ea;
+  --border: #e4dfd3;
+  --border-subtle: #ede9df;
+
+  --text: #24211d;
+  --text-muted: #6b655a;
+  --text-on-accent: #fffaf6;
+
+  --accent: #e4572e;
+  --accent-subtle: #fbe4d8;
+  --accent-muted: #b8431f;
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #171512;
+    --bg-alt: #1d1a16;
+    --surface: #211e19;
+    --surface-alt: #26221c;
+    --border: #383228;
+    --border-subtle: #2c2820;
+
+    --text: #f5f1e8;
+    --text-muted: #a79f8e;
+    --text-on-accent: #1a1512;
+
+    --accent: #ff7a47;
+    --accent-subtle: #3a2418;
+    --accent-muted: #c1501f;
+
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #171512;
+  --bg-alt: #1d1a16;
+  --surface: #211e19;
+  --surface-alt: #26221c;
+  --border: #383228;
+  --border-subtle: #2c2820;
+
+  --text: #f5f1e8;
+  --text-muted: #a79f8e;
+  --text-on-accent: #1a1512;
+
+  --accent: #ff7a47;
+  --accent-subtle: #3a2418;
+  --accent-muted: #c1501f;
+
+  color-scheme: dark;
+}

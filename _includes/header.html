@@ -1,0 +1,44 @@
+<header class="site-header">
+  <div class="brand">
+    <a class="brand-link" href="{{ '/' | relative_url }}">
+      <span class="brand-name">{{ site.author.name }}</span>
+      <span class="brand-tagline">{{ site.author.job_title }}</span>
+    </a>
+  </div>
+  <nav aria-label="Primary navigation">
+    {% for item in site.nav %}
+    {% if item.children %}
+    {% assign section_active = false %}
+    {% if page.url == item.anchor %}{% assign section_active = true %}{% endif %}
+    {% for child in item.children %}
+      {% if page.url == child.anchor or page.url contains child.anchor %}{% assign section_active = true %}{% endif %}
+    {% endfor %}
+    <div class="nav-dropdown{% if section_active %} is-active-section{% endif %}">
+      <button type="button" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+        {{ item.title }}
+        <svg class="nav-dropdown-caret" viewBox="0 0 12 8" aria-hidden="true">
+          <path d="M1 1l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </button>
+      <div class="nav-dropdown-menu">
+        <a href="{{ item.anchor | relative_url }}" {% if page.url == item.anchor %}aria-current="page"{% endif %}>
+          Overview
+        </a>
+        {% for child in item.children %}
+        <a href="{{ child.anchor | relative_url }}" {% if page.url == child.anchor or page.url contains child.anchor %}aria-current="page"{% endif %}>
+          {{ child.title }}
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+    {% else %}
+    {% assign is_current = false %}
+    {% if page.url == item.anchor %}{% assign is_current = true %}{% endif %}
+    <a href="{{ item.anchor | relative_url }}" {% if is_current %}aria-current="page"{% endif %}>{{ item.title }}</a>
+    {% endif %}
+    {% endfor %}
+    {% include theme-toggle.html %}
+  </nav>
+</header>
+
+<script src="{{ '/assets/js/nav-dropdown.js' | relative_url }}" defer></script>

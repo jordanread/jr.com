@@ -1,0 +1,173 @@
+# Jekyll site configuration
+#
+# NOTE: unlike _data, _includes, and pages, Jekyll only reads this
+# file once at server start — editing it while `jekyll serve` is
+# running won't take effect until you stop and restart.
+
+title: "Jordan Read"
+description: "Coder, Writer, Photographer. Human."
+url: "https://jordanread.com"
+baseurl: ""
+
+markdown: kramdown
+permalink: pretty
+excerpt_separator: <!--more-->
+
+# TODO(jordan): email/phone/linkedin/github are placeholders — fill in
+# before this goes live. Templates that reference them (header, hero,
+# contact) already guard the optional ones with {% if %}, so leaving
+# any of these blank just hides that element rather than breaking.
+author:
+  name: "Jordan Read"
+  job_title: "Software Engineer & Solution Architect"
+  email: ""
+  phone: ""
+  linkedin: ""
+  github: ""
+  # Shown in the home hero panel. Deliberately not a city — replace
+  # with wherever's true when you're editing this for real.
+  home_base: "Wherever the current pet-sit is"
+
+# Resume-only fields. Kept separate from `author` on purpose: this is
+# the stuff that reads like it's written for a recruiter, and it
+# should only ever be pulled into resume-hero.html and the other
+# resume-page includes (about/skills/experience/industries/contact) —
+# never into home-hero.html or anything else the homepage uses. If a
+# new template wants one of these, that's a sign it belongs on
+# /resume/, not that it should reach into this block.
+resume:
+  resume_pdf: ""
+  current_focus: ".NET, Angular & Azure-backed systems"
+  recent_roles: "Synergy UpLink"
+  # Not read anywhere yet — here for whenever a computed "X years"
+  # line gets added instead of the static "17+ years" in resume.html's
+  # description and resume-hero.html's summary.
+  experience_since: "2006"
+
+nav:
+  - title: "Home"
+    anchor: "/"
+  - title: "Blog"
+    anchor: "/blog/"
+  - title: "Projects"
+    anchor: "/projects/"
+    children:
+      - title: "Poetry"
+        anchor: "/projects/poetry/"
+      - title: "Photography"
+        anchor: "/projects/photography/"
+      - title: "Code"
+        anchor: "/projects/code/"
+  - title: "Media"
+    anchor: "/media/"
+  - title: "Now"
+    anchor: "/now/"
+  - title: "Resume"
+    anchor: "/resume/"
+
+# poems: every poem lives at /projects/poetry/poem/<slug>/, whether
+#   it's a standalone one-off or part of a series — the `series:`
+#   front matter field (matching a poetry_collections item's
+#   filename/slug) is what groups them, not the URL.
+# poetry_collections: the curated landing pages for a series, one per
+#   collection, at /projects/poetry/<slug>/. A file named
+#   _poetry_collections/lighthouse-keeper.md pairs with any poem that
+#   sets `series: lighthouse-keeper`.
+# photo_albums: thematic photo grids at /projects/photography/album/<slug>/.
+#   Bespoke scrollytelling pieces aren't a collection — they're just
+#   standalone pages, listed alongside albums via _data/photo_features.yml.
+#   Front matter shape (see _layouts/photo-album.html):
+#     title, description, cover: <path>
+#     images:
+#       - src: <path>
+#         alt: <string, required for accessibility>
+#         caption: <string, optional>
+# media: a log of movies/TV/books/games at /media/entry/<slug>/.
+#   `type` (movie/tv/book/game/...) drives the filter pills on /media/.
+#   `status` is optional and defaults, in effect, to "finished" — set
+#   it to in-progress/dropped/on-hold to show a badge, and
+#   in-progress specifically is what makes an entry show up on /now/
+#   automatically. `date` doubles as "date finished" for finished
+#   entries and "date started" for in-progress ones — it's just what
+#   the feed sorts by, not a claim about which milestone it marks.
+#   `rating` is 1-5, `cover` and `external_url` are both optional.
+# code_projects: open-source/personal code projects at
+#   /projects/code/<slug>/. `status` is a free-text string, not a
+#   fixed enum — "Idea", "Early development", "Work in progress",
+#   "Shipped", whatever fits. `repo_url` is optional, which is the
+#   point: a project can exist here with just a title, description,
+#   and status before any code exists at all. `stack` is a short list
+#   of tags, same as the old homepage projects.yml.
+collections:
+  poems:
+    output: true
+    permalink: /projects/poetry/poem/:slug/
+  poetry_collections:
+    output: true
+    permalink: /projects/poetry/:slug/
+  photo_albums:
+    output: true
+    permalink: /projects/photography/album/:slug/
+  media:
+    output: true
+    permalink: /media/entry/:slug/
+  code_projects:
+    output: true
+    permalink: /projects/code/:slug/
+
+# Applies _layouts/default.html to every page/post that doesn't set
+# its own `layout` in front matter, so you don't have to repeat it
+# everywhere. Pages that should NOT get a layout (like comparison.html,
+# which is already a full standalone HTML document) override this
+# with `layout: null` in their own front matter. Posts, poems, and
+# collections get their own layouts instead (see below).
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: post
+  - scope:
+      path: ""
+      type: "poems"
+    values:
+      layout: poem
+  - scope:
+      path: ""
+      type: "poetry_collections"
+    values:
+      layout: poetry-collection
+  - scope:
+      path: ""
+      type: "photo_albums"
+    values:
+      layout: photo-album
+  - scope:
+      path: ""
+      type: "media"
+    values:
+      layout: media-entry
+  - scope:
+      path: ""
+      type: "code_projects"
+    values:
+      layout: code-project
+
+# GitHub Pages builds with a restricted plugin allowlist — these three
+# are all on it and safe to ship as-is. Only add more here if you're
+# building/deploying outside GitHub Pages' own build process.
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - node_modules
+  - vendor

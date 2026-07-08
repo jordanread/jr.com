@@ -1,0 +1,48 @@
+---
+layout: splash
+title: "Now"
+description: "What I'm up to right now."
+splash:
+  taglines:
+    - "Right now"
+    - "As of today"
+  hold: 400
+---
+
+<section aria-label="Now">
+  <h2><span>Now</span></h2>
+
+  <div class="post-content">
+    <p>
+      This is a <a href="https://nownownow.com/about" target="_blank" rel="noopener">now page</a> —
+      a snapshot of what's currently going on, updated whenever I feel like.
+    </p>
+  </div>
+</section>
+
+<section aria-label="Currently consuming">
+  <h2><span>Currently</span></h2>
+
+  {% assign in_progress = site.media | where: "status", "in-progress" | sort: "date" | reverse %}
+  {% if in_progress.size > 0 %}
+  {% assign types = in_progress | map: "type" | uniq | sort %}
+  {% for t in types %}
+  {% assign items = in_progress | where: "type", t %}
+  <h3 class="now-type-heading">{{ t | capitalize }}</h3>
+  <div class="post-list post-list--compact">
+    {% for entry in items %}
+    <a class="post-card" href="{{ entry.url | relative_url }}">
+      <h3 class="post-card-title">{{ entry.title }}</h3>
+      {% if entry.description %}
+      <p class="post-card-excerpt">{{ entry.description }}</p>
+      {% endif %}
+    </a>
+    {% endfor %}
+  </div>
+  {% endfor %}
+  {% else %}
+  <div class="section-card post-empty">
+    <p>Nothing in progress right now — check the full <a href="{{ '/media/' | relative_url }}">media log</a>.</p>
+  </div>
+  {% endif %}
+</section>

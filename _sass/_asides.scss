@@ -1,0 +1,34 @@
+// -----------------------------------------------------------------------------
+// Asides (homepage "life outside the resume" section)
+// -----------------------------------------------------------------------------
+//
+// Reuses .project-card / .project-grid / .pill from _projects.scss —
+// these overrides just account for the cards not always being links.
+// .section-intro (the one-line teaser above a section's grid) lives in
+// _base.scss since it's shared with the Projects section too.
+
+.aside-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  cursor: default;
+
+  &:hover,
+  &:focus {
+    border-color: $border;
+    transform: none;
+  }
+}
+
+.aside-link {
+  align-self: flex-start;
+  margin-top: 0.25rem;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.82rem;
+
+  &:hover,
+  &:focus {
+    border-color: $accent;
+    transform: none;
+  }
+}

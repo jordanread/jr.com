@@ -1,0 +1,22 @@
+
+<script>
+  (function () {
+    var html = document.documentElement;
+    html.classList.add('js');
+    try {
+      // Seen-state is tracked per page path (see assets/js/splash.js),
+      // not as a single site-wide flag — skipping the splash on one
+      // page shouldn't silently skip it on every other page too.
+      var seen = JSON.parse(localStorage.getItem('splashSeenPages') || '{}');
+      if (seen[window.location.pathname]) {
+        html.classList.add('splash-seen');
+      }
+    } catch (err) { /* localStorage unavailable, or stored value unparseable — splash just plays every time */ }
+  })();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@100..900&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="{{ '/assets/css/splash.css' | relative_url }}">

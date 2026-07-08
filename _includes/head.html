@@ -1,0 +1,27 @@
+  <meta charset="UTF-8" />
+
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem('theme');
+        if (stored === 'dark' || stored === 'light') {
+          document.documentElement.setAttribute('data-theme', stored);
+        }
+      } catch (err) { /* localStorage unavailable — falls back to prefers-color-scheme */ }
+    })();
+  </script>
+
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/images/icons/apple-touch-icon.png' | relative_url }}" />
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/images/icons/favicon-32x32.png' | relative_url }}" />
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ '/assets/images/icons/favicon-16x16.png' | relative_url }}" />
+  <link rel="icon" href="/assets/images/icons/favicon.ico" type="image/x-icon">
+  <link rel="manifest" href="{{ '/site.webmanifest' | relative_url }}" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>{{ page.title | default: site.title }}</title>
+  <meta name="description" content="{{ page.description | default: site.description }}" />
+
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}" />
+
+  {% seo %}
+  {% include json-ld.html %}

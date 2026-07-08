@@ -1,0 +1,26 @@
+<section id="asides" aria-label="Asides">
+  <h2><span>Asides</span></h2>
+  <div class="section-card section-intro">
+    <p>
+      Most things about me are unrelated to being an amazing Software Engineer.
+    </p>
+  </div>
+  <div class="project-grid">
+    {% for item in site.data.asides %}
+    <div class="project-card aside-card">
+      <div class="project-card-header">
+        <h3 class="project-card-title">{{ item.title }}</h3>
+        {% if item.tag %}
+        <span class="pill">{{ item.tag }}</span>
+        {% endif %}
+      </div>
+      <p class="project-card-description">{{ item.body }}</p>
+      {% if item.link %}
+      <a class="btn btn-ghost aside-link" href="{{ item.link.url | relative_url }}">
+        {{ item.link.text }} &rarr;
+      </a>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+</section>

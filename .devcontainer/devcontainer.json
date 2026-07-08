@@ -1,0 +1,36 @@
+{
+  "name": "VSCode Jekyll Container",
+
+  "image": "local-jekyll:latest",
+
+  "workspaceMount": "source=${localWorkspaceFolder},target=/site,type=bind",
+
+  "workspaceFolder": "/site",
+
+  "mounts": [
+    "source=jekyll-bundle-cache,target=/usr/local/bundle,type=volume"
+  ],
+
+  "forwardPorts": [4000, 35729],
+
+  "portsAttributes": {
+    "4000": {
+      "label": "Jekyll Site"
+    },
+    "35729": {
+      "label": "LiveReload"
+    }
+  },
+
+"postStartCommand": "bundle check || bundle install && bundle exec jekyll serve --trace --host 0.0.0.0 --livereload --force_polling",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "sissel.shopify-liquid",
+        "yzhang.markdown-all-in-one",
+        "davidanson.vscode-markdownlint",
+        "redhat.vscode-yaml"
+      ]
+    }
+  }
+}
