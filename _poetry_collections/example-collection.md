@@ -4,6 +4,7 @@ date: 2026-07-05
 description: >-
   Optional intro blurb shown on both the /projects/poetry/ index card and at
   the top of this landing page.
+published: false
 # Optional. Free text, not a fixed set of choices — "Idea", "In
 # progress", "Complete", whatever fits. Shown as a pill next to the
 # title on /projects/poetry/. Left unset here since this example

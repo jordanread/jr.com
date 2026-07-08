@@ -10,6 +10,4 @@ repo_url: "https://github.com/jordanread/TW-Skrypt"
 date: 2026-01-01
 ---
 
-Free-form Markdown here becomes the page content below the header —
-same pattern as poems and photo albums. Notes, progress updates,
-whatever's worth writing down as this moves along.
+This is for the plotters and the Dungeon Masters. Designed to scratch an itch I had for when I write. I am not a fan of not knowing how things work, and it turns out part of my process of writing is understanding the tools that I use for writing. So I am building this. Tiddlywiki is such a rock solid platform that if you find a thumb drive amid the rubble of civilization, and you have somewhere to plug that thumb drive in, it'll just work.

@@ -5,7 +5,7 @@ description: >-
   Optional intro shown on the /projects/photography/ card and at the top of
   the album page.
 cover: /assets/images/albums/example/cover.jpg
-#published: false
+published: false
 # Optional. Free text, not a fixed set of choices — "Idea", "In
 # progress", "Complete", whatever fits. Shown as a pill next to the
 # type pill on /projects/photography/. Most useful on an album you're

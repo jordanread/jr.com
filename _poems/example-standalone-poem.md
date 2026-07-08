@@ -4,6 +4,7 @@ date: 2026-07-05
 description: >-
   Optional one-liner, shown on the /projects/poetry/ index card. Leave it off
   and the card just shows the title and date.
+published: false
 ---
 
 To keep line breaks in a stanza, end each line with two trailing

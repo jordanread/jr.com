@@ -11,7 +11,9 @@ splash:
 
 <section aria-label="Photo albums and features">
   <h2><span>Photography</span></h2>
-
+  <p>
+    It started with birds. Just identifying them. And then it was taking pictures of them. And then it was taking pictures. And then it was the philosophy of taking pictures. It's easy to spiral, and these are the result. 
+  </p>
   {% assign albums = site.photo_albums | sort: "date" | reverse %}
   {% if albums.size > 0 or site.data.photo_features.size > 0 %}
   <div class="project-grid">

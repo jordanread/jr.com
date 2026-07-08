@@ -11,6 +11,7 @@ splash:
 
 <section aria-label="Poetry collections">
   <h2><span>Collections</span></h2>
+  <p>This is for poetry that is greater than the sum of its poems. </p>
   {% assign collections = site.poetry_collections | sort: "date" | reverse %}
   {% if collections.size > 0 %}
   <div class="post-list post-list--compact">
@@ -37,6 +38,7 @@ splash:
 
 <section aria-label="Standalone poems">
   <h2><span>Poems</span></h2>
+  <p>I didn't even know it, but it turns out I like writing poetry. From basking in the structure and limitations of a haiku, to observations in stanzas.</p>
   {% assign standalone = site.poems | where_exp: "p", "p.series == nil" | sort: "date" | reverse %}
   {% if standalone.size > 0 %}
   <div class="post-list">
@@ -56,7 +58,7 @@ splash:
   </div>
   {% else %}
   <div class="section-card post-empty">
-    <p>Nothing standalone published yet.</p>
+    <p>Nothing published yet.</p>
   </div>
   {% endif %}
 </section>

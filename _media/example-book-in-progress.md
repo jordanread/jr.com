@@ -1,11 +1,10 @@
 ---
-title: "Example Book — delete or repurpose me"
+title: "The Stand"
 type: book
 status: in-progress
 date: 2026-06-28
 description: >-
-  Currently reading — shows up on /now/ automatically because status
-  is in-progress, grouped under "Book".
+  Currently listening to the uncut audiobook.
 ---
 
 `status: in-progress` is what makes this appear on `/now/` — no

@@ -6,6 +6,7 @@ rating: 4
 description: >-
   One or two sentences — shown on the /media/ feed card and at the
   top of this entry's own page.
+published: false
 ---
 
 Optional longer write-up goes here as normal Markdown. Leave the
