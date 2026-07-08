@@ -73,6 +73,83 @@ nav {
   }
 }
 
+// Projects nav item, with a Poetry/Photography/etc. flyout. Desktop
+// hover/focus is handled entirely here via :hover / :focus-within —
+// nav-dropdown.js only adds click-to-toggle for touch devices (no
+// hover to rely on) plus Escape/outside-click to close.
+.nav-dropdown {
+  position: relative;
+}
+
+.nav-dropdown-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font: inherit;
+  padding: 0.25rem 0.5rem;
+  border-radius: $radius-pill;
+  border: 1px solid transparent;
+  background: transparent;
+  color: $muted;
+  cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+
+  &:hover,
+  &:focus-visible {
+    border-color: $accent;
+    color: $text;
+    background: $accent-soft;
+  }
+}
+
+.nav-dropdown.is-active-section > .nav-dropdown-toggle {
+  border-color: $border;
+  color: $text;
+  background: $bg-alt;
+}
+
+.nav-dropdown-caret {
+  width: 0.6rem;
+  height: 0.6rem;
+  transition: transform 0.15s ease;
+}
+
+.nav-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 0.4rem);
+  left: 0;
+  z-index: 20;
+  display: none;
+  flex-direction: column;
+  min-width: 10rem;
+  padding: 0.4rem;
+  background: $bg-card;
+  border: 1px solid $border;
+  border-radius: $radius-lg;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+
+  a {
+    padding: 0.4rem 0.6rem;
+    border-radius: $radius-pill;
+
+    &[aria-current="page"] {
+      border-color: $border;
+      color: $text;
+      background: $bg-alt;
+    }
+  }
+}
+
+.nav-dropdown:hover > .nav-dropdown-menu,
+.nav-dropdown:focus-within > .nav-dropdown-menu,
+.nav-dropdown.is-open > .nav-dropdown-menu {
+  display: flex;
+}
+
+.nav-dropdown.is-open > .nav-dropdown-toggle .nav-dropdown-caret {
+  transform: rotate(180deg);
+}
+
 .theme-toggle {
   display: inline-flex;
   align-items: center;

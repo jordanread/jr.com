@@ -2,7 +2,7 @@
 title: "Example Collection — delete or repurpose me"
 date: 2026-07-05
 description: >-
-  Optional intro blurb shown on both the /poetry/ index card and at
+  Optional intro blurb shown on both the /projects/poetry/ index card and at
   the top of this landing page.
 ---
 

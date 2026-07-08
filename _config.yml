@@ -49,10 +49,13 @@ nav:
     anchor: "/"
   - title: "Blog"
     anchor: "/blog/"
-  - title: "Poetry"
-    anchor: "/poetry/"
-  - title: "Photography"
-    anchor: "/photography/"
+  - title: "Projects"
+    anchor: "/projects/"
+    children:
+      - title: "Poetry"
+        anchor: "/projects/poetry/"
+      - title: "Photography"
+        anchor: "/projects/photography/"
   - title: "Media"
     anchor: "/media/"
   - title: "Now"
@@ -60,15 +63,15 @@ nav:
   - title: "Resume"
     anchor: "/resume/"
 
-# poems: every poem lives at /poetry/poem/<slug>/, whether it's a
-#   standalone one-off or part of a series — the `series:` front matter
-#   field (matching a poetry_collections item's filename/slug) is what
-#   groups them, not the URL.
+# poems: every poem lives at /projects/poetry/poem/<slug>/, whether
+#   it's a standalone one-off or part of a series — the `series:`
+#   front matter field (matching a poetry_collections item's
+#   filename/slug) is what groups them, not the URL.
 # poetry_collections: the curated landing pages for a series, one per
-#   collection, at /poetry/<slug>/. A file named
+#   collection, at /projects/poetry/<slug>/. A file named
 #   _poetry_collections/lighthouse-keeper.md pairs with any poem that
 #   sets `series: lighthouse-keeper`.
-# photo_albums: thematic photo grids at /photography/album/<slug>/.
+# photo_albums: thematic photo grids at /projects/photography/album/<slug>/.
 #   Bespoke scrollytelling pieces aren't a collection — they're just
 #   standalone pages, listed alongside albums via _data/photo_features.yml.
 #   Front matter shape (see _layouts/photo-album.html):
@@ -89,13 +92,13 @@ nav:
 collections:
   poems:
     output: true
-    permalink: /poetry/poem/:slug/
+    permalink: /projects/poetry/poem/:slug/
   poetry_collections:
     output: true
-    permalink: /poetry/:slug/
+    permalink: /projects/poetry/:slug/
   photo_albums:
     output: true
-    permalink: /photography/album/:slug/
+    permalink: /projects/photography/album/:slug/
   media:
     output: true
     permalink: /media/entry/:slug/

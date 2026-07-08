@@ -2,7 +2,7 @@
 title: "Example Album — delete or repurpose me"
 date: 2026-07-05
 description: >-
-  Optional intro shown on the /photography/ card and at the top of
+  Optional intro shown on the /projects/photography/ card and at the top of
   the album page.
 cover: /assets/images/albums/example/cover.jpg
 #published: false
@@ -22,6 +22,6 @@ grid — theme/story behind the album, technical notes, whatever fits.
 Leave it blank and the grid just starts right under the title.
 
 `published: false` keeps this out of the build (and out of
-`/photography/`) since the image paths above are placeholders that
+`/projects/photography/`) since the image paths above are placeholders that
 don't exist yet. Point `cover` and each `images[].src` at real files
 under `assets/images/` before flipping this to `published: true`.
