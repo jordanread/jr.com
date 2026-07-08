@@ -5,7 +5,7 @@
 # running won't take effect until you stop and restart.
 
 title: "Jordan Read"
-description: "Software engineer, entrepreneur, and maker."
+description: "Coder, Writer, Photographer. Human."
 url: "https://jordanread.com"
 baseurl: ""
 
@@ -38,7 +38,7 @@ author:
 resume:
   resume_pdf: ""
   current_focus: ".NET, Angular & Azure-backed systems"
-  recent_roles: "National Seating & Mobility · Ektello (Allegion)"
+  recent_roles: "Synergy UpLink"
   # Not read anywhere yet — here for whenever a computed "X years"
   # line gets added instead of the static "17+ years" in resume.html's
   # description and resume-hero.html's summary.

@@ -1,13 +1,9 @@
 <section class="hero" aria-label="Introduction">
   <div class="hero-main">
-    <h1>Hi, I'm <span>{{ site.author.name | split: ' ' | first }}</span>.</h1>
-    <div class="hero-title">{{ site.author.job_title }}</div>
+    <h1>It's me, <span>{{ site.author.name | split: ' ' | first }}</span>.</h1>
+    <div class="hero-title">{{ site.author.description }}</div>
     <p class="hero-summary">
-      I build software for a living — mostly backend systems, with a
-      standing excuse to try something new whenever the project allows
-      it. Most of what ends up here is everything else: travel, the
-      projects I take apart for fun, and writing that would otherwise
-      just sit in a notebook.
+      By trade I'm a software engineer, but I don't like a trade equating to one's identity. I only mention it because by personality I'm a coder. My brain seems to be a relational database, and the pure logic of coding sits comfortably within the folds of my brain. I figure out how things work, examining systems in my day-to-day. Not just software; societies, people, media, and ecosystems. I built this site for 3 reasons: nobody believes me when I say I don't have a social media presence, I enjoy a creative outlet with which I can scream into the void, and a domain without a site is like a bag without contents - begging to be filled.
     </p>
     <div class="hero-actions">
       <a class="btn btn-primary" href="{{ '/resume/' | relative_url }}">
@@ -22,12 +18,11 @@
   <aside class="hero-meta" aria-label="At-a-glance details">
     <div class="hero-meta-row">
       <div class="hero-meta-label">Age</div>
-      <div class="hero-meta-value">None of your business</div>
+      <div class="hero-meta-value">35+</div>
     </div>
     <div class="hero-meta-row">
-      <div class="hero-meta-label">Home Base</div>
-      <div class="hero-meta-value">{{ site.author.home_base }}</div>
-    </div>
-    Ask about the boat. There's always a story.
+      <div class="hero-meta-label">Location</div>
+      <div class="hero-meta-value">Earth</div>
+    </div>  
   </aside>
 </section>
