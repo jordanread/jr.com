@@ -3,6 +3,7 @@
 // -----------------------------------------------------------------------------
 
 header.site-header {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -45,53 +46,32 @@ header.site-header {
   color: $muted;
 }
 
-nav {
+// -----------------------------------------------------------------------------
+// Nav list
+// -----------------------------------------------------------------------------
+
+.site-nav {
+  font-size: 0.85rem;
+}
+
+.nav-list {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 0.75rem;
-  font-size: 0.85rem;
-
-  a {
-    padding: 0.25rem 0.5rem;
-    border-radius: $radius-pill;
-    border: 1px solid transparent;
-    color: $muted;
-
-    &:hover,
-    &:focus {
-      border-color: $accent;
-      color: $text;
-      background: $accent-soft;
-    }
-
-    &[aria-current="page"] {
-      border-color: $border;
-      color: $text;
-      background: $bg-alt;
-    }
-  }
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-// Projects nav item, with a Poetry/Photography/etc. flyout. Desktop
-// hover/focus is handled entirely here via :hover / :focus-within —
-// nav-dropdown.js only adds click-to-toggle for touch devices (no
-// hover to rely on) plus Escape/outside-click to close.
-.nav-dropdown {
-  position: relative;
-}
-
-.nav-dropdown-toggle {
+.nav-link {
   display: inline-flex;
   align-items: center;
   gap: 0.3rem;
-  font: inherit;
   padding: 0.25rem 0.5rem;
   border-radius: $radius-pill;
   border: 1px solid transparent;
-  background: transparent;
   color: $muted;
-  cursor: pointer;
   transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
 
   &:hover,
@@ -99,55 +79,231 @@ nav {
     border-color: $accent;
     color: $text;
     background: $accent-soft;
+    text-decoration: none;
+  }
+
+  &.active {
+    border-color: $border;
+    color: $text;
+    background: $bg-alt;
   }
 }
 
-.nav-dropdown.is-active-section > .nav-dropdown-toggle {
-  border-color: $border;
-  color: $text;
-  background: $bg-alt;
+// -----------------------------------------------------------------------------
+// Projects nav item, with a Poetry/Photography/Code flyout
+// -----------------------------------------------------------------------------
+//
+// Desktop: pure CSS :hover / :focus-within reveal below — clicking the
+// parent link navigates normally, exactly like any other nav link.
+// Below $breakpoint-tablet there's no hover to rely on, so nav.js
+// intercepts the parent link's click there and toggles .is-open
+// instead of navigating (see assets/js/nav.js).
+
+.nav-item--has-dropdown {
+  position: relative;
 }
 
-.nav-dropdown-caret {
+.dropdown-caret {
   width: 0.6rem;
   height: 0.6rem;
   transition: transform 0.15s ease;
 }
 
-.nav-dropdown-menu {
+.nav-item--has-dropdown:hover .dropdown-caret,
+.nav-item--has-dropdown.is-open .dropdown-caret {
+  transform: rotate(180deg);
+}
+
+.nav-item--has-dropdown.is-active-section > .nav-link--parent {
+  border-color: $border;
+  color: $text;
+  background: $bg-alt;
+}
+
+.nav-dropdown {
   position: absolute;
   top: calc(100% + 0.4rem);
   left: 0;
   z-index: 20;
-  display: none;
+  display: flex;
   flex-direction: column;
   min-width: 10rem;
+  margin: 0;
   padding: 0.4rem;
+  list-style: none;
   background: $bg-card;
   border: 1px solid $border;
   border-radius: $radius-lg;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.15s ease;
 
-  a {
-    padding: 0.4rem 0.6rem;
-    border-radius: $radius-pill;
-
-    &[aria-current="page"] {
-      border-color: $border;
-      color: $text;
-      background: $bg-alt;
-    }
+  // Invisible bridge so moving the mouse from the parent link down
+  // into the dropdown diagonally doesn't lose hover partway there.
+  &::before {
+    content: "";
+    position: absolute;
+    top: -0.4rem;
+    left: 0;
+    right: 0;
+    height: 0.4rem;
   }
 }
 
-.nav-dropdown:hover > .nav-dropdown-menu,
-.nav-dropdown:focus-within > .nav-dropdown-menu,
-.nav-dropdown.is-open > .nav-dropdown-menu {
-  display: flex;
+.nav-dropdown-link {
+  display: block;
+  padding: 0.4rem 0.6rem;
+  border-radius: $radius-pill;
+  color: $muted;
+
+  &:hover,
+  &:focus-visible {
+    color: $text;
+    background: $accent-soft;
+    text-decoration: none;
+  }
+
+  &.active {
+    border-color: $border;
+    color: $text;
+    background: $bg-alt;
+  }
 }
 
-.nav-dropdown.is-open > .nav-dropdown-toggle .nav-dropdown-caret {
-  transform: rotate(180deg);
+.nav-dropdown-divider {
+  height: 1px;
+  margin: 0.3rem 0.25rem;
+  background: $border;
+}
+
+.nav-item--has-dropdown:hover > .nav-dropdown,
+.nav-item--has-dropdown:focus-within > .nav-dropdown,
+.nav-item--has-dropdown.is-open > .nav-dropdown {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+// -----------------------------------------------------------------------------
+// Mobile hamburger + collapsing nav
+// -----------------------------------------------------------------------------
+
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.3rem;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border-radius: $radius-pill;
+  border: 1px solid $border;
+  background: $bg-alt;
+  cursor: pointer;
+}
+
+.hamburger-line {
+  display: block;
+  width: 1.1rem;
+  height: 2px;
+  margin: 0 auto;
+  background: $muted;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.nav-toggle[aria-expanded="true"] {
+  .hamburger-line:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+  }
+
+  .hamburger-line:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger-line:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+  }
+}
+
+@media (max-width: $breakpoint-tablet) {
+  .nav-toggle {
+    display: flex;
+  }
+
+  .site-nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 30;
+    max-height: 0;
+    overflow: hidden;
+    background: $bg-card;
+    border: 1px solid $border;
+    border-top: none;
+    border-radius: 0 0 $radius-lg $radius-lg;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+    transition: max-height 0.2s ease;
+  }
+
+  .site-nav.is-open {
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+
+  .nav-list {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 0.5rem;
+  }
+
+  .nav-link {
+    display: flex;
+    width: 100%;
+    padding: 0.6rem 0.75rem;
+    border-radius: $radius-lg * 0.5;
+  }
+
+  .dropdown-caret {
+    margin-left: auto;
+  }
+
+  // No hover on touch — the dropdown only opens via .is-open (nav.js
+  // intercepts the parent link's click below this breakpoint).
+  .nav-dropdown {
+    position: static;
+    box-shadow: none;
+    border: none;
+    background: transparent;
+    padding: 0 0 0 0.75rem;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition: max-height 0.2s ease;
+
+    &::before {
+      display: none;
+    }
+  }
+
+  .nav-item--has-dropdown.is-open > .nav-dropdown {
+    max-height: 20rem;
+  }
+
+  .nav-dropdown-divider {
+    display: none;
+  }
 }
 
 .theme-toggle {
