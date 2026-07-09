@@ -2,7 +2,7 @@ name: Deploy JordanRead.com
 
 on:
   push:
-    branches: [main, dev]
+    branches: [main]
   workflow_dispatch:
 
 permissions:
