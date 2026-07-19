@@ -19,12 +19,12 @@ layout: default
     {% for image in page.images %}
     <button
       type="button"
-      class="photo-thumb"
+      class="photo-thumb img-skeleton"
       data-full="{{ image.src | relative_url }}"
       data-alt="{{ image.alt | default: page.title | escape }}"
       data-caption="{{ image.caption | escape }}"
     >
-      <img src="{{ image.src | relative_url }}" alt="{{ image.alt | default: page.title }}" loading="lazy">
+      <img class="img-fade" src="{{ image.src | relative_url }}" alt="{{ image.alt | default: page.title }}" loading="lazy">
     </button>
     {% endfor %}
   </div>
