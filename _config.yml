@@ -94,7 +94,14 @@ nav:
 #   you feel like, no obligation to keep it current) — it's just
 #   what the feed sorts by, not a claim about which milestone it
 #   marks. `rating` is 1-5, `cover` and `external_url` are both
-#   optional.
+#   optional. All factual data (author/developer, published/released,
+#   pages/platforms, genres, series, collected_books, synopsis)
+#   belongs in front matter and is rendered by the layout — body
+#   content is reserved for your own review/voice, and can be left
+#   empty while an entry is stubbed out. `affiliate_url` (optional,
+#   with an `affiliate_label` override) renders a separate button
+#   from `external_url` alongside a disclosure line, so an entry can
+#   link to both an official/info page and a purchase link.
 # code_projects: open-source/personal code projects at
 #   /projects/code/<slug>/. `status` is a free-text string, not a
 #   fixed enum — "Idea", "Early development", "Work in progress",

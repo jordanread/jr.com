@@ -4,18 +4,14 @@ type: book
 author: Dennis E. Taylor
 published: 2020
 pages: 480
+series: "Bobiverse, Book 4"
+genres: [Science Fiction]
+synopsis: >-
+  Bob and his copies face new challenges and discoveries across the galaxy. Exploration of deeper mysteries introduced in previous books, encounters with new alien civilizations, and continued development of Bob's various copies' divergent paths and philosophies.
 description: >-
   Fourth book in the Bobiverse series continuing the saga of sentient AI copies exploring the galaxy.
+cover: https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1593705196i/42950440.jpg
+affiliate_url: https://amzn.to/3RqoAxT
+rating: 5
 ---
-
-**Author:** Dennis E. Taylor
-
-**Published:** 2020
-
-**Series:** Bobiverse, Book 4
-
-**Pages:** 480
-
-**Genre:** Science fiction
-
-**Plot Summary:** Bob and his copies face new challenges and discoveries across the galaxy. Exploration of deeper mysteries introduced in previous books, encounters with new alien civilizations, and continued development of Bob's various copies' divergent paths and philosophies.
+There was plenty to enjoy about this book. From the political issues arising from Replicant Drift to the relationship with Ephemerals, some great writing. But the thing that got me with this one was the megastructures. Well done, and really inspired me to give another read to the Ringworld books. Enjoyable read, with great witticisms.
