@@ -8,32 +8,35 @@ layout: default
 
 {% include projects-teaser.html %}
 
-<section aria-label="Recent posts">
-  <h2><span>Recent</span> Posts</h2>
+<section aria-label="Recent articles">
+  <h2><span>Recent</span> Articles</h2>
 
-  {% if site.posts.size > 0 %}
+  {% assign recent_articles = site.articles | sort: "date" | reverse %}
+  {% if recent_articles.size > 0 %}
   <div class="post-list post-list--compact">
-    {% for post in site.posts limit: 3 %}
-    <a class="post-card" href="{{ post.url | relative_url }}">
+    {% for entry in recent_articles limit: 3 %}
+    <a class="post-card" href="{{ entry.url | relative_url }}">
       <div class="post-card-meta">
-        <time datetime="{{ post.date | date_to_xmlschema }}">
-          {{ post.date | date: "%B %-d, %Y" }}
+        {% if entry.date %}
+        <time datetime="{{ entry.date | date_to_xmlschema }}">
+          {{ entry.date | date: "%B %-d, %Y" }}
         </time>
+        {% endif %}
       </div>
-      <h3 class="post-card-title">{{ post.title }}</h3>
-      {% if post.description %}
-      <p class="post-card-excerpt">{{ post.description }}</p>
+      <h3 class="post-card-title">{{ entry.title }}</h3>
+      {% if entry.description %}
+      <p class="post-card-excerpt">{{ entry.description }}</p>
       {% else %}
-      <p class="post-card-excerpt">{{ post.excerpt | strip_html | truncatewords: 24 }}</p>
+      <p class="post-card-excerpt">{{ entry.content | strip_html | truncatewords: 24 }}</p>
       {% endif %}
     </a>
     {% endfor %}
   </div>
-  <a class="btn btn-ghost" href="{{ '/blog/' | relative_url }}">Read all posts &rarr;</a>
+  <a class="btn btn-ghost" href="{{ '/articles/' | relative_url }}">Read all articles &rarr;</a>
   {% else %}
   <div class="section-card post-empty">
     <p>
-      Nothing published yet, but the <a href="{{ '/blog/' | relative_url }}">blog</a>
+      Nothing published yet, but the <a href="{{ '/articles/' | relative_url }}">articles page</a>
       is live and waiting.
     </p>
   </div>

@@ -47,8 +47,8 @@ resume:
 nav:
   - title: "Home"
     anchor: "/"
-  - title: "Blog"
-    anchor: "/blog/"
+  - title: "Articles"
+    anchor: "/articles/"
   - title: "Projects"
     anchor: "/projects/"
     children:
@@ -109,6 +109,14 @@ nav:
 #   point: a project can exist here with just a title, description,
 #   and status before any code exists at all. `stack` is a short list
 #   of tags, same as the old homepage projects.yml.
+# articles: standalone pieces at /articles/<slug>/ — no date-encoded
+#   permalink, unlike Jekyll's built-in posts. `title` and `tags`
+#   (optional list) are the only fields the layout expects; `date` is
+#   optional too — it's shown if present and used for sort order on
+#   /articles/, but isn't required, since these are meant to be
+#   standalone reads rather than a chronological log. `description`
+#   is an optional short blurb for the index card; if it's missing
+#   the index falls back to an auto-generated excerpt.
 collections:
   poems:
     output: true
@@ -125,6 +133,9 @@ collections:
   code_projects:
     output: true
     permalink: /projects/code/:slug/
+  articles:
+    output: true
+    permalink: /articles/:slug/
 
 # Applies _layouts/default.html to every page/post that doesn't set
 # its own `layout` in front matter, so you don't have to repeat it
@@ -139,9 +150,9 @@ defaults:
       layout: default
   - scope:
       path: ""
-      type: "posts"
+      type: "articles"
     values:
-      layout: post
+      layout: article
   - scope:
       path: ""
       type: "poems"
