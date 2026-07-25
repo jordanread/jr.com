@@ -9,6 +9,8 @@ pages: 1152
 description: >-
   Post-apocalyptic fantasy novel about survivors of a devastating plague who must rebuild civilization.
 rating: 2
+cover: https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1674820514i/87591651.jpg
+genres: [Post Apocalyptic, Fantasy, Horror]
 ---
 
 Stephen King holds a relatively unique place in my heart when it comes to books. He is an absolutely wonderful author. His writing and character development is incredible, detailed, and feels real. Also, I dislike most of his books. I like the Dark Tower series, and I have read and listened to On Writing multiple times. The rest, meh. Just not my thing.

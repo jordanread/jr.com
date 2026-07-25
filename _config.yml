@@ -85,12 +85,16 @@ nav:
 # media: a log of movies/TV/books/games at /media/entry/<slug>/.
 #   `type` (movie/tv/book/game/...) drives the filter pills on /media/.
 #   `status` is optional and defaults, in effect, to "finished" — set
-#   it to in-progress/dropped/on-hold to show a badge, and
-#   in-progress specifically is what makes an entry show up on /now/
-#   automatically. `date` doubles as "date finished" for finished
-#   entries and "date started" for in-progress ones — it's just what
-#   the feed sorts by, not a claim about which milestone it marks.
-#   `rating` is 1-5, `cover` and `external_url` are both optional.
+#   it to in-progress/dropped/on-hold/ongoing to show a badge.
+#   in-progress and ongoing are both what make an entry show up on
+#   /now/ automatically. `date` doubles as "date finished" for
+#   finished entries, "date started" for in-progress ones (implies
+#   it'll eventually flip to finished), and "date last played" for
+#   ongoing ones (things with no real finish line — bump it whenever
+#   you feel like, no obligation to keep it current) — it's just
+#   what the feed sorts by, not a claim about which milestone it
+#   marks. `rating` is 1-5, `cover` and `external_url` are both
+#   optional.
 # code_projects: open-source/personal code projects at
 #   /projects/code/<slug>/. `status` is a free-text string, not a
 #   fixed enum — "Idea", "Early development", "Work in progress",

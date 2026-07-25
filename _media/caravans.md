@@ -9,6 +9,7 @@ pages: 533
 description: >-
   A sweeping epic of adventure and self-discovery set against the backdrop of Afghanistan's rugged landscape and ancient traditions.
 rating: 4
+cover: https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1388212586i/12662.jpg
 ---
 I kind of assume that most people who know of James A. Michener are folks who recall seeing the quite thick Hawaii book in a library. I don't know that I've ever seen it in an actual book store. And then there's the subset of people who buckled down and read the monster, realizing that it is essentially a historical epic. Multi-generational story lines connected by a geographic place.
 

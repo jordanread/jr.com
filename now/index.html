@@ -23,7 +23,7 @@ splash:
 <section aria-label="Currently consuming">
   <h2><span>Currently</span></h2>
 
-  {% assign in_progress = site.media | where: "status", "in-progress" | sort: "date" | reverse %}
+  {% assign in_progress = site.media | where_exp: "item", "item.status == 'in-progress' or item.status == 'ongoing'" | sort: "date" | reverse %}
   {% if in_progress.size > 0 %}
   {% assign types = in_progress | map: "type" | uniq | sort %}
   {% for t in types %}
@@ -32,7 +32,10 @@ splash:
   <div class="post-list post-list--compact">
     {% for entry in items %}
     <a class="post-card" href="{{ entry.url | relative_url }}">
-      <h3 class="post-card-title">{{ entry.title }}</h3>
+      <h3 class="post-card-title">
+        {{ entry.title }}
+        {% if entry.status == "ongoing" %}<span class="media-status-inline">ongoing</span>{% endif %}
+      </h3>
       {% if entry.description %}
       <p class="post-card-excerpt">{{ entry.description }}</p>
       {% endif %}

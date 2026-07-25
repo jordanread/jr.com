@@ -51,6 +51,69 @@
   margin: 1rem 0;
 }
 
+.media-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.media-card-cover {
+  flex: 0 0 auto;
+  width: 84px;
+  height: 126px;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 10px;
+  background: $bg-alt;
+}
+
+.media-card-body {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.media-date-label {
+  font-size: 0.75rem;
+  color: $muted;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+time.media-date--ongoing {
+  font-size: 0.85rem;
+  color: $muted;
+}
+
+.media-status-inline {
+  font-size: 0.7rem;
+  color: $muted;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-left: 0.4rem;
+}
+
+.media-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem 1.5rem;
+  margin: 1rem 0;
+  font-size: 0.9rem;
+
+  div {
+    display: flex;
+    gap: 0.35rem;
+  }
+
+  dt {
+    color: $muted;
+  }
+
+  dd {
+    margin: 0;
+    color: $text;
+  }
+}
+
 .now-type-heading {
   font-size: 0.85rem;
   text-transform: uppercase;

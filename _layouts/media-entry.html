@@ -8,9 +8,18 @@ layout: default
       {% if page.status and page.status != "finished" %}
       <span class="pill media-status">{{ page.status | capitalize | replace: "-", " " }}</span>
       {% endif %}
+      {% if page.date %}
+      {% if page.status == "ongoing" %}
+      <span class="media-date-label">Last played</span>
+      <time class="media-date--ongoing" datetime="{{ page.date | date_to_xmlschema }}">
+        {{ page.date | date: "%B %-d, %Y" }}
+      </time>
+      {% else %}
       <time datetime="{{ page.date | date_to_xmlschema }}">
         {{ page.date | date: "%B %-d, %Y" }}
       </time>
+      {% endif %}
+      {% endif %}
     </div>
     <h1 class="post-title">{{ page.title }}</h1>
     {% if page.rating %}
@@ -24,7 +33,25 @@ layout: default
   </header>
 
   {% if page.cover %}
+  {% if page.cover contains "://" %}
+  <img class="media-entry-cover" src="{{ page.cover }}" alt="" loading="lazy">
+  {% else %}
   <img class="media-entry-cover" src="{{ page.cover | relative_url }}" alt="" loading="lazy">
+  {% endif %}
+  {% endif %}
+
+  {% if page.type == "book" and page.author %}
+  <dl class="media-meta">
+    {% if page.author %}<div><dt>Author</dt><dd>{{ page.author }}</dd></div>{% endif %}
+    {% if page.published %}<div><dt>Published</dt><dd>{{ page.published }}</dd></div>{% endif %}
+    {% if page.pages %}<div><dt>Pages</dt><dd>{{ page.pages }}</dd></div>{% endif %}
+  </dl>
+  {% elsif page.type == "game" and page.developer %}
+  <dl class="media-meta">
+    {% if page.developer %}<div><dt>Developer</dt><dd>{{ page.developer }}</dd></div>{% endif %}
+    {% if page.released %}<div><dt>Released</dt><dd>{{ page.released }}</dd></div>{% endif %}
+    {% if page.platforms %}<div><dt>Platforms</dt><dd>{{ page.platforms | join: ", " }}</dd></div>{% endif %}
+  </dl>
   {% endif %}
 
   {% if content and content != "" %}

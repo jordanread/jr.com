@@ -25,24 +25,42 @@ splash:
   <div class="post-list media-list">
     {% for entry in entries %}
     <a class="post-card media-card" href="{{ entry.url | relative_url }}" data-type="{{ entry.type | slugify }}">
-      <div class="post-card-meta">
-        <span class="pill">{{ entry.type | capitalize }}</span>
-        {% if entry.status and entry.status != "finished" %}
-        <span class="pill media-status">{{ entry.status | capitalize | replace: "-", " " }}</span>
+      {% if entry.cover %}
+      {% if entry.cover contains "://" %}
+      <img class="media-card-cover" src="{{ entry.cover }}" alt="" loading="lazy">
+      {% else %}
+      <img class="media-card-cover" src="{{ entry.cover | relative_url }}" alt="" loading="lazy">
+      {% endif %}
+      {% endif %}
+      <div class="media-card-body">
+        <div class="post-card-meta">
+          <span class="pill">{{ entry.type | capitalize }}</span>
+          {% if entry.status and entry.status != "finished" %}
+          <span class="pill media-status">{{ entry.status | capitalize | replace: "-", " " }}</span>
+          {% endif %}
+          {% if entry.date %}
+          {% if entry.status == "ongoing" %}
+          <span class="media-date-label">Last played</span>
+          <time class="media-date--ongoing" datetime="{{ entry.date | date_to_xmlschema }}">
+            {{ entry.date | date: "%B %-d, %Y" }}
+          </time>
+          {% else %}
+          <time datetime="{{ entry.date | date_to_xmlschema }}">
+            {{ entry.date | date: "%B %-d, %Y" }}
+          </time>
+          {% endif %}
+          {% endif %}
+        </div>
+        <h3 class="post-card-title">{{ entry.title }}</h3>
+        {% if entry.rating %}
+        <span class="media-rating" aria-label="Rated {{ entry.rating }} out of 5">
+          {% for i in (1..5) %}{% if i <= entry.rating %}&#9733;{% else %}&#9734;{% endif %}{% endfor %}
+        </span>
         {% endif %}
-        <time datetime="{{ entry.date | date_to_xmlschema }}">
-          {{ entry.date | date: "%B %-d, %Y" }}
-        </time>
+        {% if entry.description %}
+        <p class="post-card-excerpt">{{ entry.description }}</p>
+        {% endif %}
       </div>
-      <h3 class="post-card-title">{{ entry.title }}</h3>
-      {% if entry.rating %}
-      <span class="media-rating" aria-label="Rated {{ entry.rating }} out of 5">
-        {% for i in (1..5) %}{% if i <= entry.rating %}&#9733;{% else %}&#9734;{% endif %}{% endfor %}
-      </span>
-      {% endif %}
-      {% if entry.description %}
-      <p class="post-card-excerpt">{{ entry.description }}</p>
-      {% endif %}
     </a>
     {% endfor %}
   </div>
