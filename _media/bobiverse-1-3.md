@@ -1,11 +1,13 @@
 ---
 title: "Bobiverse Series (Books 1-3)"
+date: 2026-06-20
 type: book
 author: Dennis E. Taylor
 published: "2016–2017 (Collected edition: 2017)"
 pages: 1376
 series: "Bobiverse (Books 1-3)"
 genres: [Science Fiction]
+status: completed
 collected_books:
   - "We Are Legion (We Are Bob) — 2016, 352 pages"
   - "For We Are Many — 2017, 512 pages"

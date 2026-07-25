@@ -2,6 +2,8 @@
 title: "Heaven's River (Bobiverse #4)"
 type: book
 author: Dennis E. Taylor
+status: completed
+date: 2026-06-27
 published: 2020
 pages: 480
 series: "Bobiverse, Book 4"

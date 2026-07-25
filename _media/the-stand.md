@@ -1,7 +1,7 @@
 ---
 title: "The Stand"
 type: book
-status: finished
+status: completed
 date: 2026-06-28
 author: Stephen King
 published: "1978 (Uncut edition: 1990)"

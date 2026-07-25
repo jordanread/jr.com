@@ -2,7 +2,7 @@
 title: "The Mastermind"
 type: book
 status: completed
-date: 2026-07-25
+date: 2026-07-24
 author: Evan Ratliff
 published: 2019
 pages: 480

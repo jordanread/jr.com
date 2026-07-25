@@ -1,7 +1,7 @@
 ---
 title: "Caravans"
 type: book
-status: finished
+status: completed
 date: 2026-07-20
 author: James A. Michener
 published: 1963
