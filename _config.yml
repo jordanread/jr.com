@@ -5,7 +5,8 @@
 # running won't take effect until you stop and restart.
 
 title: "Jordan Read"
-description: "Coder, Writer, Photographer. Human."
+description: >-
+   "Portfolio site of me: software engineer, writer, and photographer. Code projects, essays, poetry, photography, and a running media log. If you find me on social media, you actually didn't. This is all there is. This is all there will always be."
 url: "https://jordanread.com"
 baseurl: ""
 
@@ -13,13 +14,22 @@ markdown: kramdown
 permalink: pretty
 excerpt_separator: <!--more-->
 
-# TODO(jordan): email/phone/linkedin/github are placeholders — fill in
-# before this goes live. Templates that reference them (header, hero,
-# contact) already guard the optional ones with {% if %}, so leaving
-# any of these blank just hides that element rather than breaking.
+# TODO(jordan): email/phone/linkedin/github/author.description are
+# placeholders — fill in before this goes live. Templates that
+# reference them (header, hero, contact) already guard the optional
+# ones with {% if %}, so leaving any of these blank just hides that
+# element rather than breaking.
+#
+# NOTE: author.description is separate from the top-level
+# `description` above — that one feeds the SEO/meta description tag
+# sitewide (and the homepage has no page.description of its own, so
+# it depends on it entirely). author.description is just the
+# personal-voice tagline home-hero.html shows in the hero, distinct
+# from author.job_title (used by the formal resume hero).
 author:
   name: "Jordan Read"
   job_title: "Software Engineer & Solution Architect"
+  description: "Coder, Writer, Photographer. Human."
   email: ""
   phone: ""
   linkedin: "https://www.linkedin.com/in/jordanread/"
@@ -82,8 +92,9 @@ nav:
 #       - src: <path>
 #         alt: <string, required for accessibility>
 #         caption: <string, optional>
-# media: a log of movies/TV/books/games at /media/entry/<slug>/.
-#   `type` (movie/tv/book/game/...) drives the filter pills on /media/.
+# media: a log of movies/TV/books/games/podcasts at /media/entry/<slug>/.
+#   `type` (movie/tv/book/game/podcast/...) drives the filter pills
+#   on /media/ — any new type just works, no config change needed.
 #   `status` is optional and defaults, in effect, to "finished" — set
 #   it to in-progress/dropped/on-hold/ongoing to show a badge.
 #   in-progress and ongoing are both what make an entry show up on
@@ -94,11 +105,14 @@ nav:
 #   you feel like, no obligation to keep it current) — it's just
 #   what the feed sorts by, not a claim about which milestone it
 #   marks. `rating` is 1-5, `cover` and `external_url` are both
-#   optional. All factual data (author/developer, published/released,
-#   pages/platforms, genres, series, collected_books, synopsis)
-#   belongs in front matter and is rendered by the layout — body
-#   content is reserved for your own review/voice, and can be left
-#   empty while an entry is stubbed out. `affiliate_url` (optional,
+#   optional. All factual data (author/developer/host, published/
+#   released, pages/platforms, genres, series, collected_books,
+#   network, episodes, run, synopsis) belongs in front matter and is
+#   rendered by the layout — body content is reserved for your own
+#   review/voice, and can be left empty while an entry is stubbed
+#   out. A podcast entry doesn't need to still be airing — `run`
+#   (e.g. "2018–2021") communicates the show itself has wrapped,
+#   independent of your own `status`. `affiliate_url` (optional,
 #   with an `affiliate_label` override) renders a separate button
 #   from `external_url` alongside a disclosure line, so an entry can
 #   link to both an official/info page and a purchase link.
