@@ -73,6 +73,7 @@ _includes/           Reusable HTML partials, included from layouts/pages
 _layouts/            Page templates
 _media/              Collection: movies/TV/books/games log
 _photo_albums/       Collection: photography albums
+_plugins/             Custom generators — see _plugins/faceted_pagination.rb
 _poems/               Collection: individual poems
 _poetry_collections/ Collection: curated poem groupings
 _articles/            Standalone articles (<slug>.md), created as needed
@@ -81,7 +82,7 @@ assets/
   css/                main.scss (compiled to main.css) + splash.css
   images/              Site images (favicons, photos, covers, etc.)
   images-raw/          Unprocessed/source images, not necessarily referenced by the site
-  js/                  Vanilla JS: nav, theme toggle, lightbox, splash, media filter
+  js/                  Vanilla JS: nav, theme toggle, lightbox, splash, article filter
 articles/index.html  Articles listing page
 media/index.html     Media log listing page
 now/index.html       "Now" page
@@ -245,7 +246,7 @@ Top-level, non-collection pages (each is its own `.html` file with Jekyll front 
 |---|---|---|
 | `/` | `index.html` | Homepage: hero, asides, code-project teaser (latest 2), recent articles (latest 3). |
 | `/articles/` | `articles/index.html` | Full article listing with tag-filter pills (JS-driven, `assets/js/article-filter.js`). |
-| `/media/` | `media/index.html` | Full media log with type-filter pills (JS-driven, `assets/js/media-filter.js`). |
+| `/media/` | `media/index.html` | Full media log, paginated and faceted by type via `_plugins/faceted_pagination.rb` — no JS. See [Faceted pagination](#faceted-pagination). |
 | `/now/` | `now/index.html` | Snapshot page + auto-generated "Currently" section from in-progress media. See [The `/now/` page](#the-now-page). |
 | `/resume/` | `resume.html` | Recruiter-facing page: hero, about, skills, experience, industries, contact. Pulls from `site.resume` and the resume-specific `_data` files. |
 | `/projects/` | `projects/index.html` | Category cards (from `project_categories.yml`) linking to poetry/photography/code. |
@@ -349,7 +350,6 @@ All vanilla JS, no build step or bundler — each file is loaded directly via `<
 - **`nav.js`** — mobile hamburger menu toggle and dropdown behavior for the "Projects" nav item (loaded from `header.html`).
 - **`theme-toggle.js`** — light/dark switch logic + `localStorage` persistence (loaded from `theme-toggle.html`).
 - **`lightbox.js`** — powers the shared lightbox modal (open/close, prev/next) used by photo albums (loaded from `lightbox.html`, included in `default.html`).
-- **`media-filter.js`** — client-side filter-pill behavior on `/media/`, toggling visibility of cards by `data-type` to match the active filter pill (loaded from `media/index.html`).
 - **`splash.js`** — drives the splash overlay animation cycle, timing, skip button, and the per-page-path "seen" flag in `localStorage` (loaded from `splash.html`).
 
 ---
@@ -359,7 +359,35 @@ All vanilla JS, no build step or bundler — each file is loaded directly via `<
 A [now page](https://nownownow.com/about) — a snapshot of current status, manually updated whenever. Two parts:
 
 1. A static intro blurb (edit directly in `now/index.html`).
-2. An auto-generated **"Currently"** section, built from every `_media` entry with `status: in-progress`, grouped by `type` and sorted by `date`. This section requires no manual editing — set an entry's `status` to `in-progress` in its front matter and it appears here automatically; flip it to `finished` (or remove `status`) and it disappears from here and moves into the regular `/media/` feed instead.
+2. An auto-generated **"Currently"** section, built from every `_media` entry with `status: in-progress`, `ongoing`, or `relistening`, grouped by `type` and sorted by `date`. No manual editing needed beyond the entry's own `status` field — set it to one of those and the entry appears here automatically; change it to anything else and it drops out of this section (it's still in the regular `/media/` feed either way).
+3. A **"Subscribed"** section: every `_media` entry with `type: podcast` and `status: subscribed`, shown as a small cover-only card (linking to the entry) plus a `Subscribe` link out to `external_url`.
+
+---
+
+## Faceted pagination
+
+`_plugins/faceted_pagination.rb` is a small custom generator that gives any collection index page real, static pagination — page 1, `/page/2/`, `/page/3/`, ... — and, optionally, a static page per value of a chosen front-matter field, e.g. `/media/podcast/`, `/media/podcast/page/2/`. Every page and every filter pill is a plain generated HTML file with a real `<a href>` — none of it depends on JavaScript.
+
+A page opts in with front matter:
+
+```yaml
+pagination:
+  enabled: true
+  collection: media    # site collection to paginate
+  per_page: 12          # optional, default 10
+  sort_field: date       # optional, default "date"
+  sort_reverse: true     # optional, default true
+  facet_field: type      # optional — front-matter field to generate per-value pages for;
+                           # works with a scalar (type: podcast) or array (tags: [a, b]) field
+```
+
+The page's own Liquid content is reused as the template for every generated page. Inside it, use:
+
+- `page.pagination_items` — the docs to render on the current page
+- `page.pager.facets` — `{ name, url, count, active }` per facet value, for rendering filter links as a single-select tab bar (see `.facet-tabs`/`.facet-tab` in `_pagination.scss`) — these are real static pages, not a togglable multi-select, so tabs are the honest UI for it
+- `{% include pagination.html %}` — drops in the shared prev/next + "Page X of Y" nav
+
+`/media/` uses this today, faceted by `type`. `/articles/` doesn't use it yet — it still renders everything on one page with JS-driven tag filtering (`assets/js/article-filter.js`) — but the same `pagination:` front-matter block (with `collection: articles`, `facet_field: tags`) is a drop-in way to switch it over later.
 
 ---
 

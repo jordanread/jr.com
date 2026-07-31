@@ -1,0 +1,17 @@
+{% if page.pager and page.pager.total_pages > 1 %}
+<nav class="pagination" aria-label="Pagination">
+  {% if page.pager.prev_url %}
+  <a class="pagination-link pagination-prev" href="{{ page.pager.prev_url | relative_url }}" rel="prev">&larr; Newer</a>
+  {% else %}
+  <span class="pagination-link pagination-prev is-disabled" aria-hidden="true">&larr; Newer</span>
+  {% endif %}
+
+  <span class="pagination-status">Page {{ page.pager.page_num }} of {{ page.pager.total_pages }}</span>
+
+  {% if page.pager.next_url %}
+  <a class="pagination-link pagination-next" href="{{ page.pager.next_url | relative_url }}" rel="next">Older &rarr;</a>
+  {% else %}
+  <span class="pagination-link pagination-next is-disabled" aria-hidden="true">Older &rarr;</span>
+  {% endif %}
+</nav>
+{% endif %}

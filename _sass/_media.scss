@@ -2,35 +2,6 @@
 // Media log
 // -----------------------------------------------------------------------------
 
-.media-filters {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-  margin: 0.75rem 0 1.25rem;
-}
-
-.media-filter {
-  cursor: pointer;
-  font: inherit;
-  font-size: 0.8rem;
-  border: 1px solid $border;
-  background: $bg-card;
-  color: $muted;
-  transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
-
-  &:hover,
-  &:focus-visible {
-    border-color: $accent;
-    color: $text;
-  }
-
-  &.is-active {
-    border-color: $accent;
-    background: $accent;
-    color: $text-on-accent;
-  }
-}
-
 .media-status {
   color: $accent;
   border-color: $accent-soft;
