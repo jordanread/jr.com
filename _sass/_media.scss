@@ -162,6 +162,49 @@ time.media-date--ongoing {
   margin-top: 1.5rem;
 }
 
+.media-subscribe-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.1rem;
+  margin: 0.75rem 0 1.5rem;
+}
+
+.media-subscribe-card {
+  width: 96px;
+  text-align: center;
+}
+
+.media-subscribe-cover-link {
+  display: block;
+}
+
+.media-subscribe-cover {
+  display: block;
+  width: 96px;
+  height: 96px;
+  object-fit: cover;
+  border-radius: $radius-lg;
+  background: $bg-alt;
+  margin-bottom: 0.4rem;
+}
+
+.media-subscribe-card-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  font-size: 0.75rem;
+}
+
+.media-subscribe-link {
+  color: $muted;
+  text-decoration: none;
+
+  &:hover,
+  &:focus-visible {
+    color: $accent;
+  }
+}
+
 .now-type-heading {
   font-size: 0.85rem;
   text-transform: uppercase;

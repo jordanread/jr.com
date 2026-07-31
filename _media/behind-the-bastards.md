@@ -2,7 +2,7 @@
 title: "Behind the Bastards"
 type: podcast
 status: subscribed
-date: 2026-07-31
+date: 2018-06-01
 host: Robert Evans
 network: iHeartRadio
 run: "2017–present"
