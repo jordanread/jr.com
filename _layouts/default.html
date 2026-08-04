@@ -16,7 +16,9 @@
     {% include footer.html %}
   </div>
 
+  {% if page.layout == "photo-album" %}
   {% include lightbox.html %}
+  {% endif %}
   <script src="{{ '/assets/js/image-loading.js' | relative_url }}" defer></script>
 </body>
 

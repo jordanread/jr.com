@@ -15,7 +15,10 @@
 @import "poetry";
 @import "photography";
 @import "media";
-@import "lightbox";
+// _lightbox.scss (custom hand-rolled overlay) is no longer imported — the
+// site now uses GLightbox (assets/css/vendor/glightbox.min.css), loaded
+// only on photo-album pages. The file itself is left in place in case
+// PhotoSwipe gets tried next and this gets revisited.
 @import "skills";
 @import "experience";
 @import "contact";

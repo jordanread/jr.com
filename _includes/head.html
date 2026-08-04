@@ -23,5 +23,9 @@
 
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}" />
 
+  {% if page.layout == "photo-album" %}
+  <link rel="stylesheet" href="{{ '/assets/css/vendor/glightbox.min.css' | relative_url }}" />
+  {% endif %}
+
   {% seo %}
   {% include json-ld.html %}
