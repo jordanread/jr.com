@@ -16,3 +16,4 @@ synopsis: >-
 cover: https://i.iheart.com/v3/url/aHR0cHM6Ly93d3cub21ueWNvbnRlbnQuY29tL2QvcHJvZ3JhbXMvZTczYzk5OGUtNmU2MC00MzJmLTg2MTAtYWUyMTAxNDBjNWIxL2U1ZjkxMjA4LWNjN2UtNDcyNi1hMzEyLWFlMjgwMTQwYWQxMS9pbWFnZS5qcGc_dD0xNzQ5NzYxNTUyJnNpemU9TGFyZ2U?ops=fit(960%2C960)
 rating: 4.5
 ---
+I've been listening to BTB for *years*. I don't know that I started at the beginning, but I was hooked pretty early on. I have listened to every episode, and it's also where I get my weekly dose of [It Could Happen Here].

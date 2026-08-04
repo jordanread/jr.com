@@ -1,7 +1,7 @@
 ---
 title: "Cat Tale"
 type: book
-status: in-progress
+status: completed
 date: 2026-07-26
 author: Craig Pittman
 published: 2020
@@ -14,4 +14,6 @@ synopsis: >-
 cover: https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1574744091i/45734780.jpg
 external_url: https://www.goodreads.com/book/show/45734780-cat-tale
 affiliate_url: https://amzn.to/4wXPDj6
+rating: 3
 ---
+Not a bad book, and an interesting story. I have to admit that I much prefer reading about the nonsense that goes on in Florida when I'm not in Florida and being directly impacted by aforementioned nonsense. It's easier to laugh or shake my head.
