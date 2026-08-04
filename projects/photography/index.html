@@ -21,7 +21,9 @@ splash:
     {% for album in albums %}
     <a class="project-card photo-index-card" href="{{ album.url | relative_url }}">
       {% if album.cover %}
-      <img class="photo-index-cover" src="{{ album.cover | relative_url }}" alt="" loading="lazy">
+      <span class="photo-index-cover-frame img-skeleton">
+        <img class="photo-index-cover img-fade" src="{{ album.cover | relative_url }}" alt="" loading="lazy">
+      </span>
       {% endif %}
       <div class="project-card-header">
         <h3 class="project-card-title">{{ album.title }}</h3>
@@ -41,7 +43,9 @@ splash:
     {% for feature in site.data.photo_features %}
     <a class="project-card photo-index-card" href="{{ feature.url | relative_url }}">
       {% if feature.cover %}
-      <img class="photo-index-cover" src="{{ feature.cover | relative_url }}" alt="" loading="lazy">
+      <span class="photo-index-cover-frame img-skeleton">
+        <img class="photo-index-cover img-fade" src="{{ feature.cover | relative_url }}" alt="" loading="lazy">
+      </span>
       {% endif %}
       <div class="project-card-header">
         <h3 class="project-card-title">{{ feature.title }}</h3>

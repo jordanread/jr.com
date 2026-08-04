@@ -15,9 +15,29 @@
   justify-content: center;
   background: rgba(10, 8, 6, 0.94);
   padding: 2.5rem;
+  opacity: 0;
+  transform: scale(0.97);
+  transition: opacity 220ms ease, transform 220ms ease;
 
   &[hidden] {
     display: none;
+  }
+
+  &.is-open {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  &.is-closing {
+    opacity: 0;
+    transform: scale(0.97);
+    transition-duration: 180ms;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lightbox {
+    transition: none;
   }
 }
 
@@ -40,6 +60,18 @@ body.lightbox-lock {
   max-height: 78vh;
   border-radius: $radius-lg;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  opacity: 1;
+  transition: opacity 150ms ease;
+
+  &.is-swapping {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lightbox-image {
+    transition: none;
+  }
 }
 
 .lightbox-caption {

@@ -26,7 +26,7 @@ images:
   - src: "https://commons.wikimedia.org/wiki/Special:FilePath/Vista_do_Rio,_a_partir_da_Ilha_das_Cobras,_Acervo_do_Instituto_Moreira_Salles.jpg"
     alt: "View of Rio de Janeiro harbor from Ilha das Cobras"
     caption: "Rio's harbor, seen from Ilha das Cobras. Instituto Moreira Salles / Wikimedia Commons, public domain."
-published: true
+published: false
 ---
 
 Marc Ferrez spent four decades turning his camera on Guanabara Bay —
