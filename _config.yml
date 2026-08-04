@@ -48,9 +48,10 @@ author:
 # Bookshop.org affiliate account. This is the numeric Affiliate ID
 # shown under "Update My Profile" when logged in — e.g. their docs use
 # 5780 as an example — NOT the "jordanread" storefront slug used in
-# https://bookshop.org/shop/jordanread. Leave blank until you have it;
-# book entries with an isbn13 just won't get an auto-generated Buy
-# button until this is set (see the `media` collection notes below).
+# https://bookshop.org/shop/jordanread. If blank, book entries with an
+# isbn13 still get a Buy button, it just links to a plain bookshop.org
+# search instead of an affiliate link (see the `media` collection
+# notes below).
 bookshop_affiliate_id: "126561"
 
 resume:
@@ -113,22 +114,25 @@ nav:
 #   you feel like, no obligation to keep it current) — it's just
 #   what the feed sorts by, not a claim about which milestone it
 #   marks. `rating` is 1-5, `cover` and `external_url` are both
-#   optional. All factual data (author/developer/host, published/
-#   released, pages/platforms, genres, series, collected_books,
-#   network, episodes, run, synopsis) belongs in front matter and is
-#   rendered by the layout — body content is reserved for your own
-#   review/voice, and can be left empty while an entry is stubbed
-#   out. A podcast entry doesn't need to still be airing — `run`
+#   optional. A podcast entry doesn't need to still be airing — `run`
 #   (e.g. "2018–2021") communicates the show itself has wrapped,
-#   independent of your own `status`. `affiliate_url` (optional,
-#   with an `affiliate_label` override) renders a separate button
-#   from `external_url` alongside a disclosure line, so an entry can
-#   link to both an official/info page and a purchase link.
-#   For books, `isbn13` is enough on its own — if `bookshop_affiliate_id`
-#   below is set, the layout builds a bookshop.org affiliate link from
-#   isbn13 automatically, so you don't need to hand-set affiliate_url
-#   per book. An explicit `affiliate_url` on an entry always wins over
-#   the auto-generated one (e.g. to keep an existing Amazon link).
+#   independent of your own `status`. All factual data (author/
+#   developer/host, published/released, pages/platforms, genres,
+#   series, collected_books, network, episodes, run, synopsis)
+#   belongs in front matter and is rendered by the layout — body
+#   content is reserved for your own review/voice, and can be left
+#   empty while an entry is stubbed out.
+#   For books, a bookshop.org "Buy" button is the primary link
+#   whenever `isbn13` is set — built as an affiliate link via
+#   `bookshop_affiliate_id` below, or a plain bookshop.org search as
+#   a fallback if that's blank. `amazon_url` (optional) adds a small
+#   icon-only secondary button next to it — identified via
+#   aria-label/title, not a wordmark. When both are present, a "Why
+#   Bookshop.org?" link to /articles/bookshop-vs-amazon/ shows up
+#   alongside them, and the disclosure line covers whichever
+#   link(s) are actually affiliate links. `external_url` still
+#   renders its own separate "More info" button, independent of
+#   either purchase link.
 # code_projects: open-source/personal code projects at
 #   /projects/code/<slug>/. `status` is a free-text string, not a
 #   fixed enum — "Idea", "Early development", "Work in progress",

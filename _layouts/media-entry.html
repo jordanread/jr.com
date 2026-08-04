@@ -83,34 +83,50 @@ layout: default
   </div>
   {% endif %}
 
+  {% assign bookshop_is_affiliate = false %}
   {% if page.isbn13 %}
+  {% if site.bookshop_affiliate_id and site.bookshop_affiliate_id != "" %}
   {% assign bookshop_url = "https://bookshop.org/a/" | append: site.bookshop_affiliate_id | append: "/" | append: page.isbn13 %}
-  {% endif %}
-  {% assign affiliate_url = page.affiliate_url | default: bookshop_url %}
-  {% if page.affiliate_label %}
-  {% assign affiliate_label = page.affiliate_label %}
-  {% elsif page.affiliate_url == nil and bookshop_url %}
-  {% assign affiliate_label = "Buy on Bookshop.org" %}
+  {% assign bookshop_is_affiliate = true %}
   {% else %}
-  {% assign affiliate_label = "Buy" %}
+  {% assign bookshop_url = "https://bookshop.org/search?keywords=" | append: page.isbn13 %}
+  {% endif %}
+  {% endif %}
+  {% assign amazon_url = page.amazon_url %}
+  {% assign has_both_options = false %}
+  {% if bookshop_url and amazon_url %}
+  {% assign has_both_options = true %}
   {% endif %}
 
-  {% if page.external_url or affiliate_url %}
+  {% if page.external_url or bookshop_url or amazon_url %}
   <p class="media-links">
     {% if page.external_url %}
     <a class="btn btn-ghost" href="{{ page.external_url }}" target="_blank" rel="noopener">
       More info &#8599;
     </a>
     {% endif %}
-    {% if affiliate_url %}
-    <a class="btn btn-primary" href="{{ affiliate_url }}" target="_blank" rel="nofollow sponsored noopener">
-      {{ affiliate_label }} &#8599;
+    {% if bookshop_url %}
+    <a class="btn btn-primary" href="{{ bookshop_url }}" target="_blank" rel="{% if bookshop_is_affiliate %}nofollow sponsored {% endif %}noopener">
+      Buy on Bookshop.org &#8599;
+    </a>
+    {% endif %}
+    {% if amazon_url %}
+    <a class="btn btn-icon" href="{{ amazon_url }}" target="_blank" rel="nofollow sponsored noopener" aria-label="Buy on Amazon" title="Buy on Amazon">
+      <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6 8h12l-1 12H7L6 8z"/>
+        <path d="M9 8V6a3 3 0 0 1 6 0v2"/>
+      </svg>
+    </a>
+    {% endif %}
+    {% if has_both_options %}
+    <a class="media-why-link" href="{{ '/articles/bookshop-vs-amazon/' | relative_url }}">
+      Why Bookshop.org? &rarr;
     </a>
     {% endif %}
   </p>
-  {% if affiliate_url %}
+  {% if bookshop_is_affiliate or amazon_url %}
   <p class="media-affiliate-disclosure">
-    Affiliate link — if you buy through it, I may earn a small commission at no extra cost to you.
+    Affiliate link{% if bookshop_is_affiliate and amazon_url %}s{% endif %} — if you buy through {% if bookshop_is_affiliate and amazon_url %}either{% else %}it{% endif %}, I may earn a small commission at no extra cost to you.
   </p>
   {% endif %}
   {% endif %}
