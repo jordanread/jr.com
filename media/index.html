@@ -3,15 +3,28 @@ layout: default
 title: "Media"
 description: "Movies, TV, books, and games, logged as I go."
 splash:
-  taglines:
-    - "Consumed"
-    - "As I go"
-  hold: 1200
+taglines:
+- "Consumed"
+- "As I go"
+hold: 1200
 ---
 
 <section aria-label="Media log">
   <h2><span>Media</span></h2>
 
+  <p>When I work on projects, I often have a podcast, an audiobook, a movie, or a TV show playing in the background. Due
+    to the way my brain works, I absorb a solid chunk of that, and I enjoy sharing my experience. And since I don't
+    really see the benefit of providing corporations with free content in the form of reviews and ratings, I decided I'd
+    do it here.</p>
+  <h3>Bookshop.org</h3>
+  <p>I am happy to announce that I am currently an affiliate with Bookshop.org. Sure, I am with Amazon, but that is in spite of the company, not because of it. Bookshop.org is like the anti-amazon, where you can pick a local independent bookstore to support, or everything goes into a general pool. Actually, let me just pull some quotes from their <a href="https://bookshop.org/info/about-us" target="_blank">about page</a>.</p>
+  <blockquote>
+    <p>Our mission is simple: To help local, independent bookstores thrive in the age of ecommerce.</p>
+    <p>Certified as a B Corp, Bookshop.org puts this mission and the public good above financial interests, giving over 80% of our profit margin to independent bookstores. In 2022, B-Labs announced we were "best for the world": in the top 5% of all B-Corps.</p>
+    <p>It is written in our governance documents that we will never sell the company to Amazon or any major U.S. retailer.</p>
+    <p>As a Climate Neutral company, we are committed to operating sustainably.</p>
+  </blockquote>
+  <p>So if you want to support this company, and to a lesser extent, me, check out the affiliate links for books (they are labelled), or just shop around using <a href="https://bookshop.org/shop/jordanread" target="_blank">my store link.</a></p>
   {% assign entries = site.media | sort: "date" | reverse %}
   {% if entries.size > 0 %}
   {% assign types = entries | map: "type" | uniq | sort %}
@@ -25,24 +38,41 @@ splash:
   <div class="post-list media-list">
     {% for entry in entries %}
     <a class="post-card media-card" href="{{ entry.url | relative_url }}" data-type="{{ entry.type | slugify }}">
-      <div class="post-card-meta">
-        <span class="pill">{{ entry.type | capitalize }}</span>
-        {% if entry.status and entry.status != "finished" %}
-        <span class="pill media-status">{{ entry.status | capitalize | replace: "-", " " }}</span>
-        {% endif %}
-        <time datetime="{{ entry.date | date_to_xmlschema }}">
-          {{ entry.date | date: "%B %-d, %Y" }}
-        </time>
+      {% if entry.cover %}
+      {% if entry.cover contains "://" %}
+      <img class="media-card-cover" src="{{ entry.cover }}" alt="" loading="lazy">
+      {% else %}
+      <img class="media-card-cover" src="{{ entry.cover | relative_url }}" alt="" loading="lazy">
+      {% endif %}
+      {% endif %}
+      <div class="media-card-body">
+        <div class="post-card-meta">
+          <span class="pill">{{ entry.type | capitalize }}</span>
+          {% if entry.status and entry.status != "finished" %}
+          <span class="pill media-status">{{ entry.status | capitalize | replace: "-", " " }}</span>
+          {% endif %}
+          {% if entry.date %}
+          {% if entry.status == "ongoing" %}
+          <span class="media-date-label">Last played</span>
+          <time class="media-date--ongoing" datetime="{{ entry.date | date_to_xmlschema }}">
+            {{ entry.date | date: "%B %-d, %Y" }}
+          </time>
+          {% else %}
+          <time datetime="{{ entry.date | date_to_xmlschema }}">
+            {{ entry.date | date: "%B %-d, %Y" }}
+          </time>
+          {% endif %}
+          {% endif %}
+        </div>
+        <h3 class="post-card-title">{{ entry.title }}</h3>
+        {% if entry.rating %}
+        <span class="media-rating" aria-label="Rated {{ entry.rating }} out of 5">
+          {% for i in (1..5) %}{% if i <= entry.rating %}&#9733;{% else %}&#9734;{% endif %}{% endfor %} </span>
+            {% endif %}
+            {% if entry.description %}
+            <p class="post-card-excerpt">{{ entry.description }}</p>
+            {% endif %}
       </div>
-      <h3 class="post-card-title">{{ entry.title }}</h3>
-      {% if entry.rating %}
-      <span class="media-rating" aria-label="Rated {{ entry.rating }} out of 5">
-        {% for i in (1..5) %}{% if i <= entry.rating %}&#9733;{% else %}&#9734;{% endif %}{% endfor %}
-      </span>
-      {% endif %}
-      {% if entry.description %}
-      <p class="post-card-excerpt">{{ entry.description }}</p>
-      {% endif %}
     </a>
     {% endfor %}
   </div>

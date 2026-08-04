@@ -8,9 +8,18 @@ layout: default
       {% if page.status and page.status != "finished" %}
       <span class="pill media-status">{{ page.status | capitalize | replace: "-", " " }}</span>
       {% endif %}
+      {% if page.date %}
+      {% if page.status == "ongoing" %}
+      <span class="media-date-label">Last played</span>
+      <time class="media-date--ongoing" datetime="{{ page.date | date_to_xmlschema }}">
+        {{ page.date | date: "%B %-d, %Y" }}
+      </time>
+      {% else %}
       <time datetime="{{ page.date | date_to_xmlschema }}">
         {{ page.date | date: "%B %-d, %Y" }}
       </time>
+      {% endif %}
+      {% endif %}
     </div>
     <h1 class="post-title">{{ page.title }}</h1>
     {% if page.rating %}
@@ -24,7 +33,48 @@ layout: default
   </header>
 
   {% if page.cover %}
+  {% if page.cover contains "://" %}
+  <img class="media-entry-cover" src="{{ page.cover }}" alt="" loading="lazy">
+  {% else %}
   <img class="media-entry-cover" src="{{ page.cover | relative_url }}" alt="" loading="lazy">
+  {% endif %}
+  {% endif %}
+
+  {% if page.type == "book" and page.author %}
+  <dl class="media-meta">
+    {% if page.author %}<div><dt>Author</dt><dd>{{ page.author }}</dd></div>{% endif %}
+    {% if page.series %}<div><dt>Series</dt><dd>{{ page.series }}</dd></div>{% endif %}
+    {% if page.published %}<div><dt>Published</dt><dd>{{ page.published }}</dd></div>{% endif %}
+    {% if page.pages %}<div><dt>Pages</dt><dd>{{ page.pages }}</dd></div>{% endif %}
+    {% if page.genres %}<div><dt>Genre</dt><dd>{{ page.genres | join: ", " }}</dd></div>{% endif %}
+  </dl>
+  {% if page.collected_books %}
+  <div class="media-collected-books">
+    <span class="media-meta-label">Books included</span>
+    <ul>
+      {% for book in page.collected_books %}<li>{{ book }}</li>{% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+  {% elsif page.type == "game" and page.developer %}
+  <dl class="media-meta">
+    {% if page.developer %}<div><dt>Developer</dt><dd>{{ page.developer }}</dd></div>{% endif %}
+    {% if page.released %}<div><dt>Released</dt><dd>{{ page.released }}</dd></div>{% endif %}
+    {% if page.platforms %}<div><dt>Platforms</dt><dd>{{ page.platforms | join: ", " }}</dd></div>{% endif %}
+    {% if page.genres %}<div><dt>Genre</dt><dd>{{ page.genres | join: ", " }}</dd></div>{% endif %}
+  </dl>
+  {% elsif page.type == "podcast" and page.host %}
+  <dl class="media-meta">
+    {% if page.host %}<div><dt>Host</dt><dd>{{ page.host }}</dd></div>{% endif %}
+    {% if page.network %}<div><dt>Network</dt><dd>{{ page.network }}</dd></div>{% endif %}
+    {% if page.run %}<div><dt>Run</dt><dd>{{ page.run }}</dd></div>{% endif %}
+    {% if page.episodes %}<div><dt>Episodes</dt><dd>{{ page.episodes }}</dd></div>{% endif %}
+    {% if page.genres %}<div><dt>Genre</dt><dd>{{ page.genres | join: ", " }}</dd></div>{% endif %}
+  </dl>
+  {% endif %}
+
+  {% if page.synopsis %}
+  <p class="media-synopsis">{{ page.synopsis }}</p>
   {% endif %}
 
   {% if content and content != "" %}
@@ -33,12 +83,24 @@ layout: default
   </div>
   {% endif %}
 
-  {% if page.external_url %}
-  <p>
+  {% if page.external_url or page.affiliate_url %}
+  <p class="media-links">
+    {% if page.external_url %}
     <a class="btn btn-ghost" href="{{ page.external_url }}" target="_blank" rel="noopener">
       More info &#8599;
     </a>
+    {% endif %}
+    {% if page.affiliate_url %}
+    <a class="btn btn-primary" href="{{ page.affiliate_url }}" target="_blank" rel="nofollow sponsored noopener">
+      {{ page.affiliate_label | default: "Buy" }} &#8599;
+    </a>
+    {% endif %}
   </p>
+  {% if page.affiliate_url %}
+  <p class="media-affiliate-disclosure">
+    Affiliate link — if you buy through it, I may earn a small commission at no extra cost to you.
+  </p>
+  {% endif %}
   {% endif %}
 
   <footer class="post-footer">

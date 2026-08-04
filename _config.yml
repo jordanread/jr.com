@@ -5,7 +5,8 @@
 # running won't take effect until you stop and restart.
 
 title: "Jordan Read"
-description: "Coder, Writer, Photographer. Human."
+description: >-
+   "Portfolio site of me: software engineer, writer, and photographer. Code projects, essays, poetry, photography, and a running media log. If you find me on social media, you actually didn't. This is all there is. This is all there will always be."
 url: "https://jordanread.com"
 baseurl: ""
 
@@ -13,13 +14,22 @@ markdown: kramdown
 permalink: pretty
 excerpt_separator: <!--more-->
 
-# TODO(jordan): email/phone/linkedin/github are placeholders — fill in
-# before this goes live. Templates that reference them (header, hero,
-# contact) already guard the optional ones with {% if %}, so leaving
-# any of these blank just hides that element rather than breaking.
+# TODO(jordan): email/phone/linkedin/github/author.description are
+# placeholders — fill in before this goes live. Templates that
+# reference them (header, hero, contact) already guard the optional
+# ones with {% if %}, so leaving any of these blank just hides that
+# element rather than breaking.
+#
+# NOTE: author.description is separate from the top-level
+# `description` above — that one feeds the SEO/meta description tag
+# sitewide (and the homepage has no page.description of its own, so
+# it depends on it entirely). author.description is just the
+# personal-voice tagline home-hero.html shows in the hero, distinct
+# from author.job_title (used by the formal resume hero).
 author:
   name: "Jordan Read"
   job_title: "Software Engineer & Solution Architect"
+  description: "Coder, Writer, Photographer. Human."
   email: ""
   phone: ""
   linkedin: "https://www.linkedin.com/in/jordanread/"
@@ -47,8 +57,8 @@ resume:
 nav:
   - title: "Home"
     anchor: "/"
-  - title: "Blog"
-    anchor: "/blog/"
+  - title: "Articles"
+    anchor: "/articles/"
   - title: "Projects"
     anchor: "/projects/"
     children:
@@ -82,15 +92,30 @@ nav:
 #       - src: <path>
 #         alt: <string, required for accessibility>
 #         caption: <string, optional>
-# media: a log of movies/TV/books/games at /media/entry/<slug>/.
-#   `type` (movie/tv/book/game/...) drives the filter pills on /media/.
+# media: a log of movies/TV/books/games/podcasts at /media/entry/<slug>/.
+#   `type` (movie/tv/book/game/podcast/...) drives the filter pills
+#   on /media/ — any new type just works, no config change needed.
 #   `status` is optional and defaults, in effect, to "finished" — set
-#   it to in-progress/dropped/on-hold to show a badge, and
-#   in-progress specifically is what makes an entry show up on /now/
-#   automatically. `date` doubles as "date finished" for finished
-#   entries and "date started" for in-progress ones — it's just what
-#   the feed sorts by, not a claim about which milestone it marks.
-#   `rating` is 1-5, `cover` and `external_url` are both optional.
+#   it to in-progress/dropped/on-hold/ongoing to show a badge.
+#   in-progress and ongoing are both what make an entry show up on
+#   /now/ automatically. `date` doubles as "date finished" for
+#   finished entries, "date started" for in-progress ones (implies
+#   it'll eventually flip to finished), and "date last played" for
+#   ongoing ones (things with no real finish line — bump it whenever
+#   you feel like, no obligation to keep it current) — it's just
+#   what the feed sorts by, not a claim about which milestone it
+#   marks. `rating` is 1-5, `cover` and `external_url` are both
+#   optional. All factual data (author/developer/host, published/
+#   released, pages/platforms, genres, series, collected_books,
+#   network, episodes, run, synopsis) belongs in front matter and is
+#   rendered by the layout — body content is reserved for your own
+#   review/voice, and can be left empty while an entry is stubbed
+#   out. A podcast entry doesn't need to still be airing — `run`
+#   (e.g. "2018–2021") communicates the show itself has wrapped,
+#   independent of your own `status`. `affiliate_url` (optional,
+#   with an `affiliate_label` override) renders a separate button
+#   from `external_url` alongside a disclosure line, so an entry can
+#   link to both an official/info page and a purchase link.
 # code_projects: open-source/personal code projects at
 #   /projects/code/<slug>/. `status` is a free-text string, not a
 #   fixed enum — "Idea", "Early development", "Work in progress",
@@ -98,6 +123,14 @@ nav:
 #   point: a project can exist here with just a title, description,
 #   and status before any code exists at all. `stack` is a short list
 #   of tags, same as the old homepage projects.yml.
+# articles: standalone pieces at /articles/<slug>/ — no date-encoded
+#   permalink, unlike Jekyll's built-in posts. `title` and `tags`
+#   (optional list) are the only fields the layout expects; `date` is
+#   optional too — it's shown if present and used for sort order on
+#   /articles/, but isn't required, since these are meant to be
+#   standalone reads rather than a chronological log. `description`
+#   is an optional short blurb for the index card; if it's missing
+#   the index falls back to an auto-generated excerpt.
 collections:
   poems:
     output: true
@@ -114,6 +147,9 @@ collections:
   code_projects:
     output: true
     permalink: /projects/code/:slug/
+  articles:
+    output: true
+    permalink: /articles/:slug/
 
 # Applies _layouts/default.html to every page/post that doesn't set
 # its own `layout` in front matter, so you don't have to repeat it
@@ -128,9 +164,9 @@ defaults:
       layout: default
   - scope:
       path: ""
-      type: "posts"
+      type: "articles"
     values:
-      layout: post
+      layout: article
   - scope:
       path: ""
       type: "poems"

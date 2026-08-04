@@ -3,17 +3,21 @@ layout: default
 ---
 <article class="post">
   <header class="post-header">
+    {% if page.date or page.tags.size > 0 %}
     <div class="post-meta">
+      {% if page.date %}
       <time datetime="{{ page.date | date_to_xmlschema }}">
         {{ page.date | date: "%B %-d, %Y" }}
       </time>
+      {% endif %}
       {% if page.tags.size > 0 %}
-      <span class="post-meta-sep" aria-hidden="true">&middot;</span>
+      {% if page.date %}<span class="post-meta-sep" aria-hidden="true">&middot;</span>{% endif %}
       <span class="post-tags">
         {% for tag in page.tags %}<span class="pill">{{ tag }}</span>{% endfor %}
       </span>
       {% endif %}
     </div>
+    {% endif %}
     <h1 class="post-title">{{ page.title }}</h1>
     {% if page.description %}
     <p class="post-description">{{ page.description }}</p>
@@ -25,6 +29,6 @@ layout: default
   </div>
 
   <footer class="post-footer">
-    <a class="btn btn-ghost" href="{{ '/blog/' | relative_url }}">&larr; Back to all posts</a>
+    <a class="btn btn-ghost" href="{{ '/articles/' | relative_url }}">&larr; Back to all articles</a>
   </footer>
 </article>

@@ -1,0 +1,60 @@
+---
+layout: default
+title: "Articles"
+description: "Standalone pieces — technical, fictional, whatever's on my mind."
+splash:
+  taglines:
+    - "A creative outlet"
+    - "Just for this page"
+  hold: 1400
+---
+
+<section aria-label="Articles">
+  <h2><span>Articles</span></h2>
+
+  {% assign entries = site.articles | sort: "date" | reverse %}
+  {% if entries.size > 0 %}
+  {% assign all_tags = entries | map: "tags" | join: "," | split: "," | uniq | sort %}
+  {% if all_tags.size > 0 %}
+  <div class="article-filters" role="group" aria-label="Filter by tag">
+    <button type="button" class="pill article-filter is-active" data-filter="all">All</button>
+    {% for t in all_tags %}
+    {% if t != "" %}
+    <button type="button" class="pill article-filter" data-filter="{{ t | slugify }}">{{ t }}</button>
+    {% endif %}
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  <div class="post-list">
+    {% for entry in entries %}
+    {% capture tag_slugs %}{% for tag in entry.tags %}{{ tag | slugify }} {% endfor %}{% endcapture %}
+    <a class="post-card article-card" href="{{ entry.url | relative_url }}" data-tags="{{ tag_slugs | strip }}">
+      <div class="post-card-meta">
+        {% if entry.date %}
+        <time datetime="{{ entry.date | date_to_xmlschema }}">
+          {{ entry.date | date: "%B %-d, %Y" }}
+        </time>
+        {% endif %}
+        {% if entry.tags.size > 0 %}
+        {% if entry.date %}<span class="post-meta-sep" aria-hidden="true">&middot;</span>{% endif %}
+        {% for tag in entry.tags %}<span class="pill">{{ tag }}</span>{% endfor %}
+        {% endif %}
+      </div>
+      <h3 class="post-card-title">{{ entry.title }}</h3>
+      {% if entry.description %}
+      <p class="post-card-excerpt">{{ entry.description }}</p>
+      {% else %}
+      <p class="post-card-excerpt">{{ entry.content | strip_html | truncatewords: 32 }}</p>
+      {% endif %}
+    </a>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="section-card post-empty">
+    <p>Nothing published yet — first one's still in the oven.</p>
+  </div>
+  {% endif %}
+</section>
+
+<script src="{{ '/assets/js/article-filter.js' | relative_url }}" defer></script>

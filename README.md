@@ -1,6 +1,6 @@
 # jordanread.com
 
-Personal site for Jordan Read — portfolio, resume, blog, and a media/poetry/photography/code-project log. Built with [Jekyll](https://jekyllrb.com/) and deployed to GitHub Pages.
+Personal site for Jordan Read — portfolio, resume, articles, and a media/poetry/photography/code-project log. Built with [Jekyll](https://jekyllrb.com/) and deployed to GitHub Pages.
 
 - **Live site:** https://jordanread.com
 - **Engine:** Jekyll (`kramdown` markdown, `pretty` permalinks)
@@ -14,7 +14,7 @@ Personal site for Jordan Read — portfolio, resume, blog, and a media/poetry/ph
 - [Project structure](#project-structure)
 - [Site configuration (`_config.yml`)](#site-configuration-_configyml)
 - [Content collections](#content-collections)
-  - [Blog posts (`_posts`, `_drafts`)](#blog-posts-_posts-_drafts)
+  - [Articles (`_articles`)](#articles-_articles)
   - [Media log (`_media`)](#media-log-_media)
   - [Poems (`_poems`)](#poems-_poems)
   - [Poetry collections (`_poetry_collections`)](#poetry-collections-_poetry_collections)
@@ -69,21 +69,20 @@ JEKYLL_ENV=production bundle exec jekyll build
 _code_projects/     Collection: open-source/personal code projects
 _config.yml         Site-wide configuration (see below)
 _data/               YAML data files powering various sections (see below)
-_drafts/             Unpublished blog posts (not built unless --drafts is passed)
 _includes/           Reusable HTML partials, included from layouts/pages
 _layouts/            Page templates
 _media/              Collection: movies/TV/books/games log
 _photo_albums/       Collection: photography albums
 _poems/               Collection: individual poems
 _poetry_collections/ Collection: curated poem groupings
-_posts/               Blog posts (YYYY-MM-DD-slug.md), created as needed
+_articles/            Standalone articles (<slug>.md), created as needed
 _sass/                SCSS partials, imported by assets/css/main.scss
 assets/
   css/                main.scss (compiled to main.css) + splash.css
   images/              Site images (favicons, photos, covers, etc.)
   images-raw/          Unprocessed/source images, not necessarily referenced by the site
   js/                  Vanilla JS: nav, theme toggle, lightbox, splash, media filter
-blog/index.html      Blog listing page
+articles/index.html  Articles listing page
 media/index.html     Media log listing page
 now/index.html       "Now" page
 projects/            Projects landing + poetry/photography/code sub-sections
@@ -121,19 +120,19 @@ Every example/stub file mentioned below currently exists in the repo as a workin
 
 Any file's front matter can include `published: false` to keep it out of the build entirely (won't render, won't appear in listings) — useful for stubs and in-progress drafts. Run with `--unpublished` to preview it locally anyway.
 
-### Blog posts (`_posts`, `_drafts`)
+### Articles (`_articles`)
 
-Not a custom collection — this is Jekyll's built-in `posts`.
+Standalone pieces — technical, fictional, whatever. Not a chronological log; no date-encoded filename or permalink like Jekyll's built-in posts.
 
-- **Location:** `_posts/YYYY-MM-DD-slug.md`. Filename date is required.
-- **Layout:** `post` (assigned via `defaults`).
+- **Location:** `_articles/<slug>.md`
+- **Permalink:** `/articles/:slug/`
+- **Layout:** `article` (assigned via `defaults`)
 - **Front matter:**
   - `title` (required)
-  - `description` — optional one-liner. Shown on the `/blog/` listing and used as the meta description. If omitted, the listing falls back to the post's excerpt (see below).
-  - `tags` — optional list, rendered as pills on the listing and post page.
-- **Excerpt:** everything above the `<!--more-->` marker becomes the excerpt used on `/blog/` when `description` isn't set (`excerpt_separator: <!--more-->` in `_config.yml`).
-- **Drafts:** put unfinished posts in `_drafts/<slug>.md` (no date prefix). They're excluded from `site.posts` and the build unless you run `jekyll serve --drafts` / `jekyll build --drafts`. Move a draft into `_posts/` with a `YYYY-MM-DD-` prefix once ready to publish.
-- **Where it shows:** `/blog/` (full list) and the homepage (latest 3, via `_includes/projects-teaser.html`-adjacent block in `index.html`).
+  - `description` — optional one-liner. Shown on the `/articles/` listing and used as the meta description. If omitted, the listing falls back to an auto-generated excerpt of the content.
+  - `tags` — optional list, rendered as pills on the listing and article page, and drives the filter pills on `/articles/` — a new tag automatically gets its own pill, multi-select (union), no code changes needed.
+  - `date` — optional. Shown if present, and used for sort order on `/articles/` (dated entries sort newest-first, undated entries trail after). Not required — these aren't meant to be a chronological log.
+- **Where it shows:** `/articles/` (full list, tag-filterable) and the homepage (latest 3, via `_includes/projects-teaser.html`-adjacent block in `index.html`).
 
 ### Media log (`_media`)
 
@@ -229,7 +228,7 @@ Plain YAML, no front matter needed. Edited files are picked up live by `jekyll s
 |---|---|---|
 | `splash.yml` | `_includes/splash.html` (fallback) | The splash overlay's actual site-wide default phrase list — used when a page's `splash:` front matter doesn't set its own `taglines:`. Every page currently using the `splash` layout sets explicit per-page `taglines:`, so this fallback isn't hit anywhere live today, but it's what a new `layout: splash` page would get if it left `taglines:` unset. |
 | `taglines.yml` | `comparison.html` only (currently) | A separate phrase list. **Not** wired into the live `_includes/splash.html` fallback (that reads `site.data.splash`, i.e. `splash.yml`, not this file) — only `comparison.html` reads it directly today. `demo.html`'s inline comments describe this file as the conceptual source for its hardcoded preview array, but the real splash include doesn't consume it, so editing it won't change the live overlay on any page. |
-| `asides.yml` | `_includes/asides.html` (homepage) | The "Asides" teaser grid. Each item: `title`, `tag` (optional pill), `body`, `link` (optional, `text` + `url`). Meant to be short — link out to a blog post or `/now/` for anything that deserves more room. |
+| `asides.yml` | `_includes/asides.html` (homepage) | The "Asides" teaser grid. Each item: `title`, `tag` (optional pill), `body`, `link` (optional, `text` + `url`). Meant to be short — link out to an article or `/now/` for anything that deserves more room. |
 | `skills.yml` | `_includes/skills.html` (resume page) | Grouped skill lists: each item is `group` (heading) + `items` (list of strings). |
 | `experience.yml` | `_includes/experience.html` (resume page) | Work history timeline. Each entry: `company`, `dates`, `role`, `location`, `highlights` (list of bullet strings). |
 | `industries.yml` | `_includes/industries.html` (resume page) | Flat list of industry/focus-area strings, rendered as pills. |
@@ -244,8 +243,8 @@ Top-level, non-collection pages (each is its own `.html` file with Jekyll front 
 
 | Path | File | Notes |
 |---|---|---|
-| `/` | `index.html` | Homepage: hero, asides, code-project teaser (latest 2), recent blog posts (latest 3). |
-| `/blog/` | `blog/index.html` | Full reverse-chronological post listing. |
+| `/` | `index.html` | Homepage: hero, asides, code-project teaser (latest 2), recent articles (latest 3). |
+| `/articles/` | `articles/index.html` | Full article listing with tag-filter pills (JS-driven, `assets/js/article-filter.js`). |
 | `/media/` | `media/index.html` | Full media log with type-filter pills (JS-driven, `assets/js/media-filter.js`). |
 | `/now/` | `now/index.html` | Snapshot page + auto-generated "Currently" section from in-progress media. See [The `/now/` page](#the-now-page). |
 | `/resume/` | `resume.html` | Recruiter-facing page: hero, about, skills, experience, industries, contact. Pulls from `site.resume` and the resume-specific `_data` files. |
@@ -266,7 +265,7 @@ All in `_layouts/`, applied either via each collection's `defaults:` entry in `_
 
 - **`default.html`** — the base shell: `<head>` (via `head.html`), header, `<main>{{ content }}</main>`, footer, and the shared lightbox markup/script. Applied to anything that doesn't set its own layout.
 - **`splash.html`** — same shell as `default`, but also injects the splash intro overlay (`splash-head.html` in `<head>`, `splash.html` include right after `<body>`). Use this layout on any page that should play the intro.
-- **`post.html`** — blog post: date + tags meta, title, description, content, "back to all posts" footer link.
+- **`article.html`** — article: optional date + tags meta, title, description, content, "back to all articles" footer link.
 - **`poem.html`** — poem: series breadcrumb (if in a collection) + part number, title, date, description, body (with stanza-friendly line breaks), prev/next series navigation if applicable, "back to all poetry" link.
 - **`poetry-collection.html`** — collection landing page: title, description, optional intro body, then the auto-generated numbered poem list (or an empty-state card if no poems yet).
 - **`photo-album.html`** — album: title, description, optional intro body, thumbnail grid wired to the lightbox, "back to photography" link.
@@ -309,7 +308,7 @@ Recognized keys (all optional, with defaults):
 
 ### Editing phrases
 
-Every page currently sets its own `splash.taglines` list directly in front matter (see `blog/index.html`, `media/index.html`, `now/index.html`, and the `/projects/` sub-pages for examples) — edit the list under that page's `splash:` block to change what it shows. To change the site-wide fallback used by any future `splash`-layout page that doesn't set its own list, edit `_data/splash.yml` instead. Either way, `jekyll serve` picks up front matter and `_data` changes automatically — no restart needed, just refresh. Keep phrases short (1–4 words) so they read well at large display size on mobile; see `assets/css/splash.css` if longer phrases need the `clamp()` font-sizing retuned.
+Every page currently sets its own `splash.taglines` list directly in front matter (see `articles/index.html`, `media/index.html`, `now/index.html`, and the `/projects/` sub-pages for examples) — edit the list under that page's `splash:` block to change what it shows. To change the site-wide fallback used by any future `splash`-layout page that doesn't set its own list, edit `_data/splash.yml` instead. Either way, `jekyll serve` picks up front matter and `_data` changes automatically — no restart needed, just refresh. Keep phrases short (1–4 words) so they read well at large display size on mobile; see `assets/css/splash.css` if longer phrases need the `clamp()` font-sizing retuned.
 
 ### Previewing without Jekyll
 
@@ -370,7 +369,7 @@ Handled by the three allowlisted plugins (see `_config.yml`):
 
 - **`jekyll-seo-tag`** — outputs meta tags via `{% seo %}` in `_includes/head.html`. Reads `page.title`/`page.description` (falling back to site-wide `title`/`description`), plus `site.url`.
 - **`jekyll-sitemap`** — generates `/sitemap.xml` automatically at build time.
-- **`jekyll-feed`** — generates `/feed.xml` (Atom) for blog posts automatically at build time.
+- **`jekyll-feed`** — generates `/feed.xml` (Atom). Defaults to `site.posts`, which is unused now that articles don't use Jekyll's built-in posts collection — see the plugin's docs if you want a feed for `/articles/` instead.
 
 `_includes/json-ld.html` additionally emits a `Person` schema.org JSON-LD block (name, contact links, `knowsAbout`, occupation) for richer search-engine understanding — update the `knowsAbout` skill list and `occupationLocation` there directly if they drift from reality.
 
@@ -392,8 +391,8 @@ No manual deploy steps needed — merging to `main` (or pushing directly) trigge
 
 ## Common tasks
 
-**Add a blog post**
-Create `_posts/YYYY-MM-DD-my-slug.md` with `title` (and optionally `description`/`tags`) in front matter; everything above `<!--more-->` becomes the fallback excerpt.
+**Add an article**
+Create `_articles/my-slug.md` with `title` (and optionally `description`/`tags`/`date`) in front matter — no date-prefixed filename needed.
 
 **Log something in the media feed**
 Create `_media/<slug>.md`. Minimum front matter: `title`, `type`, `date`. Add `status: in-progress` while working through it (auto-appears on `/now/`); remove/flip to `finished` and set the real `date` when done.
