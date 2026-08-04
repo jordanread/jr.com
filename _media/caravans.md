@@ -14,7 +14,7 @@ cover: https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/
 genres: [Historical Fiction, Adventure]
 synopsis: >-
   The novel follows Mark Miller, a young American diplomat, as he is sent to Afghanistan to locate a missing American woman named Ellen Jasper. His search becomes a transformative journey through the harsh Afghan wilderness and tribal communities. As Miller travels with a caravan across the desert, he encounters diverse characters and cultures, ultimately discovering that Ellen has chosen to embrace the nomadic life. The story explores themes of freedom, cultural identity, and the clash between Western and Eastern ways of life, while depicting the beauty and challenge of Afghanistan's untamed landscape.
-affiliate_url: https://amzn.to/4fyvbym
+amazon_url: https://amzn.to/4fyvbym
 ---
 I kind of assume that most people who know of James A. Michener are folks who recall seeing the quite thick Hawaii book in a library. I don't know that I've ever seen it in an actual book store. And then there's the subset of people who buckled down and read the monster, realizing that it is essentially a historical epic. Multi-generational story lines connected by a geographic place.
 

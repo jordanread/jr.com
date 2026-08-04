@@ -14,7 +14,7 @@ synopsis: >-
 description: >-
   Fourth book in the Bobiverse series continuing the saga of sentient AI copies exploring the galaxy.
 cover: https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1593705196i/42950440.jpg
-affiliate_url: https://amzn.to/3RqoAxT
+amazon_url: https://amzn.to/3RqoAxT
 rating: 5
 ---
 There was plenty to enjoy about this book. From the political issues arising from Replicant Drift to the relationship with Ephemerals, some great writing. But the thing that got me with this one was the megastructures. Well done, and really inspired me to give another read to the Ringworld books. Enjoyable read, with great witticisms.

@@ -14,7 +14,7 @@ genres: [True Crime, Biography]
 rating: 4
 synopsis: >-
   Award-winning investigative journalist Evan Ratliff chronicles the rise and fall of Paul Calder Le Roux, a brilliant programmer turned criminal genius who built a global crime syndicate operating out of Manila. What began as an online prescription drug network supplying painkillers to American customers evolved into a sprawling multinational conglomerate engaged in cocaine trafficking, methamphetamine shipments, arms deals, and contract killings. For years, DEA agents pursued Le Roux across the globe as he eluded capture through advanced encryption and ruthless tactics. The story takes an unexpected turn when Le Roux is finally captured and strikes a deal to become a government informant, cooperating to bring down his own organization and associates. Ratliff's meticulous four-year investigation, conducted amid personal threats and dangers, pieces together hundreds of interviews and thousands of documents to reveal a crime boss uniquely suited to—and enabled by—the digital age.
-affiliate_url: https://amzn.to/4fV3fWA
+amazon_url: https://amzn.to/4fV3fWA
 ---
 I'm normally not into true crime, but I do have a soft spot in my heart for investigative journalism. During the course of this book, I found myself disgusted with the so-called "good guys", kind of rooting for them in spite of that, and then just appreciating the work and research that Evan did in order to create a pretty comprehensive story of a very convoluted series of events.
 

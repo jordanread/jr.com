@@ -14,7 +14,7 @@ cover: https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/
 genres: [Post Apocalyptic, Fantasy, Horror]
 synopsis: >-
   Following the accidental release of a super-flu that wipes out 99% of the world's population, survivors band together and face a supernatural struggle between good and evil as they attempt to rebuild society.
-affiliate_url: https://amzn.to/4wph0mp
+amazon_url: https://amzn.to/4wph0mp
 ---
 
 Stephen King holds a relatively unique place in my heart when it comes to books. He is an absolutely wonderful author. His writing and character development is incredible, detailed, and feels real. Also, I dislike most of his books. I like the Dark Tower series, and I have read and listened to On Writing multiple times. The rest, meh. Just not my thing.
