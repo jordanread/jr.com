@@ -63,6 +63,14 @@ layout: default
     {% if page.platforms %}<div><dt>Platforms</dt><dd>{{ page.platforms | join: ", " }}</dd></div>{% endif %}
     {% if page.genres %}<div><dt>Genre</dt><dd>{{ page.genres | join: ", " }}</dd></div>{% endif %}
   </dl>
+  {% elsif page.type == "podcast" and page.host %}
+  <dl class="media-meta">
+    {% if page.host %}<div><dt>Host</dt><dd>{{ page.host }}</dd></div>{% endif %}
+    {% if page.network %}<div><dt>Network</dt><dd>{{ page.network }}</dd></div>{% endif %}
+    {% if page.run %}<div><dt>Run</dt><dd>{{ page.run }}</dd></div>{% endif %}
+    {% if page.episodes %}<div><dt>Episodes</dt><dd>{{ page.episodes }}</dd></div>{% endif %}
+    {% if page.genres %}<div><dt>Genre</dt><dd>{{ page.genres | join: ", " }}</dd></div>{% endif %}
+  </dl>
   {% endif %}
 
   {% if page.synopsis %}

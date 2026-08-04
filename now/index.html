@@ -23,7 +23,7 @@ splash:
 <section aria-label="Currently consuming">
   <h2><span>Currently</span></h2>
 
-  {% assign in_progress = site.media | where_exp: "item", "item.status == 'in-progress' or item.status == 'ongoing'" | sort: "date" | reverse %}
+  {% assign in_progress = site.media | where_exp: "item", "item.status == 'in-progress' or item.status == 'ongoing' or item.status == 'relistening'" | sort: "date" | reverse %}
   {% if in_progress.size > 0 %}
   {% assign types = in_progress | map: "type" | uniq | sort %}
   {% for t in types %}
@@ -34,7 +34,7 @@ splash:
     <a class="post-card" href="{{ entry.url | relative_url }}">
       <h3 class="post-card-title">
         {{ entry.title }}
-        {% if entry.status == "ongoing" %}<span class="media-status-inline">ongoing</span>{% endif %}
+        {% if entry.status == "ongoing" or entry.status == "relistening" %}<span class="media-status-inline">{{ entry.status }}</span>{% endif %}
       </h3>
       {% if entry.description %}
       <p class="post-card-excerpt">{{ entry.description }}</p>
@@ -46,6 +46,34 @@ splash:
   {% else %}
   <div class="section-card post-empty">
     <p>Nothing in progress right now — check the full <a href="{{ '/media/' | relative_url }}">media log</a>.</p>
+  </div>
+  {% endif %}
+</section>
+
+<section aria-label="Podcast subscriptions">
+  {% assign subscribed = site.media | where_exp: "item", "item.type == 'podcast' and item.status == 'subscribed'" | sort: "title" %}
+  {% if subscribed.size > 0 %}
+  <h2><span>Subscribed</span></h2>
+  <div class="media-subscribe-list">
+    {% for entry in subscribed %}
+    <div class="media-subscribe-card">
+      {% if entry.cover %}
+      {% if entry.cover contains "://" %}
+      <a href="{{ entry.url | relative_url }}" class="media-subscribe-cover-link">
+        <img class="media-subscribe-cover" src="{{ entry.cover }}" alt="{{ entry.title }}" loading="lazy">
+      </a>
+      {% else %}
+      <a href="{{ entry.url | relative_url }}" class="media-subscribe-cover-link">
+        <img class="media-subscribe-cover" src="{{ entry.cover | relative_url }}" alt="{{ entry.title }}" loading="lazy">
+      </a>
+      {% endif %}
+      {% endif %}
+      <div class="media-subscribe-card-links">
+        <a class="media-subscribe-link" href="{{ entry.url | relative_url }}">More info</a>
+        <a class="media-subscribe-link" href="{{ entry.external_url }}" target="_blank" rel="noopener">Subscribe</a>
+      </div>
+    </div>
+    {% endfor %}
   </div>
   {% endif %}
 </section>
