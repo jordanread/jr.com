@@ -4,6 +4,7 @@ type: book
 status: completed
 date: 2026-07-26
 author: Craig Pittman
+isbn13: 9781335482211
 published: 2020
 pages: 336
 description: >-

@@ -40,7 +40,7 @@ layout: default
   {% endif %}
   {% endif %}
 
-  {% if page.type == "book" and page.author %}
+  {% if page.type == "book" %}
   <dl class="media-meta">
     {% if page.author %}<div><dt>Author</dt><dd>{{ page.author }}</dd></div>{% endif %}
     {% if page.series %}<div><dt>Series</dt><dd>{{ page.series }}</dd></div>{% endif %}
@@ -83,20 +83,32 @@ layout: default
   </div>
   {% endif %}
 
-  {% if page.external_url or page.affiliate_url %}
+  {% if page.isbn13 %}
+  {% assign bookshop_url = "https://bookshop.org/a/" | append: site.bookshop_affiliate_id | append: "/" | append: page.isbn13 %}
+  {% endif %}
+  {% assign affiliate_url = page.affiliate_url | default: bookshop_url %}
+  {% if page.affiliate_label %}
+  {% assign affiliate_label = page.affiliate_label %}
+  {% elsif page.affiliate_url == nil and bookshop_url %}
+  {% assign affiliate_label = "Buy on Bookshop.org" %}
+  {% else %}
+  {% assign affiliate_label = "Buy" %}
+  {% endif %}
+
+  {% if page.external_url or affiliate_url %}
   <p class="media-links">
     {% if page.external_url %}
     <a class="btn btn-ghost" href="{{ page.external_url }}" target="_blank" rel="noopener">
       More info &#8599;
     </a>
     {% endif %}
-    {% if page.affiliate_url %}
-    <a class="btn btn-primary" href="{{ page.affiliate_url }}" target="_blank" rel="nofollow sponsored noopener">
-      {{ page.affiliate_label | default: "Buy" }} &#8599;
+    {% if affiliate_url %}
+    <a class="btn btn-primary" href="{{ affiliate_url }}" target="_blank" rel="nofollow sponsored noopener">
+      {{ affiliate_label }} &#8599;
     </a>
     {% endif %}
   </p>
-  {% if page.affiliate_url %}
+  {% if affiliate_url %}
   <p class="media-affiliate-disclosure">
     Affiliate link — if you buy through it, I may earn a small commission at no extra cost to you.
   </p>

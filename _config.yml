@@ -6,7 +6,7 @@
 
 title: "Jordan Read"
 description: >-
-   "Portfolio site of me: software engineer, writer, and photographer. Code projects, essays, poetry, photography, and a running media log. If you find me on social media, you actually didn't. This is all there is. This is all there will always be."
+   "Portfolio site of me: software engineer, writer, and photographer. Code projects, essays, poetry, photography, and a running media log. If you find me on social media, you actually didn't. This is all there is. This is all there will ever be."
 url: "https://jordanread.com"
 baseurl: ""
 
@@ -45,6 +45,14 @@ author:
 # never into home-hero.html or anything else the homepage uses. If a
 # new template wants one of these, that's a sign it belongs on
 # /resume/, not that it should reach into this block.
+# Bookshop.org affiliate account. This is the numeric Affiliate ID
+# shown under "Update My Profile" when logged in — e.g. their docs use
+# 5780 as an example — NOT the "jordanread" storefront slug used in
+# https://bookshop.org/shop/jordanread. Leave blank until you have it;
+# book entries with an isbn13 just won't get an auto-generated Buy
+# button until this is set (see the `media` collection notes below).
+bookshop_affiliate_id: "126561"
+
 resume:
   resume_pdf: ""
   current_focus: ".NET, Angular & Azure-backed systems"
@@ -116,6 +124,11 @@ nav:
 #   with an `affiliate_label` override) renders a separate button
 #   from `external_url` alongside a disclosure line, so an entry can
 #   link to both an official/info page and a purchase link.
+#   For books, `isbn13` is enough on its own — if `bookshop_affiliate_id`
+#   below is set, the layout builds a bookshop.org affiliate link from
+#   isbn13 automatically, so you don't need to hand-set affiliate_url
+#   per book. An explicit `affiliate_url` on an entry always wins over
+#   the auto-generated one (e.g. to keep an existing Amazon link).
 # code_projects: open-source/personal code projects at
 #   /projects/code/<slug>/. `status` is a free-text string, not a
 #   fixed enum — "Idea", "Early development", "Work in progress",

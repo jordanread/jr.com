@@ -6,6 +6,7 @@ date: 2026-06-28
 author: Stephen King
 published: "1978 (Uncut edition: 1990)"
 pages: "1,152 (uncut edition)"
+isbn13: 9780307947307
 description: >-
   Post-apocalyptic fantasy novel about survivors of a devastating plague who must rebuild civilization.
 rating: 2

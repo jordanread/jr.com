@@ -4,6 +4,7 @@ type: book
 status: completed
 date: 2026-07-20
 author: James A. Michener
+isbn13: 9780812969825
 published: 1963
 pages: 533
 description: >-

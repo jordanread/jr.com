@@ -4,6 +4,7 @@ type: book
 status: in-progress
 date: 2026-07-25
 author: Chuck Palahniuk
+isbn13: 9781538717950
 published: 2021
 pages: 256
 description: >-

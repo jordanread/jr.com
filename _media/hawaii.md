@@ -5,6 +5,7 @@ status: in-progress
 date: 2026-07-26
 author: James A. Michener
 published: 1959
+isbn13: 9780375760372
 pages: 937
 description: >-
   Sweeping historical-fiction saga tracing Hawaii's story from its volcanic origins through Polynesian settlement, missionary arrival, and waves of immigration.

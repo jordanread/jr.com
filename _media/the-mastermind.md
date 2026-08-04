@@ -5,6 +5,7 @@ status: completed
 date: 2026-07-24
 author: Evan Ratliff
 published: 2019
+isbn13: 9780399590436
 pages: 480
 description: >- 
     The incredible true story of the decade-long hunt to bring down Paul Le Roux, a reclusive programmer who built a frighteningly powerful Internet-enabled criminal empire.
