@@ -16,6 +16,7 @@ synopsis: >-
   The series follows Bob Johanssen, a human consciousness copied into a self-replicating AI. Bob explores the galaxy, discovers alien life, and battles existential threats while his copies develop distinct personalities and philosophies. Themes include consciousness, AI identity, space exploration, and humanity's place in the universe.
 description: >-
   Science fiction trilogy following a sentient AI copy of a human consciousness exploring the galaxy.
+  isbn13: 9781668221570
 amazon_url: https://amzn.to/3RUBbJO
 cover: https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1474344826i/32109569.jpg
 rating: 4

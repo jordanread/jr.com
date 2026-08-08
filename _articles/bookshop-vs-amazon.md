@@ -6,7 +6,28 @@ description: >-
   Why every book link on this site points to Bookshop.org first, and what
   that little Amazon icon next to it is doing there anyway.
 ---
-I link to a lot of books here — mostly because I read a lot of books, and the media log needed somewhere for "buy this" to point. For a while that somewhere was Amazon, because that's the reflex. Type a title, click the top result, done. It's the default because Amazon spent twenty-some years making sure it would be the default, and it worked.
+I link to a lot of books here, because I read, re-read, re-listen to, listen to, and enjoy a lot of books, and I want to share it with whomever finds this place, because they're worth my time, and should be worth your's. Shit, this website is my name, so I can tell you that growing up, the meanest thing kids called me was Chef-Boy-R-Read. Not the most original, or even mean, but apparently it stuck with me. Literacy doesn't seem to be the silver bullet I used to think it was, due in part to the absolute amount of written garbage that exists these days (mostly from AI, but also from idiots), but I certainly still think it's very important, and good. We as a species and as a society can deal with that other nonsense, even though it doesn't seem as easy as it should be.
+
+Also, since I'm on the internet, you can be assured that I am existing in a capitalist society that for some reason, requires money to be a living human. Not gonna get into that in this article though. Because I exist in this society, I have to play that game. I suppose I could get a job (and I'm very good at that when I do), and I've done that for most of my career (if you are interested, check out my [resume](/resume.html) page). I can also get a cut by promoting stuff, and companies to buy it from. It doesn't change your bottom line (yet), and it doesn't change the author's cut (yet).
+
+The Amazon Affiliates program has been around for a long time. Everything you buy for something like 30 days after you click my link (assuming you don't click another affiliate link, which is unlikely these days) I get credit for, and a portion of. It's super easy to say that I'm taking money out of Amazon's pocket, and I'm putting it in mine. Seems good, right? It's not, but it *is* easy. So many people love that prime nonsense of getting things so quick. Apparently, they have groceries too!
+
+From a US perspective, our super glorious lifetime appointed pieces of garbage referred to as the Supreme Court decided that freedom of speech also means money. That was in 2010. But lets go back a little bit. Like 16 years. 1994, before the dot com boom, the dot com bust, there was a tiny little fellow who *wasn't* a company. His name was Jeff. And he spent the next 30 years being sad that girls didn't like him (he probably was sad about women not liking him too), and decided to hate books, and those who sell them. But this little fella made it easy for people like me to make a little bit of money by sending people to him for books, and then everything else. To this day, I still get excited when someone in my area code gets a free amazon prime membershit trial.
+
+
+
+
+There are many legitimate and well-sourced writings out there (books) along with freely available (articles...via archive.org hopefully) that can explain to you how this tiny insignificant Jeff is a very sad little dude who is doing his damndest to make poeple like him (primarily unsuccesfully, because he's unlikeable...like a lot, like a gross amount...I'm running out of punctuation to pause between the different ways this little lowlife is a scumbag...Let's ask his AI, ey?
+
+
+
+
+).
+
+
+
+
+It's the default because Amazon spent twenty-some years making sure it would be the default, and it worked.
 
 But "default" and "good" aren't the same thing, and once I actually had to pick where those links go on purpose, instead of just going along with the reflex, Amazon stopped being the obvious answer.
 
