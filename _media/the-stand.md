@@ -3,18 +3,19 @@ title: "The Stand"
 type: book
 status: completed
 date: 2026-06-28
+cover: https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1674820514i/87591651.jpg
+external_url: https://openlibrary.org/books/OL28202057M/The_Stand
+amazon_url: https://amzn.to/4wph0mp
+rating: 2
 author: Stephen King
 published: "1978 (Uncut edition: 1990)"
-pages: "1,152 (uncut edition)"
 isbn13: 9780307947307
+pages: "1,152 (uncut edition)"
 description: >-
   Post-apocalyptic fantasy novel about survivors of a devastating plague who must rebuild civilization.
-rating: 2
-cover: https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1674820514i/87591651.jpg
 genres: [Post Apocalyptic, Fantasy, Horror]
 synopsis: >-
   Following the accidental release of a super-flu that wipes out 99% of the world's population, survivors band together and face a supernatural struggle between good and evil as they attempt to rebuild society.
-amazon_url: https://amzn.to/4wph0mp
 ---
 
 Stephen King holds a relatively unique place in my heart when it comes to books. He is an absolutely wonderful author. His writing and character development is incredible, detailed, and feels real. Also, I dislike most of his books. I like the Dark Tower series, and I have read and listened to On Writing multiple times. The rest, meh. Just not my thing.
