@@ -1,0 +1,64 @@
+// -----------------------------------------------------------------------------
+// Page transitions (cross-document View Transitions API)
+// -----------------------------------------------------------------------------
+// This is a static Jekyll site — every link is a real navigation, not a
+// client-side route change. `@view-transition { navigation: auto; }` opts
+// same-origin navigations into the browser's native cross-document View
+// Transitions, which crossfades the outgoing and incoming pages instead of
+// the usual hard flash. No JS, and no work in unsupported browsers — they
+// just navigate normally, so this is pure progressive enhancement.
+//
+// Support: Chromium-based browsers and Safari 18.2+. Firefox does not yet
+// implement cross-document view transitions; those visitors simply get the
+// ordinary navigation with no transition, same as today.
+@view-transition {
+  navigation: auto;
+}
+
+// Both the old and new page briefly overlap during the crossfade. The
+// browser's default compositing (mix-blend-mode: plus-lighter) can cause a
+// washed-out double-exposure look, especially over the site's dark theme —
+// this resets it to a plain, isolated crossfade.
+::view-transition-image-pair(root) {
+  isolation: isolate;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  mix-blend-mode: normal;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 240ms;
+    animation-timing-function: ease;
+  }
+
+  ::view-transition-old(root) {
+    animation-name: page-fade-out;
+  }
+
+  ::view-transition-new(root) {
+    animation-name: page-fade-in;
+  }
+}
+
+// Respect reduced-motion the same way splash.js does for the intro overlay:
+// skip the animated motion entirely rather than offering a shortened version
+// of it. The navigation still happens instantly, just without the crossfade.
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*) {
+    animation: none !important;
+  }
+}
+
+@keyframes page-fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes page-fade-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}

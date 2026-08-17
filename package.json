@@ -1,0 +1,12 @@
+{
+  "name": "jr.com",
+  "private": true,
+  "description": "Dev-only dependency management for vendored front-end libraries. Jekyll never runs npm; see the \"vendor\" script.",
+  "devDependencies": {
+    "glightbox": "^3.3.1"
+  },
+  "scripts": {
+    "vendor:glightbox": "mkdir -p assets/js/vendor assets/css/vendor && cp node_modules/glightbox/dist/js/glightbox.min.js assets/js/vendor/glightbox.min.js && cp node_modules/glightbox/dist/css/glightbox.min.css assets/css/vendor/glightbox.min.css",
+    "vendor": "npm run vendor:glightbox"
+  }
+}

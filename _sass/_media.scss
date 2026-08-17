@@ -147,7 +147,41 @@ time.media-date--ongoing {
 .media-links {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 0.6rem;
+}
+
+// Secondary, de-emphasized retailer link — icon only, identified via
+// aria-label/title rather than a wordmark. Bookshop.org's btn-primary
+// stays the one actual "buy" call to action.
+.btn-icon {
+  padding: 0.55rem;
+  aspect-ratio: 1;
+  background: transparent;
+  border-color: $border;
+  color: $muted;
+
+  svg {
+    width: 1.1rem;
+    height: 1.1rem;
+  }
+
+  &:hover {
+    border-color: #ff9900;
+    color: #ff9900;
+    background: rgba(255, 153, 0, 0.08);
+  }
+}
+
+.media-why-link {
+  font-size: 0.82rem;
+  color: $muted;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+
+  &:hover {
+    color: $accent;
+  }
 }
 
 .media-affiliate-disclosure {

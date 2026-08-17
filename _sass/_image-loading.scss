@@ -1,0 +1,53 @@
+// -----------------------------------------------------------------------------
+// Image loading: skeleton shimmer + fade-in
+// -----------------------------------------------------------------------------
+// Reusable across any page that shows several images at once (photography
+// index covers, album grids, ...). Pair the two classes:
+//   .img-skeleton  → on the container. Shows an animated shimmer until the
+//                    image inside it has actually finished loading.
+//   .img-fade      → on the <img> itself. Starts transparent and fades in
+//                    once assets/js/image-loading.js adds .is-loaded, which
+//                    it does on the image's load/error event (or immediately
+//                    if the image is already cached and complete).
+//
+// The point is to stop images painting in line-by-line on a slow connection —
+// the shimmer sits behind the (invisible) image until it's ready, then the
+// image fades in on top of it in one step.
+
+.img-skeleton {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(100deg, $bg-alt 30%, $border-subtle 50%, $bg-alt 70%);
+  background-size: 200% 100%;
+  animation: img-skeleton-shimmer 1.4s ease-in-out infinite;
+
+  &.is-loaded {
+    animation: none;
+    background: none;
+  }
+}
+
+.img-fade {
+  opacity: 0;
+  transition: opacity 0.35s ease;
+
+  &.is-loaded {
+    opacity: 1;
+  }
+}
+
+@keyframes img-skeleton-shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .img-skeleton {
+    animation: none;
+    background: $bg-alt;
+  }
+
+  .img-fade {
+    transition: none;
+  }
+}

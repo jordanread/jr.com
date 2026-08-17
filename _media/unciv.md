@@ -3,15 +3,15 @@ title: "Unciv"
 type: game
 status: ongoing
 date: 2026-06-15
+cover: https://raw.githubusercontent.com/yairm210/Unciv/master/extraImages/Icons/Unciv%20icon%20v6.png
+external_url: https://f-droid.org/en/packages/com.unciv.app/
+rating: 5
 developer: yairm210 and contributors
 released: 2020
 platforms: [Desktop, Android]
 description: >-
   Open-source 4X strategy game built on Civilization mechanics.
-rating: 5
-cover: https://raw.githubusercontent.com/yairm210/Unciv/master/extraImages/Icons/Unciv%20icon%20v6.png
 genres: [Turn Based Strategy, 4X]
-external_url: https://f-droid.org/en/packages/com.unciv.app/
 synopsis: >-
   Turn-based strategy game featuring civilization building, technology advancement, diplomacy, and warfare. Inspired by the Civilization series mechanics but independently developed as open-source software.
 ---
