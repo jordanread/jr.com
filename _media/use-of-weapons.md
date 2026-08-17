@@ -1,11 +1,16 @@
 ---
 title: "Use of Weapons"
 type: book
+status: completed
+date: 2026-08-11
+external_url: https://openlibrary.org/books/OL24744075M/Use_of_weapons
+amazon_url: https://amzn.to/4qiogOA
+cover: https://m.media-amazon.com/images/I/91N7GB3HgfL._SL1500_.jpg
 author: Iain M. Banks
 published: 1990
 isbn13: 9780316068796
 pages: 384
-series: "Culture, Book 3"
+series: "Culture #3"
 description: >-
   A nonlinear Culture novel tracing the career and hidden past of Cheradenine Zakalwe, one of Special Circumstances' most effective and troubled operatives.
 genres: [Science Fiction, Space Opera]

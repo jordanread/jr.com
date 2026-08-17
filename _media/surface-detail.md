@@ -1,11 +1,13 @@
 ---
 title: "Surface Detail"
 type: book
+external_url: https://openlibrary.org/books/OL24500323M/Surface_Detail
 author: Iain M. Banks
 published: 2010
+published: false
 isbn13: 9780316123419
 pages: 604
-series: "Culture, Book 9"
+series: "Culture #9"
 description: >-
   A Culture novel about a war fought over the ethics of Hell — digital afterlives built to punish the dead — spilling from virtual reality into the real world.
 genres: [Science Fiction, Space Opera]

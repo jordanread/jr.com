@@ -1,11 +1,13 @@
 ---
 title: "Matter"
 type: book
+external_url: https://openlibrary.org/works/OL100768W/Matter
 author: Iain M. Banks
 published: 2008
+published: false
 isbn13: 9780316005371
 pages: 593
-series: "Culture, Book 8"
+series: "Culture #8"
 description: >-
   A Culture novel following siblings from a feudal civilization living inside a vast artificial Shellworld, as ancient secrets threaten their homeland.
 genres: [Science Fiction, Space Opera]

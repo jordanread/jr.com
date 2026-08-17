@@ -1,11 +1,16 @@
 ---
 title: "Consider Phlebas"
 type: book
+status: completed
+date: 2026-08-06
+cover: https://m.media-amazon.com/images/I/8135n+rtEpL._SL1500_.jpg
+external_url: https://openlibrary.org/books/OL24246434M/Consider_Phlebas
+amazon_url: https://amzn.to/45v6A8T
 author: Iain M. Banks
 published: 1987
 isbn13: 9780316005388
 pages: 471
-series: "Culture, Book 1"
+series: "Culture #1"
 description: >-
   The opening novel of the Culture series, a space opera about a shapeshifting mercenary caught between the Culture and its enemies during an interstellar war.
 genres: [Science Fiction, Space Opera]

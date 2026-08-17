@@ -3,18 +3,19 @@ title: "Caravans"
 type: book
 status: completed
 date: 2026-07-20
+cover: https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1388212586i/12662.jpg
+external_url: https://openlibrary.org/books/OL45722721M/Caravans
+amazon_url: https://amzn.to/4fyvbym
+rating: 4
 author: James A. Michener
-isbn13: 9780812969825
 published: 1963
+isbn13: 9780812969825
 pages: 533
 description: >-
   A sweeping epic of adventure and self-discovery set against the backdrop of Afghanistan's rugged landscape and ancient traditions.
-rating: 4
-cover: https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1388212586i/12662.jpg
 genres: [Historical Fiction, Adventure]
 synopsis: >-
   The novel follows Mark Miller, a young American diplomat, as he is sent to Afghanistan to locate a missing American woman named Ellen Jasper. His search becomes a transformative journey through the harsh Afghan wilderness and tribal communities. As Miller travels with a caravan across the desert, he encounters diverse characters and cultures, ultimately discovering that Ellen has chosen to embrace the nomadic life. The story explores themes of freedom, cultural identity, and the clash between Western and Eastern ways of life, while depicting the beauty and challenge of Afghanistan's untamed landscape.
-amazon_url: https://amzn.to/4fyvbym
 ---
 I kind of assume that most people who know of James A. Michener are folks who recall seeing the quite thick Hawaii book in a library. I don't know that I've ever seen it in an actual book store. And then there's the subset of people who buckled down and read the monster, realizing that it is essentially a historical epic. Multi-generational story lines connected by a geographic place.
 

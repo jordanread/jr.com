@@ -1,11 +1,13 @@
 ---
 title: "Inversions"
 type: book
+external_url: https://openlibrary.org/books/OL91700M/Inversions
 author: Iain M. Banks
 published: 1998
+published: false
 isbn13: 9781982156107
 pages: 384
-series: "Culture, Book 6"
+series: "Culture #6"
 description: >-
   A Culture novel set entirely on a low-tech, medieval-style world, telling its story without ever naming the Culture directly.
 genres: [Science Fiction, Space Opera]

@@ -1,11 +1,13 @@
 ---
 title: "Look to Windward"
 type: book
+external_url: https://openlibrary.org/works/OL100773W/Look_to_windward
 author: Iain M. Banks
 published: 2000
+published: false
 isbn13: 9781982156060
 pages: 357
-series: "Culture, Book 7"
+series: "Culture #7"
 description: >-
   A Culture novel about the long shadow of an old war, set on the vast Orbital habitat Masaq' as it awaits the arrival of light from a centuries-old atrocity.
 genres: [Science Fiction, Space Opera]

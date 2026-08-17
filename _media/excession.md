@@ -1,11 +1,15 @@
 ---
 title: "Excession"
 type: book
+status: in-progress
+amazon_url: https://amzn.to/4idpfh1
+cover: https://m.media-amazon.com/images/I/915NVYlSoOL._SL1500_.jpg
+external_url: https://openlibrary.org/works/OL8368435W/Excession
 author: Iain M. Banks
 published: 1996
 isbn13: 9780316595063
 pages: 464
-series: "Culture, Book 5"
+series: "Culture #5"
 description: >-
   A Culture novel centered on a mysterious ancient artifact and the elaborate political maneuvering it triggers among the Culture's Minds.
 genres: [Science Fiction, Space Opera]
