@@ -5,7 +5,8 @@
   "devDependencies": {
     "glightbox": "^3.3.1",
     "js-yaml": "^5.4.1",
-    "pdfmake": "^0.3.11"
+    "pdfmake": "^0.3.11",
+    "pngjs": "^7.0.0"
   },
   "scripts": {
     "vendor:glightbox": "mkdir -p assets/js/vendor assets/css/vendor && cp node_modules/glightbox/dist/js/glightbox.min.js assets/js/vendor/glightbox.min.js && cp node_modules/glightbox/dist/css/glightbox.min.css assets/css/vendor/glightbox.min.css",

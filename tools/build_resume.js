@@ -30,13 +30,20 @@
  *          `exclude:` in _config.yml).
  * --out    Output directory for the .pdf. Defaults to ./out
  *
- * Requires: npm install pdfmake js-yaml
+ * The header logo is read from assets/images-raw/favicon.png (the site's
+ * source art, not the small pre-cropped assets/images/favicon.png used for
+ * web favicons) and auto-trimmed to its non-transparent bounding box at
+ * build time — see trimTransparentPadding() — so there's no separate
+ * export step to remember if the source art changes.
+ *
+ * Requires: npm install pdfmake js-yaml pngjs
  */
 
 const fs = require("fs");
 const path = require("path");
 const yaml = require("js-yaml");
 const pdfMake = require("pdfmake");
+const { PNG } = require("pngjs");
 
 // ---------------------------------------------------------------------------
 // CLI args
@@ -167,6 +174,25 @@ const industries = loadYaml("_data/industries.yml");
 const author = config.author || {};
 const resumeMeta = config.resume || {};
 
+// Fail fast with a clear message naming the offending entry, rather than a
+// cryptic error deep in the render code the first time a role is missing a
+// field (e.g. a new _data/experience.yml entry added without `location`).
+const REQUIRED_JOB_FIELDS = ["company", "role", "dates", "location", "highlights"];
+experience.forEach((job, i) => {
+  const missing = REQUIRED_JOB_FIELDS.filter((key) => {
+    const value = job[key];
+    if (value == null) return true;
+    if (Array.isArray(value)) return value.length === 0;
+    if (typeof value === "string") return value.trim() === "";
+    return false;
+  });
+  if (missing.length) {
+    throw new Error(
+      `_data/experience.yml entry #${i + 1} (company: "${job.company || "?"}") is missing: ${missing.join(", ")}`
+    );
+  }
+});
+
 // ---------------------------------------------------------------------------
 // Apply tailoring
 // ---------------------------------------------------------------------------
@@ -271,6 +297,50 @@ const RULE = "#e4dfd3"; // --border
 
 const PAGE_WIDTH = 522; // LETTER (612pt) minus 45pt left/right margins
 
+// ---------------------------------------------------------------------------
+// Header logo
+// ---------------------------------------------------------------------------
+
+// Crops a PNG buffer down to the bounding box of its non-transparent
+// pixels (plus a small margin), so a source image with lots of transparent
+// padding (e.g. a square favicon/app-icon export) doesn't render as a tiny
+// mark lost inside an oversized invisible box.
+function trimTransparentPadding(buffer, margin = 8) {
+  const png = PNG.sync.read(buffer);
+  const { width, height, data } = png;
+  let minX = width, minY = height, maxX = -1, maxY = -1;
+  for (let y = 0; y < height; y++) {
+    for (let x = 0; x < width; x++) {
+      if (data[(width * y + x) * 4 + 3] > 8) {
+        if (x < minX) minX = x;
+        if (x > maxX) maxX = x;
+        if (y < minY) minY = y;
+        if (y > maxY) maxY = y;
+      }
+    }
+  }
+  if (maxX < 0) return null; // fully transparent — nothing to trim
+
+  minX = Math.max(0, minX - margin);
+  minY = Math.max(0, minY - margin);
+  maxX = Math.min(width - 1, maxX + margin);
+  maxY = Math.min(height - 1, maxY + margin);
+
+  const outW = maxX - minX + 1;
+  const outH = maxY - minY + 1;
+  const out = new PNG({ width: outW, height: outH });
+  PNG.bitblt(png, out, minX, minY, outW, outH, 0, 0);
+  return { dataUrl: `data:image/png;base64,${PNG.sync.write(out).toString("base64")}`, width: outW, height: outH };
+}
+
+function loadHeaderLogo() {
+  const logoPath = path.join(SITE_DIR, "assets/images-raw/favicon.png");
+  if (!fs.existsSync(logoPath)) return null;
+  return trimTransparentPadding(fs.readFileSync(logoPath));
+}
+
+const headerLogo = loadHeaderLogo();
+
 const hr = (color = RULE) => ({
   canvas: [{ type: "line", x1: 0, y1: 0, x2: PAGE_WIDTH, y2: 0, lineWidth: 0.75, lineColor: color }],
   margin: [0, 2, 0, 10],
@@ -333,12 +403,30 @@ const contactLine = [
   author.linkedin,
 ].filter(Boolean).join("   •   ");
 
-content.push(
-  { text: (author.name || "").toUpperCase(), bold: true, color: ACCENT, fontSize: 20, margin: [0, 0, 0, 1] },
-  { text: TAILORING.headline || author.job_title || "", bold: true, color: TEXT, fontSize: 12, margin: [0, 0, 0, 5] },
-  { text: contactLine, color: MUTED, fontSize: 9, margin: [0, 0, 0, 3] },
-  hr(),
-);
+const nameBlock = {
+  stack: [
+    { text: (author.name || "").toUpperCase(), bold: true, color: ACCENT, fontSize: 20, margin: [0, 0, 0, 1] },
+    { text: TAILORING.headline || author.job_title || "", bold: true, color: TEXT, fontSize: 12, margin: [0, 0, 0, 5] },
+    { text: contactLine, color: MUTED, fontSize: 9 },
+  ],
+};
+
+if (headerLogo) {
+  // Fit within a small box next to the name/headline rather than a fixed
+  // width/height, so the logo's own aspect ratio (from trimTransparentPadding)
+  // is preserved instead of stretching it.
+  const LOGO_BOX = 64;
+  content.push({
+    columns: [
+      nameBlock,
+      { image: headerLogo.dataUrl, fit: [LOGO_BOX, LOGO_BOX], alignment: "right", width: "auto" },
+    ],
+    margin: [0, 0, 0, 3],
+  });
+} else {
+  content.push(nameBlock);
+}
+content.push(hr());
 
 content.push(sectionHeading("Professional Summary"));
 content.push({
