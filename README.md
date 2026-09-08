@@ -28,6 +28,7 @@ Personal site for Jordan Read — portfolio, resume, articles, and a media/poetr
 - [Styling (`_sass`)](#styling-_sass)
 - [JavaScript (`assets/js`)](#javascript-assetsjs)
 - [The `/now/` page](#the-now-page)
+- [Local tooling (`package.json`)](#local-tooling-packagejson)
 - [SEO, feed & sitemap](#seo-feed--sitemap)
 - [Deployment](#deployment)
 - [Common tasks](#common-tasks)
@@ -92,6 +93,8 @@ comparison.html      Standalone splash style-comparison reference (layout: null)
 demo.html            Standalone splash preview, no Jekyll needed (plain HTML)
 site.webmanifest     PWA manifest
 Gemfile              Ruby gem dependencies
+package.json         Dev-only npm tooling — vendored libraries + local build scripts (see below)
+tools/               Local Node scripts, not deployed with the site (excluded from Jekyll's build)
 .github/workflows/   GitHub Actions deploy workflow
 ```
 
@@ -108,7 +111,7 @@ Key sections:
 - **`collections`** — registers the five custom collections (see below), each with `output: true` and a `permalink` pattern.
 - **`defaults`** — assigns a default `layout` per collection/page type so individual files don't need to repeat `layout:` in front matter (see [Layouts](#layouts)).
 - **`plugins`** — `jekyll-feed`, `jekyll-seo-tag`, `jekyll-sitemap`. All three are on GitHub Pages' safe-plugin allowlist. Only add more plugins here if building/deploying outside GitHub Pages' own build pipeline (they won't be available there otherwise).
-- **`exclude`** — files Jekyll shouldn't copy into `_site` (`Gemfile`, `Gemfile.lock`, `README.md`, `node_modules`, `vendor`).
+- **`exclude`** — files Jekyll shouldn't copy into `_site` (`Gemfile`, `Gemfile.lock`, `README.md`, `node_modules`, `vendor`, `tools`).
 
 ---
 
@@ -363,6 +366,15 @@ A [now page](https://nownownow.com/about) — a snapshot of current status, manu
 
 ---
 
+## Local tooling (`package.json`)
+
+`package.json` is dev-only. Jekyll never runs npm, and `node_modules`/`tools` are both in `exclude:` (see [Site configuration](#site-configuration-_configyml)) so neither reaches `_site` or the deployed site. Two unrelated things currently live under it:
+
+- **`vendor`** — copies vendored front-end libraries into `assets/`, since there's no JS bundler (see [JavaScript](#javascript-assetsjs)). Run `npm install && npm run vendor` after cloning, or after bumping a version in `devDependencies`, to (re)populate `assets/js/vendor` and `assets/css/vendor`. Currently just `vendor:glightbox` (GLightbox, used by `lightbox.js`); add a new `vendor:<name>` script + `devDependencies` entry alongside it if another library gets vendored this way, and add it to the `vendor` script's chain.
+- **`resume`** — runs `tools/build_resume.js`, a standalone script (not part of the Jekyll build) that reads `_config.yml` and `_data/experience.yml`/`skills.yml`/`industries.yml` and generates a tailored `.pdf` resume for a specific job application, styled with the site's own "Ember & Fog" accent colors (`_sass/_theme.scss`). It never touches the site's `_data` — all per-application tailoring (which bullets to use, extra emphasis, skill-group order) lives in a `TAILORING` block at the top of the script itself, edited per job. Real contact info (email/phone) is deliberately *not* in that block — it's read from `tools/resume.local.json` (gitignored, so it never lands in git history); copy `tools/resume.local.example.json` to get started. PDF generation is pure JS via `pdfmake` (no LibreOffice/Word dependency, no font-substitution risk — fonts are embedded directly). Run `npm install && npm run resume` from the repo root; the `.pdf` lands in `tools/out/` (gitignored). See the comment block at the top of `tools/build_resume.js` for the `--site`/`--out` CLI flags.
+
+---
+
 ## SEO, feed & sitemap
 
 Handled by the three allowlisted plugins (see `_config.yml`):
@@ -411,6 +423,9 @@ Create `_code_projects/<slug>.md` with `title`, `date`, `description`, `status`,
 
 **Update the resume**
 Edit `_data/experience.yml` (work history), `_data/skills.yml` (skill groups), `_data/industries.yml` (focus-area pills), and the `resume:` block in `_config.yml` (current focus, recent roles). Contact details live under `author:` in `_config.yml`, shared with the rest of the site.
+
+**Build a tailored resume `.pdf` for a job application**
+First time only: copy `tools/resume.local.example.json` to `tools/resume.local.json` (gitignored) and fill in real email/phone. Then edit the `TAILORING` block at the top of `tools/build_resume.js` (headline, summary, per-company bullet overrides, skill-group order/extras) and run `npm install && npm run resume` from the repo root. See [Local tooling](#local-tooling-packagejson).
 
 **Change the nav**
 Edit `nav:` in `_config.yml`. Requires a server restart to see locally (`_config.yml` changes aren't hot-reloaded).

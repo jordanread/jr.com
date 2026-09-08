@@ -224,3 +224,4 @@ exclude:
   - README.md
   - node_modules
   - vendor
+  - tools

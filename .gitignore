@@ -6,6 +6,10 @@ _site/
 .bundle/
 /vendor/
 
+# Generated resume PDF output + real contact info (tools/build_resume.js)
+/tools/out/
+/tools/resume.local.json
+
 # https://github.com/envygeeks/jekyll-docker/blob/master/.gitignore
 .DS_Store
 
