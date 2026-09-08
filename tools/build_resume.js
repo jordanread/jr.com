@@ -75,9 +75,9 @@ const localContact = loadLocalContact();
 // ---------------------------------------------------------------------------
 
 const TAILORING = {
-  fileSlug: "Jordan_Read_Resume_Senior_.NET_Developer",
+  fileSlug: `Jordan_Read_Resume_${new Date().getFullYear()}-${String(new Date().getMonth() + 1).padStart(2, '0')}`,
 
-  headline: "Senior .NET Developer  |  Azure Solution Architect",
+  headline: "Director - Software Engineering | Sr. Manager - Software Architecture",
 
   // Falls back to author.description from _config.yml if left blank.
   summary:
@@ -109,27 +109,27 @@ const TAILORING = {
   // _data/experience.yml. `highlights` replaces that job's bullets
   // entirely; `maxHighlights` trims the (possibly overridden) list.
   experienceOverrides: {
-    "National Seating & Mobility": {
-      highlights: [
-        "Worked within a non-documented Dynamics 365 system of record built on an Azure App Service-hosted n-tier architecture, becoming the go-to engineer for stabilizing undocumented enterprise integrations.",
-        "Used Azure Service Bus extensively to build and maintain asynchronous, message-driven integrations between enterprise systems.",
-        "Applied TDD and CI/CD discipline to stabilize and extend a production .NET Core Web API and Angular stack backed by SQL Server, reducing regression risk in a business-critical enterprise application.",
-        "Designed and implemented versioning for a RESTful .NET Core API, and contributed to a geographic exclusivity system governing protected product data.",
-        "Advised leadership on DevOps pipeline design, security posture, and architecture requirements for deployments and planned product replacements.",
-      ],
-    },
-    "Ektello (Allegion)": {
-      maxHighlights: 2,
-    },
-    "Veteran Engineering & Technology": {
-      highlights: [
-        "Sustained and extended a U.S. military training application (ASP.NET Web Forms, custom plugin architecture) under a formal U.S. government sustainment contract.",
-        "Identified, duplicated, documented, and resolved issues within the existing framework and plugin-based architecture.",
-      ],
-    },
-    "I3 Verticals (Data Business Systems)": { maxHighlights: 1 },
-    "WideOpenWest": { maxHighlights: 2 },
-  },
+  //   "National Seating & Mobility": {
+  //     highlights: [
+  //       "Worked within a non-documented Dynamics 365 system of record built on an Azure App Service-hosted n-tier architecture, becoming the go-to engineer for stabilizing undocumented enterprise integrations.",
+  //       "Used Azure Service Bus extensively to build and maintain asynchronous, message-driven integrations between enterprise systems.",
+  //       "Applied TDD and CI/CD discipline to stabilize and extend a production .NET Core Web API and Angular stack backed by SQL Server, reducing regression risk in a business-critical enterprise application.",
+  //       "Designed and implemented versioning for a RESTful .NET Core API, and contributed to a geographic exclusivity system governing protected product data.",
+  //       "Advised leadership on DevOps pipeline design, security posture, and architecture requirements for deployments and planned product replacements.",
+  //     ],
+  //   },
+  //   "Ektello (Allegion)": {
+  //     maxHighlights: 2,
+  //   },
+  //   "Veteran Engineering & Technology": {
+  //     highlights: [
+  //       "Sustained and extended a U.S. military training application (ASP.NET Web Forms, custom plugin architecture) under a formal U.S. government sustainment contract.",
+  //       "Identified, duplicated, documented, and resolved issues within the existing framework and plugin-based architecture.",
+  //     ],
+  //   },
+  //   "I3 Verticals (Data Business Systems)": { maxHighlights: 1 },
+  //   "WideOpenWest": { maxHighlights: 2 },
+   },
 
   // Merge same-company multi-stint entries (e.g. two Cypress Inland
   // rows for consecutive years) into one block before any other
@@ -151,7 +151,7 @@ const TAILORING = {
   },
 
   // Extra industries to append beyond what's in industries.yml.
-  industriesExtra: ["Government / Military Sustainment"],
+  //industriesExtra: ["Government / Military Sustainment"],
 };
 
 // ---------------------------------------------------------------------------
@@ -416,7 +416,7 @@ if (headerLogo) {
   // Fit within a small box next to the name/headline rather than a fixed
   // width/height, so the logo's own aspect ratio (from trimTransparentPadding)
   // is preserved instead of stretching it.
-  const LOGO_BOX = 64;
+  const LOGO_BOX = 46;
   content.push({
     columns: [
       nameBlock,
