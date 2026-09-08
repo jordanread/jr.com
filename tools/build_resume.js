@@ -290,7 +290,8 @@ const tailoredIndustries = [...industries, ...(TAILORING.industriesExtra || [])]
 
 // "Ember & Fog" — the site's live light-mode palette (_sass/_theme.scss),
 // so the resume never drifts from jordanread.com's actual look.
-const ACCENT = "#e4572e"; // --accent
+const ACCENT = "#c1501f"; // --accent
+//const ACCENT = "#e4572e"; // --accent
 const TEXT = "#24211d"; // --text
 const MUTED = "#6b655a"; // --text-muted
 const RULE = "#e4dfd3"; // --border
@@ -405,7 +406,7 @@ const contactLine = [
 
 const nameBlock = {
   stack: [
-    { text: (author.name || "").toUpperCase(), bold: true, color: ACCENT, fontSize: 20, margin: [0, 0, 0, 1] },
+    { text: (author.name || ""), bold: true, color: ACCENT, fontSize: 20, margin: [0, 0, 0, 1] },
     { text: TAILORING.headline || author.job_title || "", bold: true, color: TEXT, fontSize: 12, margin: [0, 0, 0, 5] },
     { text: contactLine, color: MUTED, fontSize: 9 },
   ],
@@ -457,7 +458,7 @@ content.push({
 const docDefinition = {
   pageSize: "LETTER",
   pageMargins: [45, 36, 45, 36],
-  defaultStyle: { font: "Roboto", fontSize: 10, color: TEXT },
+  defaultStyle: { font: "EB_Garamond", fontSize: 10, color: TEXT },
   content,
 };
 
@@ -468,16 +469,29 @@ const docDefinition = {
 // ---------------------------------------------------------------------------
 
 const ROBOTO_DIR = path.join(path.dirname(require.resolve("pdfmake/package.json")), "fonts", "Roboto");
-
+const FONTS_DIR = path.join(__dirname, "fonts");
 pdfMake.addFonts({
   Roboto: {
     normal: path.join(ROBOTO_DIR, "Roboto-Regular.ttf"),
     bold: path.join(ROBOTO_DIR, "Roboto-Medium.ttf"),
     italics: path.join(ROBOTO_DIR, "Roboto-Italic.ttf"),
     bolditalics: path.join(ROBOTO_DIR, "Roboto-MediumItalic.ttf"),
+  },  
+  EB_Garamond: {
+    normal: path.join(__dirname, "fonts/EB_Garamond/static/EBGaramond-Regular.ttf"),
+    bold: path.join(__dirname, "fonts/EB_Garamond/static/EBGaramond-Bold.ttf"),
+    italics: path.join(__dirname, "fonts/EB_Garamond/static/EBGaramond-Italic.ttf"),
+    bolditalics: path.join(__dirname, "fonts/EB_Garamond/static/EBGaramond-BoldItalic.ttf"),
+  },
+  Charm: {
+    normal: path.join(__dirname, "fonts/Charm/Charm-Regular.ttf"),
+    bold: path.join(__dirname, "fonts/Charm/Charm-Bold.ttf"),
+    italics: path.join(__dirname, "fonts/Charm/Charm-Regular.ttf"),
+    bolditalics: path.join(__dirname, "fonts/Charm/Charm-Bold.ttf"),
   },
 });
-pdfMake.setLocalAccessPolicy((p) => p.startsWith(ROBOTO_DIR));
+pdfMake.setLocalAccessPolicy((p) => p.startsWith(ROBOTO_DIR) || p.startsWith(FONTS_DIR));
+
 pdfMake.setUrlAccessPolicy(() => false);
 
 // ---------------------------------------------------------------------------
