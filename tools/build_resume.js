@@ -355,10 +355,22 @@ const sectionHeading = (text) => ({
   margin: [0, 12, 0, 0],
 });
 
-const bulletList = (items) => ({
-  ul: items.map((h) => ({ text: h, fontSize: 10, color: TEXT })),
-  margin: [0, 0, 0, 2],
+const bulletItem = (text) => ({
+  text,
+  fontSize: 10,
+  color: TEXT,
+  // Without this, pdfmake is happy to wrap a single bullet's text across
+  // a page boundary — part of the sentence at the bottom of one page,
+  // the rest at the top of the next. `unbreakable` makes this bullet one
+  // indivisible unit: if it doesn't fit in the remaining space on the
+  // current page, the WHOLE bullet moves to the next page rather than
+  // splitting mid-line. Bullets can still fall on different pages from
+  // each other (bullet 3 on page 1, bullet 4 on page 2) — that's normal
+  // and fine; it's only a split *within* one bullet's own text this
+  // prevents.
+  unbreakable: true,
 });
+
 
 const jobHeader = (title, company, dates) => ({
   columns: [
@@ -381,6 +393,50 @@ const jobSubheader = (location) => ({
   fontSize: 9,
   margin: [0, 0, 0, 4],
 });
+
+// Builds the pdfmake content nodes for one job entry, applying a second,
+// separate page-break tactic on top of `bulletItem`'s own `unbreakable`
+// flag above:
+//
+// A job's title/company/dates row, its location line, AND its FIRST
+// bullet are bundled into one `unbreakable` block. Without this, it's
+// possible for a job's header to land as the very last thing on a page
+// with every one of its bullets pushed entirely to the next one — a
+// title and company name sitting alone with nothing under it. Gluing
+// just the first bullet to the header prevents that: either the whole
+// glued block (header + first bullet) fits and prints together, or it
+// doesn't fit at all and the WHOLE thing — header included — moves to
+// the next page as a unit.
+//
+// The remaining bullets (2nd onward, if any) are left as a normal,
+// separately-breakable list. That's deliberate: it's a narrower fix than
+// making the *entire* job entry unbreakable would be. Making the whole
+// entry unbreakable would force a long 5-bullet job entirely onto a
+// fresh page — leaving a visible gap of white space above it on the
+// current page — just because it didn't quite fit where it was. A job's
+// bullets are still free to split across a page boundary between, say,
+// bullet 3 and bullet 4 — that's normal and doesn't read as broken the
+// way an orphaned header does.
+function jobEntryNodes(job) {
+  const [firstBullet, ...restBullets] = job.highlights;
+  const hasRest = restBullets.length > 0;
+
+  const headerAndFirstBullet = {
+    stack: [
+      jobHeader(job.role, job.company, job.dates),
+      jobSubheader(job.location),
+      // Bottom margin only applies here if this is the job's ONLY
+      // bullet — otherwise the "rest" list below carries it, so the gap
+      // before the next job's header stays exactly one job-list's worth
+      // regardless of how many bullets ended up in which chunk.
+      { ul: [bulletItem(firstBullet)], margin: [0, 0, 0, hasRest ? 0 : 2] },
+    ],
+    unbreakable: true,
+  };
+
+  if (!hasRest) return [headerAndFirstBullet];
+  return [headerAndFirstBullet, { ul: restBullets.map(bulletItem), margin: [0, 0, 0, 2] }];
+}
 
 const skillCategory = (label, items) => ({
   text: [
@@ -442,9 +498,7 @@ tailoredSkillGroups().forEach((g) => content.push({ ...skillCategory(g.group, g.
 
 content.push(sectionHeading("Professional Experience"));
 tailoredExperience.forEach((job) => {
-  content.push(jobHeader(job.role, job.company, job.dates));
-  content.push(jobSubheader(job.location));
-  content.push(bulletList(job.highlights));
+  content.push(...jobEntryNodes(job));
 });
 
 content.push(sectionHeading("Industries & Focus Areas"));
