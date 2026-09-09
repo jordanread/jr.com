@@ -75,13 +75,13 @@ const localContact = loadLocalContact();
 // ---------------------------------------------------------------------------
 
 const TAILORING = {
-  fileSlug: `Jordan_Read_Resume_${new Date().getFullYear()}-${String(new Date().getMonth() + 1).padStart(2, '0')}`,
-
-  headline: "Director - Software Engineering | Sr. Manager - Software Architecture",
+  // fileSlug: `Jordan_Read_Resume_Director_${new Date().getFullYear()}-${String(new Date().getMonth() + 1).padStart(2, '0')}`,
+  fileSlug: `Jordan_Read_Resume_${new Date().toISOString().slice(0, 16).replace(/[-:]/g, '')}`,
+  headline: "Director, Software Engineering  |  Senior Manager, Software Architecture",
 
   // Falls back to author.description from _config.yml if left blank.
   summary:
-    "Senior software engineer and solution architect with 17+ years of hands-on delivery across the .NET and Microsoft Azure stack, including C#, .NET Core, ASP.NET Core, Azure App Service-hosted enterprise systems, and Azure Service Bus. Extensive experience building service-oriented integrations and messaging-driven architectures (Service Bus, WCF, ActiveMQ, protobuf) for organizations managing sensitive financial, payment, and transactional data, plus prior experience on a U.S. government sustainment contract. Comfortable owning problems end-to-end — from architecture through security-conscious implementation, CI/CD automation, and production support — inside complex, partially documented enterprise environments. Seeking to bring deep .NET/Azure expertise and a track record in regulated, data-sensitive, and government domains to a long-term enterprise application initiative.",
+    "Engineering leader with 20+ years spanning hands-on software architecture and, more recently, direct delivery and people leadership — including founding and independently running a B2B software consulting practice for over a decade, and currently directing cross-functional teams as Director of Software Engineering for clients across nonprofit, healthcare, and mission-driven organizations. Comfortable operating at both altitudes: setting technology strategy and vendor/tooling direction (routinely right-sizing technology spend by 30-50%), while staying close enough to the architecture to make credible technical calls and mentor the engineers doing the work. Experience spans healthcare, aviation, financial services, telecom, and logistics, working with distributed teams and translating between technical and business stakeholders. Looking to bring that same blend of technical depth, delivery ownership, and team leadership to a director or senior manager role.",
 
   // location is fine to keep here since it isn't sensitive and can
   // legitimately vary per application (e.g. "Remote, United States"
@@ -94,42 +94,80 @@ const TAILORING = {
   // Rename/reorder skill groups from _data/skills.yml here if you
   // want a different label order for this application. Leave empty
   // to use the groups/order exactly as they appear in skills.yml.
-  skillGroupOrder: ["Cloud & DevOps", "Data & Integration", "Backend & APIs", "Practices", "Frontend"],
+  // "Practices" moved up for a leadership-facing resume — it's where
+  // the process/delivery-ownership language below actually lives.
+  skillGroupOrder: ["Leadership","Practices", "Project & Process", "Cloud & DevOps", "Data & Integration", "Backend & APIs", "Frontend"],
 
   // Extra bullet lines injected at the START of a given group (by
   // its `group` name in skills.yml). Use this for job-specific
   // emphasis that doesn't belong permanently in the site's data.
   skillGroupExtras: {
-    "Data & Integration": [
-      "Azure Service Bus (extensive) — messaging patterns also transferable to Azure Event Grid",
+    "Practices": [
+      "Team leadership, mentorship, and cross-functional delivery across engineering, design, and business stakeholders",
+    ],
+    "Cloud & DevOps": [
+      "Technology spend audits & cost optimization (30-50% reductions)",
     ],
   },
 
   // Per-company overrides, keyed by the exact `company` value in
   // _data/experience.yml. `highlights` replaces that job's bullets
   // entirely; `maxHighlights` trims the (possibly overridden) list.
+  //
+  // NOTE ON A REAL LIMITATION: this is keyed by company name only, and
+  // "Synergy UpLink" appears twice in experience.yml — the current
+  // 2025-present Director role AND the 2006-2019 founder-era role. An
+  // override here would apply to BOTH identically; there's no way to
+  // target just one. Both entries' *default* experience.yml bullets
+  // already read fine for a director-track resume as-is, so this was
+  // sidestepped for now by not overriding "Synergy UpLink" at all — but
+  // this is worth fixing in the script itself (e.g. keying overrides by
+  // company+dates, or a role id) before the planned Ollama pipeline
+  // starts generating this object automatically, since a model won't
+  // know about this collision unless it's told.
   experienceOverrides: {
-  //   "National Seating & Mobility": {
-  //     highlights: [
-  //       "Worked within a non-documented Dynamics 365 system of record built on an Azure App Service-hosted n-tier architecture, becoming the go-to engineer for stabilizing undocumented enterprise integrations.",
-  //       "Used Azure Service Bus extensively to build and maintain asynchronous, message-driven integrations between enterprise systems.",
-  //       "Applied TDD and CI/CD discipline to stabilize and extend a production .NET Core Web API and Angular stack backed by SQL Server, reducing regression risk in a business-critical enterprise application.",
-  //       "Designed and implemented versioning for a RESTful .NET Core API, and contributed to a geographic exclusivity system governing protected product data.",
-  //       "Advised leadership on DevOps pipeline design, security posture, and architecture requirements for deployments and planned product replacements.",
-  //     ],
-  //   },
-  //   "Ektello (Allegion)": {
-  //     maxHighlights: 2,
-  //   },
-  //   "Veteran Engineering & Technology": {
-  //     highlights: [
-  //       "Sustained and extended a U.S. military training application (ASP.NET Web Forms, custom plugin architecture) under a formal U.S. government sustainment contract.",
-  //       "Identified, duplicated, documented, and resolved issues within the existing framework and plugin-based architecture.",
-  //     ],
-  //   },
-  //   "I3 Verticals (Data Business Systems)": { maxHighlights: 1 },
-  //   "WideOpenWest": { maxHighlights: 2 },
-   },
+    "National Seating & Mobility": {
+      highlights: [
+        "Became the primary technical authority for a non-documented Dynamics 365 system of record on an Azure App Service-hosted n-tier architecture, stabilizing a business-critical integration.",
+        "Advised engineering leadership on DevOps pipeline design, security posture, and architecture direction for current deployments and a planned platform replacement.",
+        "Introduced TDD and CI/CD discipline to a .NET Core Web API and Angular codebase, reducing regression risk on a system supporting core business operations.",
+      ],
+    },
+    "Ektello (Allegion)": {
+      highlights: [
+        "Advised on architecture and identified data-storage inconsistencies ahead of a planned platform replacement for a SQL Server / .NET Core Web API / Angular product.",
+      ],
+    },
+    "Talento (Spirit Airlines)": {
+      highlights: [
+        "Joined as an individual contributor and quickly grew into ownership of architecture and design for new applications, within a strict 3-week Agile delivery cadence.",
+        "Owned interoperability and deployment planning across multiple load-balanced environments for mission-critical systems.",
+        "Supported enterprise identity management systems at scale (30,000+ employees).",
+      ],
+    },
+    // Everything below this point is being folded into the combined
+    // "Additional Technical Experience" block (see combineIntoOne below)
+    // — these older, individually less director-relevant stints are
+    // trimmed to their single strongest line each so the combined block
+    // stays scannable instead of listing every bullet from six jobs.
+    "Cypress Inland (Yardview)": { maxHighlights: 1 },
+    "TSYS": { maxHighlights: 1 },
+    "Veteran Engineering & Technology": { maxHighlights: 1 },
+    "I3 Verticals (Data Business Systems)": { maxHighlights: 1 },
+    "Recondo Technology": { maxHighlights: 1 },
+    "WideOpenWest": {
+      // Overridden (rather than just maxHighlights-trimmed) specifically
+      // to promote the two most director-relevant lines — a business
+      // impact metric and an executive-facing deliverable — over the
+      // more IC-flavored default first two ("supported/redesigned the
+      // intranet", "introduced new technologies") that maxHighlights
+      // would otherwise have kept by simply taking the top of the list.
+      highlights: [
+        "Designed an application that increased customer reach by 40% on day one, stabilizing at roughly 60% within a week.",
+        "Delivered advanced real-time executive reporting to give leadership rapid feedback on new guidelines.",
+      ],
+    },
+  },
 
   // Merge same-company multi-stint entries (e.g. two Cypress Inland
   // rows for consecutive years) into one block before any other
@@ -140,11 +178,24 @@ const TAILORING = {
   // "Additional Experience" block to save space. Companies must
   // match `company` values in experience.yml exactly. Set to null
   // to disable combining and show every role individually.
+  //
+  // Widened beyond the default set (Veteran Engineering & Technology /
+  // I3 Verticals / WideOpenWest) to also fold in Cypress Inland, TSYS,
+  // and Recondo — for a director/senior-manager audience, the pre-2019
+  // hands-on stints matter far less individually than the fact that
+  // there's a decade of varied technical depth behind the leadership
+  // roles above. Consolidating them keeps the resume focused on the
+  // roles that actually carry the leadership narrative (Synergy UpLink
+  // as Director, Synergy UpLink as founder, National Seating & Mobility,
+  // Talento) without just deleting the older technical breadth.
   combineIntoOne: {
-    label: "Additional Enterprise Engineering Experience",
+    label: "Additional Technical Experience",
     companies: [
+      "Cypress Inland (Yardview)",
+      "TSYS",
       "Veteran Engineering & Technology",
       "I3 Verticals (Data Business Systems)",
+      "Recondo Technology",
       "WideOpenWest",
     ],
     location: "Colorado · United States",
@@ -493,7 +544,7 @@ content.push({
   margin: [0, 6, 0, 4],
 });
 
-content.push(sectionHeading("Core Technical Skills"));
+content.push(sectionHeading("Core Skills"));
 tailoredSkillGroups().forEach((g) => content.push({ ...skillCategory(g.group, g.items), margin: [0, 6, 0, 4] }));
 
 content.push(sectionHeading("Professional Experience"));
