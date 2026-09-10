@@ -401,7 +401,7 @@ content.push({
   margin: [0, 6, 0, 4],
 });
 
-content.push(sectionHeading("Core Technical Skills"));
+content.push(sectionHeading("Core Skills"));
 tailoredSkillGroups().forEach((g) => content.push({ ...skillCategory(g.group, g.items), margin: [0, 6, 0, 4] }));
 
 content.push(sectionHeading("Professional Experience"));

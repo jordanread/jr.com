@@ -32,3 +32,23 @@
     - "Agile / iterative delivery"
     - "System & solution architecture"
     - "Security & compliance-conscious design"
+
+- group: "Leadership"
+  items:
+    - "Team leadership & mentorship"
+    - "Delegation & task prioritization"
+    - "Cross-functional team coordination"
+    - "Executive communication & stakeholder management"
+    - "Agile/Scrum team facilitation"
+    - "Conflict resolution & team motivation"
+    - "Performance reviews & career development"
+    - "Strategic planning & roadmap alignment"
+
+- group: "Project & Process"
+  items:
+    - "Project lifecycle management"
+    - "Risk assessment & mitigation"
+    - "Budget & resource allocation"
+    - "Vendor & third-party coordination"
+    - "Process optimization & workflow design"
+    - "KPI tracking & reporting"
