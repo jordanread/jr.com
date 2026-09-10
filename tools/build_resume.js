@@ -6,29 +6,38 @@
  * Jekyll data files, so the resume never drifts out of sync with
  * jordanread.com/resume/. Per-application tailoring (which posting
  * you're targeting, which bullets to foreground, extra emphasis
- * lines) lives in the TAILORING block below — edit that per job,
- * leave the data-loading code alone.
+ * lines) lives in a separate tailoring.json file — edit that (or point
+ * --tailoring at a different one) per job; leave this file alone.
+ *
+ * tailoring.json's shape is documented in tailoring.schema.md, which
+ * doubles as the system prompt generate_tailoring.js feeds to a local
+ * Ollama model when drafting one automatically from a job description.
  *
  * Colors match the site's live "Ember & Fog" palette (_sass/_theme.scss,
  * light-mode values) so the resume stays visually in sync with
  * jordanread.com/resume/ rather than drifting to its own scheme.
  *
- * Contact details (email/phone) are NOT stored in this file, so they
- * never end up in git history. They're read from tools/resume.local.json
- * (gitignored) if present — copy tools/resume.local.example.json to
- * tools/resume.local.json and fill it in. Falls back to _config.yml's
- * author.email/author.phone (usually blank on the public site) if that
- * file doesn't exist.
+ * Contact details (email/phone) are NOT stored in tailoring.json, so
+ * they never end up in git history. They're read from
+ * tools/resume.local.json (gitignored) if present — copy
+ * tools/resume.local.example.json to tools/resume.local.json and fill
+ * it in. Falls back to _config.yml's author.email/author.phone (usually
+ * blank on the public site) if that file doesn't exist.
  *
  * Usage:
- *   node build_resume.js [--site ../..] [--out ./out]
+ *   node build_resume.js [--site ../..] [--out ./out] [--tailoring tailoring.json]
  *
- * --site   Path to the jr.com repo root (must contain _config.yml and
- *          _data/). Defaults to the parent of this script's folder,
- *          which is correct if this lives in a `tools/` folder at the
- *          repo root (and tools/ is excluded from Jekyll's build via
- *          `exclude:` in _config.yml).
- * --out    Output directory for the .pdf. Defaults to ./out
+ * --site       Path to the jr.com repo root (must contain _config.yml
+ *              and _data/). Defaults to the parent of this script's
+ *              folder, which is correct if this lives in a `tools/`
+ *              folder at the repo root (and tools/ is excluded from
+ *              Jekyll's build via `exclude:` in _config.yml).
+ * --out        Output directory for the .pdf. Defaults to ./out
+ * --tailoring  Path to the tailoring JSON file, resolved relative to
+ *              this script's folder. Defaults to tailoring.json — point
+ *              this at a different file to keep several tailored
+ *              versions around (e.g. tailoring.director.json) without
+ *              overwriting each other.
  *
  * The header logo is read from assets/images-raw/favicon.png (the site's
  * source art, not the small pre-cropped assets/images/favicon.png used for
@@ -41,9 +50,9 @@
 
 const fs = require("fs");
 const path = require("path");
-const yaml = require("js-yaml");
 const pdfMake = require("pdfmake");
 const { PNG } = require("pngjs");
+const { loadSiteData } = require("./lib/site-data");
 
 // ---------------------------------------------------------------------------
 // CLI args
@@ -70,128 +79,27 @@ function loadLocalContact() {
 const localContact = loadLocalContact();
 
 // ---------------------------------------------------------------------------
-// TAILORING — edit this block per job application. Everything else in
-// this file is generic plumbing that shouldn't need to change.
+// TAILORING — per-application tailoring, loaded from JSON. See
+// tailoring.schema.md for what each field means. Edit tailoring.json (or
+// pass --tailoring path/to/other.json) per job application; everything
+// else in this file is generic plumbing that shouldn't need to change.
 // ---------------------------------------------------------------------------
 
-const TAILORING = {
-  fileSlug: `Jordan_Read_Resume_${new Date().getFullYear()}-${String(new Date().getMonth() + 1).padStart(2, '0')}`,
-
-  headline: "Director - Software Engineering | Sr. Manager - Software Architecture",
-
-  // Falls back to author.description from _config.yml if left blank.
-  summary:
-    "Senior software engineer and solution architect with 17+ years of hands-on delivery across the .NET and Microsoft Azure stack, including C#, .NET Core, ASP.NET Core, Azure App Service-hosted enterprise systems, and Azure Service Bus. Extensive experience building service-oriented integrations and messaging-driven architectures (Service Bus, WCF, ActiveMQ, protobuf) for organizations managing sensitive financial, payment, and transactional data, plus prior experience on a U.S. government sustainment contract. Comfortable owning problems end-to-end — from architecture through security-conscious implementation, CI/CD automation, and production support — inside complex, partially documented enterprise environments. Seeking to bring deep .NET/Azure expertise and a track record in regulated, data-sensitive, and government domains to a long-term enterprise application initiative.",
-
-  // location is fine to keep here since it isn't sensitive and can
-  // legitimately vary per application (e.g. "Remote, United States"
-  // vs. a specific city). email/phone come from resume.local.json —
-  // see header comment — and are NOT set here on purpose.
-  contact: {
-    location: "Remote, United States",
-  },
-
-  // Rename/reorder skill groups from _data/skills.yml here if you
-  // want a different label order for this application. Leave empty
-  // to use the groups/order exactly as they appear in skills.yml.
-  skillGroupOrder: ["Cloud & DevOps", "Data & Integration", "Backend & APIs", "Practices", "Frontend"],
-
-  // Extra bullet lines injected at the START of a given group (by
-  // its `group` name in skills.yml). Use this for job-specific
-  // emphasis that doesn't belong permanently in the site's data.
-  skillGroupExtras: {
-    "Data & Integration": [
-      "Azure Service Bus (extensive) — messaging patterns also transferable to Azure Event Grid",
-    ],
-  },
-
-  // Per-company overrides, keyed by the exact `company` value in
-  // _data/experience.yml. `highlights` replaces that job's bullets
-  // entirely; `maxHighlights` trims the (possibly overridden) list.
-  experienceOverrides: {
-  //   "National Seating & Mobility": {
-  //     highlights: [
-  //       "Worked within a non-documented Dynamics 365 system of record built on an Azure App Service-hosted n-tier architecture, becoming the go-to engineer for stabilizing undocumented enterprise integrations.",
-  //       "Used Azure Service Bus extensively to build and maintain asynchronous, message-driven integrations between enterprise systems.",
-  //       "Applied TDD and CI/CD discipline to stabilize and extend a production .NET Core Web API and Angular stack backed by SQL Server, reducing regression risk in a business-critical enterprise application.",
-  //       "Designed and implemented versioning for a RESTful .NET Core API, and contributed to a geographic exclusivity system governing protected product data.",
-  //       "Advised leadership on DevOps pipeline design, security posture, and architecture requirements for deployments and planned product replacements.",
-  //     ],
-  //   },
-  //   "Ektello (Allegion)": {
-  //     maxHighlights: 2,
-  //   },
-  //   "Veteran Engineering & Technology": {
-  //     highlights: [
-  //       "Sustained and extended a U.S. military training application (ASP.NET Web Forms, custom plugin architecture) under a formal U.S. government sustainment contract.",
-  //       "Identified, duplicated, documented, and resolved issues within the existing framework and plugin-based architecture.",
-  //     ],
-  //   },
-  //   "I3 Verticals (Data Business Systems)": { maxHighlights: 1 },
-  //   "WideOpenWest": { maxHighlights: 2 },
-   },
-
-  // Merge same-company multi-stint entries (e.g. two Cypress Inland
-  // rows for consecutive years) into one block before any other
-  // tailoring runs. List company names verbatim from experience.yml.
-  mergeSameCompany: ["Cypress Inland (Yardview)"],
-
-  // Combine several older/less-relevant roles into a single
-  // "Additional Experience" block to save space. Companies must
-  // match `company` values in experience.yml exactly. Set to null
-  // to disable combining and show every role individually.
-  combineIntoOne: {
-    label: "Additional Enterprise Engineering Experience",
-    companies: [
-      "Veteran Engineering & Technology",
-      "I3 Verticals (Data Business Systems)",
-      "WideOpenWest",
-    ],
-    location: "Colorado · United States",
-  },
-
-  // Extra industries to append beyond what's in industries.yml.
-  //industriesExtra: ["Government / Military Sustainment"],
-};
+const TAILORING_PATH = path.join(__dirname, getArg("--tailoring", "tailoring.json"));
+if (!fs.existsSync(TAILORING_PATH)) {
+  throw new Error(
+    `Tailoring file not found: ${TAILORING_PATH}\n` +
+    `Copy tailoring.schema.md's shape into a new file, or pass --tailoring path/to/file.json.`
+  );
+}
+const TAILORING = JSON.parse(fs.readFileSync(TAILORING_PATH, "utf8"));
 
 // ---------------------------------------------------------------------------
 // Load site data
 // ---------------------------------------------------------------------------
 
-function loadYaml(relPath) {
-  const full = path.join(SITE_DIR, relPath);
-  if (!fs.existsSync(full)) {
-    throw new Error(`Expected data file not found: ${full}\nCheck --site points at the jr.com repo root.`);
-  }
-  return yaml.load(fs.readFileSync(full, "utf8"));
-}
+const { config, experience, skills, industries, author, resumeMeta } = loadSiteData(SITE_DIR);
 
-const config = loadYaml("_config.yml");
-const experience = loadYaml("_data/experience.yml");
-const skills = loadYaml("_data/skills.yml");
-const industries = loadYaml("_data/industries.yml");
-
-const author = config.author || {};
-const resumeMeta = config.resume || {};
-
-// Fail fast with a clear message naming the offending entry, rather than a
-// cryptic error deep in the render code the first time a role is missing a
-// field (e.g. a new _data/experience.yml entry added without `location`).
-const REQUIRED_JOB_FIELDS = ["company", "role", "dates", "location", "highlights"];
-experience.forEach((job, i) => {
-  const missing = REQUIRED_JOB_FIELDS.filter((key) => {
-    const value = job[key];
-    if (value == null) return true;
-    if (Array.isArray(value)) return value.length === 0;
-    if (typeof value === "string") return value.trim() === "";
-    return false;
-  });
-  if (missing.length) {
-    throw new Error(
-      `_data/experience.yml entry #${i + 1} (company: "${job.company || "?"}") is missing: ${missing.join(", ")}`
-    );
-  }
-});
 
 // ---------------------------------------------------------------------------
 // Apply tailoring
@@ -553,7 +461,12 @@ pdfMake.setUrlAccessPolicy(() => false);
 // ---------------------------------------------------------------------------
 
 fs.mkdirSync(OUT_DIR, { recursive: true });
-const outPath = path.join(OUT_DIR, `${TAILORING.fileSlug}.pdf`);
+// tailoring.json's fileSlug is a short, static label (see
+// tailoring.schema.md) — the date suffix is added here in code rather
+// than stored in the JSON, so tailoring.json never goes stale just by
+// sitting around unbuilt for a while.
+const dateSuffix = `${new Date().getFullYear()}-${String(new Date().getMonth() + 1).padStart(2, "0")}`;
+const outPath = path.join(OUT_DIR, `Jordan_Read_Resume_${TAILORING.fileSlug}_${dateSuffix}.pdf`);
 
 pdfMake.createPdf(docDefinition).write(outPath).then(() => {
   console.log(`Wrote ${outPath}`);

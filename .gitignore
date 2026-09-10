@@ -10,6 +10,11 @@ _site/
 /tools/out/
 /tools/resume.local.json
 
+# Draft output from generate_tailoring.js — a scratch/review file by
+# design (see its header comment). Copy it to tailoring.json, or a
+# deliberately-named committed variant, once you've reviewed it.
+/tools/tailoring.generated.json
+
 # https://github.com/envygeeks/jekyll-docker/blob/master/.gitignore
 .DS_Store
 

@@ -12,6 +12,8 @@
     "vendor:glightbox": "mkdir -p assets/js/vendor assets/css/vendor && cp node_modules/glightbox/dist/js/glightbox.min.js assets/js/vendor/glightbox.min.js && cp node_modules/glightbox/dist/css/glightbox.min.css assets/css/vendor/glightbox.min.css",
     "vendor": "npm run vendor:glightbox",
     "resume:build": "node tools/build_resume.js",
-    "resume": "npm run resume:build"
+    "resume": "npm run resume:build",
+    "tailor:build": "node tools/generate_tailoring.js",
+    "tailor": "npm run tailor:build"
   }
 }
