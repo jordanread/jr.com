@@ -1,11 +1,11 @@
 {
   "fileSlug": "Director",
   "headline": "Director, Software Engineering  |  Senior Manager, Software Architecture",
-  "summary": "Engineering leader with 17+ years spanning hands-on software architecture and, more recently, direct delivery and people leadership — including founding and independently running a B2B software consulting practice for over a decade, and currently directing cross-functional teams as Director of Software Engineering for clients across nonprofit, healthcare, and mission-driven organizations. Comfortable operating at both altitudes: setting technology strategy and vendor/tooling direction (routinely right-sizing technology spend by 30-50%), while staying close enough to the architecture to make credible technical calls and mentor the engineers doing the work. Experience spans healthcare, aviation, financial services, telecom, and logistics, working with distributed teams and translating between technical and business stakeholders. Looking to bring that same blend of technical depth, delivery ownership, and team leadership to a director or senior manager role.",
+  "summary": "Engineering leader with 20+ years of experience delivering software and technology initiatives across healthcare, aviation, financial services, telecom, logistics, and B2B SaaS. Experienced leading distributed, cross-functional teams from strategy and planning through implementation, rollout, documentation, and handoff. Combines deep software architecture experience with delivery leadership, stakeholder management, process improvement, and technology strategy. Founded and operated a B2B software consulting practice for more than a decade and currently leads engineering and multidisciplinary delivery teams as a Director of Software Engineering. Known for bringing structure to complex technical environments, improving delivery practices, and right-sizing technology investments by 30-50%.",
   "contact": {
     "location": "Remote, United States"
   },
-  "skillGroupOrder": ["Cloud & DevOps", "Practices", "Data & Integration", "Backend & APIs", "Frontend"],
+  "skillGroupOrder": ["Leadership", "Practices", "Project & Process", "Cloud & DevOps", "Data & Integration", "Backend & APIs", "Frontend"],
   "skillGroupExtras": {
     "Practices": [
       "Team leadership, mentorship, and cross-functional delivery across engineering, design, and business stakeholders"
@@ -31,7 +31,7 @@
       "highlights": [
         "Joined as an individual contributor and quickly grew into ownership of architecture and design for new applications, within a strict 3-week Agile delivery cadence.",
         "Owned interoperability and deployment planning across multiple load-balanced environments for mission-critical systems.",
-        "Supported enterprise identity management systems at scale (~30,000+ employees)."
+        "Supported enterprise identity management systems at scale (30,000+ employees)."
       ]
     },
     "Cypress Inland (Yardview)": { "maxHighlights": 1 },
