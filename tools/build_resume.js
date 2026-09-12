@@ -285,8 +285,8 @@ const jobHeader = (title, company, dates) => ({
     {
       width: "*",
       text: [
-        { text: title, bold: true, color: ACCENT, fontSize: 11 },
-        { text: `  |  ${company}`, bold: true, color: TEXT, fontSize: 11 },
+        { text: company, bold: true, color: ACCENT, fontSize: 11 },
+        { text: ` |  ${title}`, bold: true, color: TEXT, fontSize: 11 },
       ],
     },
     { width: "auto", text: dates, bold: true, color: MUTED, fontSize: 10, alignment: "right" },
@@ -465,6 +465,7 @@ fs.mkdirSync(OUT_DIR, { recursive: true });
 // tailoring.schema.md) — the date suffix is added here in code rather
 // than stored in the JSON, so tailoring.json never goes stale just by
 // sitting around unbuilt for a while.
+//const dateSuffix = `${new Date().toISOString()}`;
 const dateSuffix = `${new Date().getFullYear()}-${String(new Date().getMonth() + 1).padStart(2, "0")}`;
 const outPath = path.join(OUT_DIR, `Jordan_Read_Resume_${TAILORING.fileSlug}_${dateSuffix}.pdf`);
 
