@@ -1,0 +1,63 @@
+{
+  "fileSlug": "Director",
+  "headline": "Director, Software Engineering  |  Senior Manager, Software Architecture",
+  "summary": "Engineering leader with 20+ years of experience delivering software and technology initiatives across healthcare, aviation, financial services, telecom, logistics, and B2B SaaS. Experienced leading distributed, cross-functional teams from strategy and planning through implementation, rollout, documentation, and handoff. Combines deep software architecture experience with delivery leadership, stakeholder management, process improvement, and technology strategy. Founded and operated a B2B software consulting practice for more than a decade and currently leads engineering and multidisciplinary delivery teams as a Director of Software Engineering. Known for bringing structure to complex technical environments, improving delivery practices, and right-sizing technology investments by 30-50%.",
+  "contact": {
+    "location": "Remote, United States"
+  },
+  "skillGroupOrder": ["Leadership", "Practices", "Project & Process", "Cloud & DevOps", "Data & Integration"],
+  "skillGroupExtras": {
+    "Practices": [
+      "Team leadership, mentorship, and cross-functional delivery across engineering, design, and business stakeholders"
+    ],
+    "Cloud & DevOps": [
+      "Technology spend audits & cost optimization (30-50% reductions)"
+    ]
+  },
+  "experienceOverrides": {
+    "National Seating & Mobility": {
+      "highlights": [
+        "Became the primary technical authority for a non-documented Dynamics 365 system of record on an Azure App Service-hosted n-tier architecture, stabilizing a business-critical integration.",
+        "Advised engineering leadership on DevOps pipeline design, security posture, and architecture direction for current deployments and a planned platform replacement.",
+        "Introduced TDD and CI/CD discipline to a .NET Core Web API and Angular codebase, reducing regression risk on a system supporting core business operations."
+      ]
+    },
+    "Ektello (Allegion)": {
+      "highlights": [
+        "Advised on architecture and identified data-storage inconsistencies ahead of a planned platform replacement for a SQL Server / .NET Core Web API / Angular product."
+      ]
+    },
+    "Talento (Spirit Airlines)": {
+      "highlights": [
+        "Joined as an individual contributor and quickly grew into ownership of architecture and design for new applications, within a strict 3-week Agile delivery cadence.",
+        "Owned interoperability and deployment planning across multiple load-balanced environments for mission-critical systems.",
+        "Supported enterprise identity management systems at scale (30,000+ employees)."
+      ]
+    },
+    "Cypress Inland (Yardview)": { "maxHighlights": 1 },
+    "TSYS": { "maxHighlights": 1 },
+    "Veteran Engineering & Technology": { "maxHighlights": 1 },
+    "I3 Verticals (Data Business Systems)": { "maxHighlights": 1 },
+    "Recondo Technology": { "maxHighlights": 1 },
+    "WideOpenWest": {
+      "highlights": [
+        "Designed an application that increased customer reach by 40% on day one, stabilizing at roughly 60% within a week.",
+        "Delivered advanced real-time executive reporting to give leadership rapid feedback on new guidelines."
+      ]
+    }
+  },
+  "mergeSameCompany": ["Cypress Inland (Yardview)"],
+  "combineIntoOne": {
+    "label": "Additional Technical Experience",
+    "companies": [
+      "Cypress Inland (Yardview)",
+      "TSYS",
+      "Veteran Engineering & Technology",
+      "I3 Verticals (Data Business Systems)",
+      "Recondo Technology",
+      "WideOpenWest"
+    ],
+    "location": "Colorado · United States"
+  },
+  "industriesExtra": []
+}

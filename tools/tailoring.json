@@ -1,11 +1,11 @@
 {
-  "fileSlug": "Director",
-  "headline": "Director, Software Engineering  |  Senior Manager, Software Architecture",
-  "summary": "Engineering leader with 20+ years of experience delivering software and technology initiatives across healthcare, aviation, financial services, telecom, logistics, and B2B SaaS. Experienced leading distributed, cross-functional teams from strategy and planning through implementation, rollout, documentation, and handoff. Combines deep software architecture experience with delivery leadership, stakeholder management, process improvement, and technology strategy. Founded and operated a B2B software consulting practice for more than a decade and currently leads engineering and multidisciplinary delivery teams as a Director of Software Engineering. Known for bringing structure to complex technical environments, improving delivery practices, and right-sizing technology investments by 30-50%.",
+  "fileSlug": "Manager",
+  "headline": "Engineering Manager  |  Software Architecture Lead",
+  "summary": "Engineering leader with 17+ years of hands-on software delivery and, more recently, direct people and delivery management — including founding and independently running a B2B software consulting practice for over a decade, and currently serving as Director of Software Engineering, directing cross-functional teams for clients across nonprofit, healthcare, and mission-driven organizations. Comfortable in the day-to-day of engineering management: mentoring engineers, owning delivery, running technology-spend and tooling decisions, and staying close enough to the architecture to make credible technical calls alongside the team. Experience spans healthcare, aviation, financial services, telecom, and logistics, working with distributed teams and translating between technical and business stakeholders. Looking for an engineering management role with room to grow into broader director-level scope over time.",
   "contact": {
     "location": "Remote, United States"
   },
-  "skillGroupOrder": ["Leadership", "Practices", "Project & Process", "Cloud & DevOps", "Data & Integration", "Backend & APIs", "Frontend"],
+  "skillGroupOrder": ["Practices", "Cloud & DevOps", "Data & Integration", "Backend & APIs", "Frontend"],
   "skillGroupExtras": {
     "Practices": [
       "Team leadership, mentorship, and cross-functional delivery across engineering, design, and business stakeholders"
