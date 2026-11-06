@@ -1,11 +1,11 @@
 {
-  "fileSlug": "Director",
+  "fileSlug": "rev1d",
   "headline": "Director, Software Engineering  |  Senior Manager, Software Architecture",
   "summary": "Engineering leader with 20+ years of experience delivering software and technology initiatives across healthcare, aviation, financial services, telecom, logistics, and B2B SaaS. Experienced leading distributed, cross-functional teams from strategy and planning through implementation, rollout, documentation, and handoff. Combines deep software architecture experience with delivery leadership, stakeholder management, process improvement, and technology strategy. Founded and operated a B2B software consulting practice for more than a decade and currently leads engineering and multidisciplinary delivery teams as a Director of Software Engineering. Known for bringing structure to complex technical environments, improving delivery practices, and right-sizing technology investments by 30-50%.",
   "contact": {
     "location": "Remote, United States"
   },
-  "skillGroupOrder": ["Leadership", "Practices", "Project & Process", "Cloud & DevOps", "Data & Integration"],
+  "skillGroupOrder": ["Practices", "Cloud & DevOps", "Data & Integration", "Backend & APIs", "Frontend"],
   "skillGroupExtras": {
     "Practices": [
       "Team leadership, mentorship, and cross-functional delivery across engineering, design, and business stakeholders"
